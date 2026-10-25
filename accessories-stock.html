@@ -1,0 +1,2542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart Mobile Care Hub - Accessories Stock</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f4f7fb;
+    color: #102b4e;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =====================================================
+   TOP HEADER
+===================================================== */
+
+.top-header {
+    height: 78px;
+    background: #082b5c;
+    color: white;
+
+    display: flex;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 2000;
+
+    box-shadow: 0 5px 20px rgba(5, 35, 75, 0.22);
+}
+
+.brand-area {
+    width: 270px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 22px;
+
+    border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+.brand-icon {
+    width: 48px;
+    height: 48px;
+
+    border: 2px solid white;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+
+    margin-right: 13px;
+}
+
+.brand-text h1 {
+    font-size: 19px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.brand-text p {
+    margin-top: 4px;
+
+    font-size: 11px;
+    color: #d8e5f4;
+    font-weight: 500;
+}
+
+.header-main {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 25px;
+}
+
+.header-search {
+    width: 550px;
+    max-width: 55%;
+
+    height: 43px;
+
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 24px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 17px;
+
+    background: rgba(255,255,255,0.04);
+}
+
+.header-search i {
+    font-size: 15px;
+    margin-right: 11px;
+    color: #d9e7f7;
+}
+
+.header-search input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 12px;
+}
+
+.header-search input::placeholder {
+    color: #d0deed;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.header-action {
+    color: white;
+    font-size: 17px;
+    position: relative;
+}
+
+.notification-count {
+    position: absolute;
+
+    top: -9px;
+    right: -9px;
+
+    width: 18px;
+    height: 18px;
+
+    background: #e63950;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding-left: 18px;
+
+    border-left: 1px solid rgba(255,255,255,0.18);
+}
+
+.profile-avatar {
+    width: 39px;
+    height: 39px;
+
+    background: white;
+    color: #092e61;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+}
+
+.profile span {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* =====================================================
+   TOP MODULE NAVIGATION
+===================================================== */
+
+.module-nav {
+    position: fixed;
+
+    top: 78px;
+    left: 0;
+    right: 0;
+
+    height: 65px;
+
+    background: white;
+
+    z-index: 1900;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 20px;
+
+    border-bottom: 1px solid #dce5ef;
+
+    box-shadow: 0 3px 12px rgba(15,43,75,0.07);
+
+    overflow-x: auto;
+}
+
+.module-link {
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 0 17px;
+
+    border-radius: 9px;
+
+    color: #274565;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition: 0.25s;
+}
+
+.module-link i {
+    font-size: 14px;
+}
+
+.module-link:hover {
+    background: #eef4fa;
+    color: #092e61;
+}
+
+.module-link.active {
+    background: #092e61;
+    color: white;
+
+    box-shadow: 0 5px 15px rgba(9,46,97,0.20);
+}
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main-content {
+    padding: 166px 30px 50px;
+
+    max-width: 1650px;
+
+    margin: auto;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 190px;
+
+    background:
+        linear-gradient(
+            105deg,
+            #082b5c 0%,
+            #0d3d78 58%,
+            #145397 100%
+        );
+
+    border-radius: 18px;
+
+    padding: 32px 40px;
+
+    color: white;
+
+    position: relative;
+    overflow: hidden;
+
+    box-shadow: 0 12px 35px rgba(8,43,92,0.18);
+
+    margin-bottom: 22px;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 340px;
+    height: 340px;
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    border-radius: 50%;
+
+    right: -100px;
+    top: -130px;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 210px;
+    height: 210px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 50%;
+
+    right: 80px;
+    bottom: -150px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background: rgba(255,255,255,0.12);
+
+    border: 1px solid rgba(255,255,255,0.20);
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+.hero h2 {
+    font-size: 31px;
+    font-weight: 800;
+
+    margin-bottom: 8px;
+}
+
+.hero p {
+    max-width: 750px;
+
+    color: #dce9f7;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+/* =====================================================
+   SUMMARY CARDS
+===================================================== */
+
+.summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 22px;
+}
+
+.summary-card {
+    background: white;
+
+    border: 1px solid #dce5ee;
+
+    border-radius: 13px;
+
+    padding: 18px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow: 0 5px 18px rgba(15,45,78,0.05);
+}
+
+.summary-icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 11px;
+
+    background: #eef4fa;
+
+    color: #092e61;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+.summary-card h4 {
+    font-size: 11px;
+    color: #718399;
+
+    margin-bottom: 5px;
+}
+
+.summary-card strong {
+    font-size: 24px;
+    color: #092e61;
+
+    font-weight: 800;
+}
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.toolbar {
+    background: white;
+
+    border: 1px solid #dce5ee;
+
+    border-radius: 14px;
+
+    padding: 16px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+    box-shadow: 0 5px 18px rgba(15,45,78,0.04);
+}
+
+.search-box {
+    flex: 1;
+
+    height: 46px;
+
+    border: 1px solid #d5e0eb;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 14px;
+
+    background: #fbfcfe;
+}
+
+.search-box i {
+    color: #6f8299;
+
+    margin-right: 10px;
+}
+
+.search-box input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-size: 12px;
+}
+
+.filter-select {
+    height: 46px;
+
+    min-width: 170px;
+
+    border: 1px solid #d5e0eb;
+
+    border-radius: 9px;
+
+    padding: 0 12px;
+
+    outline: none;
+
+    background: #fbfcfe;
+
+    color: #294664;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.add-button {
+    height: 46px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    padding: 0 19px;
+
+    background: #092e61;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+.add-button:hover {
+    background: #0d4383;
+}
+
+/* =====================================================
+   TABLE CONTAINER
+===================================================== */
+
+.table-container {
+    background: white;
+
+    border: 1px solid #dce5ee;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow: 0 7px 24px rgba(15,45,78,0.06);
+}
+
+.table-header {
+    padding: 18px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #e3eaf1;
+}
+
+.table-header h3 {
+    color: #092e61;
+
+    font-size: 19px;
+
+    font-weight: 800;
+}
+
+.table-header span {
+    color: #75869b;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 1050px;
+}
+
+thead {
+    background: #092e61;
+    color: white;
+}
+
+th {
+    padding: 14px 12px;
+
+    text-align: left;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+td {
+    padding: 13px 12px;
+
+    border-bottom: 1px solid #e8edf2;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #284565;
+
+    vertical-align: middle;
+}
+
+tbody tr {
+    transition: 0.2s;
+}
+
+tbody tr:hover {
+    background: #f7faff;
+}
+
+/* =====================================================
+   PRODUCT IMAGE
+===================================================== */
+
+.accessory-image {
+    width: 78px;
+    height: 78px;
+
+    background: #f7f9fc;
+
+    border: 1px solid #e1e8ef;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px;
+}
+
+.accessory-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+/* =====================================================
+   ACCESSORY NAME
+===================================================== */
+
+.accessory-name {
+    color: #102f51;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    min-width: 170px;
+}
+
+.category {
+    display: inline-flex;
+
+    padding: 6px 9px;
+
+    background: #eef4fa;
+
+    color: #315474;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.price {
+    color: #092e61;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+/* =====================================================
+   STOCK
+===================================================== */
+
+.stock-number {
+    color: #173b60;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 7px 10px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+.status i {
+    font-size: 7px;
+}
+
+.status.in-stock {
+    color: #087b58;
+
+    background: #e2f8f0;
+}
+
+.status.low-stock {
+    color: #a36a00;
+
+    background: #fff3d8;
+}
+
+.status.out-stock {
+    color: #c4263b;
+
+    background: #ffe5e9;
+}
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.action-buttons {
+    display: flex;
+
+    gap: 7px;
+}
+
+.action-btn {
+    height: 35px;
+    min-width: 35px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+.edit-btn {
+    background: #092e61;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #0d4383;
+}
+
+.delete-btn {
+    background: #fff0f2;
+    color: #c6283d;
+}
+
+.delete-btn:hover {
+    background: #ffdfe4;
+}
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(3,18,39,0.72);
+
+    backdrop-filter: blur(5px);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 5000;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal {
+    width: min(580px, 100%);
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 17px;
+
+    box-shadow: 0 25px 80px rgba(0,0,0,0.35);
+}
+
+.modal-header {
+    background: #092e61;
+
+    color: white;
+
+    padding: 19px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-header h3 {
+    font-size: 17px;
+
+    font-weight: 800;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+.close-btn {
+    width: 33px;
+    height: 33px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.12);
+
+    color: white;
+
+    font-size: 15px;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 13px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+
+    color: #294563;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    height: 43px;
+
+    border: 1px solid #d4e0eb;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    padding: 0 12px;
+
+    color: #173653;
+
+    font-size: 11px;
+
+    background: #fbfcfe;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #092e61;
+
+    background: white;
+}
+
+.modal-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 8px;
+}
+
+.save-btn,
+.cancel-btn {
+    height: 44px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+.save-btn {
+    flex: 1;
+
+    border: none;
+
+    background: #092e61;
+
+    color: white;
+}
+
+.cancel-btn {
+    width: 120px;
+
+    border: 1px solid #d2dce7;
+
+    background: white;
+
+    color: #34516e;
+}
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+.toast {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    background: #092e61;
+
+    color: white;
+
+    padding: 14px 20px;
+
+    border-radius: 9px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+
+    display: none;
+
+    align-items: center;
+
+    gap: 9px;
+
+    z-index: 7000;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+.toast.show {
+    display: flex;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+    margin-top: 30px;
+
+    background: #082b5c;
+
+    color: white;
+
+    border-radius: 14px;
+
+    padding: 18px 22px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-left i {
+    font-size: 20px;
+}
+
+.footer-left strong {
+    font-size: 12px;
+}
+
+.footer-left span {
+    display: block;
+
+    color: #d5e2f1;
+
+    font-size: 9px;
+
+    margin-top: 3px;
+}
+
+.footer-right {
+    color: #d5e2f1;
+
+    font-size: 9px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .brand-area {
+        width: 220px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .module-nav {
+        justify-content: flex-start;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .brand-area {
+        width: auto;
+    }
+
+    .brand-text {
+        display: none;
+    }
+
+    .header-search {
+        max-width: 65%;
+    }
+
+    .profile span {
+        display: none;
+    }
+
+    .main-content {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .toolbar {
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        flex-basis: 100%;
+    }
+
+    .filter-select {
+        flex: 1;
+    }
+
+    .add-button {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .header-actions {
+        gap: 10px;
+    }
+
+    .header-search {
+        width: 180px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     TOP HEADER
+===================================================== -->
+
+<header class="top-header">
+
+    <div class="brand-area">
+
+        <div class="brand-icon">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+
+        <div class="brand-text">
+            <h1>Smart Mobile Care Hub</h1>
+            <p>All Service in One Place</p>
+        </div>
+
+    </div>
+
+    <div class="header-main">
+
+        <div class="header-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="topSearch"
+                placeholder="Search accessories, category..."
+            >
+
+        </div>
+
+        <div class="header-actions">
+
+            <div class="header-action">
+                <i class="fa-regular fa-bell"></i>
+
+                <span class="notification-count">2</span>
+            </div>
+
+            <div class="header-action">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <span>Admin</span>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     TOP MODULE NAVIGATION
+===================================================== -->
+
+<nav class="module-nav">
+
+    <a href="admin-dashboard.html" class="module-link">
+        <i class="fa-solid fa-house"></i>
+        Dashboard
+    </a>
+
+    <a href="book-repair.html" class="module-link">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        Book Repair
+    </a>
+
+    <a href="repair-status.html" class="module-link">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        Repair Status
+    </a>
+
+    <a href="mobile-stock.html" class="module-link">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        Mobile Stock
+    </a>
+
+    <a href="accessories-stock.html" class="module-link active">
+        <i class="fa-solid fa-headphones"></i>
+        Accessories Stock
+    </a>
+
+    <a href="billing.html" class="module-link">
+        <i class="fa-solid fa-file-invoice-dollar"></i>
+        Billing
+    </a>
+
+    <a href="customer-data.html" class="module-link">
+        <i class="fa-solid fa-users"></i>
+        Customer Data
+    </a>
+
+    <a href="feedback.html" class="module-link">
+        <i class="fa-solid fa-comment-dots"></i>
+        Feedback
+    </a>
+
+</nav>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+<div class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-tag">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            ACCESSORIES INVENTORY MANAGEMENT
+        </div>
+
+        <h2>Accessories Stock Management</h2>
+
+        <p>
+            Manage accessories, prices, stock quantities and availability
+            from one professional dashboard.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SUMMARY
+===================================================== -->
+
+<section class="summary-grid">
+
+    <div class="summary-card">
+
+        <div class="summary-icon">
+            <i class="fa-solid fa-box"></i>
+        </div>
+
+        <div>
+            <h4>Total Accessories</h4>
+            <strong id="totalProducts">0</strong>
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div>
+            <h4>In Stock</h4>
+            <strong id="inStockCount">0</strong>
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+
+        <div>
+            <h4>Low Stock</h4>
+            <strong id="lowStockCount">0</strong>
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-icon">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+
+        <div>
+            <h4>Out of Stock</h4>
+            <strong id="outStockCount">0</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TOOLBAR
+===================================================== -->
+
+<section class="toolbar">
+
+    <div class="search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search accessory or category..."
+        >
+
+    </div>
+
+
+    <select id="categoryFilter" class="filter-select">
+
+        <option value="all">All Categories</option>
+        <option value="Audio">Audio</option>
+        <option value="Power">Power</option>
+        <option value="Protection">Protection</option>
+        <option value="Smart Gadgets">Smart Gadgets</option>
+        <option value="Stands">Stands</option>
+        <option value="Storage">Storage</option>
+        <option value="Computer">Computer</option>
+        <option value="Other">Other</option>
+
+    </select>
+
+
+    <select id="stockFilter" class="filter-select">
+
+        <option value="all">All Stock Status</option>
+        <option value="in">In Stock</option>
+        <option value="low">Low Stock</option>
+        <option value="out">Out of Stock</option>
+
+    </select>
+
+
+    <button class="add-button" onclick="openAddModal()">
+
+        <i class="fa-solid fa-plus"></i>
+
+        Add Accessory
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     TABLE
+===================================================== -->
+
+<section class="table-container">
+
+    <div class="table-header">
+
+        <h3>
+            <i class="fa-solid fa-layer-group"></i>
+            Accessories Inventory
+        </h3>
+
+        <span id="showingText">
+            Showing 0 accessories
+        </span>
+
+    </div>
+
+
+    <div class="table-scroll">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+
+                    <th>Image</th>
+
+                    <th>Accessory</th>
+
+                    <th>Category</th>
+
+                    <th>Price</th>
+
+                    <th>Stock Qty</th>
+
+                    <th>Status</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="accessoryTableBody"></tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-left">
+
+        <i class="fa-solid fa-mobile-screen-button"></i>
+
+        <div>
+
+            <strong>Smart Mobile Care Hub</strong>
+
+            <span>All Service in One Place</span>
+
+        </div>
+
+    </div>
+
+    <div class="footer-right">
+        © 2026 Smart Mobile Care Hub. All rights reserved.
+    </div>
+
+</footer>
+
+</main>
+
+
+<!-- =====================================================
+     EDIT / ADD MODAL
+===================================================== -->
+
+<div class="modal-overlay" id="accessoryModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h3>
+
+                <i class="fa-solid fa-pen-to-square"></i>
+
+                <span id="modalTitle">
+                    Edit Accessory
+                </span>
+
+            </h3>
+
+            <button class="close-btn" onclick="closeModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <input type="hidden" id="editId">
+
+
+            <div class="form-group">
+
+                <label>
+                    Accessory Name
+                </label>
+
+                <input
+                    type="text"
+                    id="accessoryName"
+                    placeholder="Enter accessory name"
+                >
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select id="accessoryCategory">
+
+                        <option value="Audio">Audio</option>
+                        <option value="Power">Power</option>
+                        <option value="Protection">Protection</option>
+                        <option value="Smart Gadgets">Smart Gadgets</option>
+                        <option value="Stands">Stands</option>
+                        <option value="Storage">Storage</option>
+                        <option value="Computer">Computer</option>
+                        <option value="Other">Other</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Price (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="accessoryPrice"
+                        min="0"
+                        placeholder="Enter price"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>
+                        Stock Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="accessoryStock"
+                        min="0"
+                        placeholder="Enter stock quantity"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Image File Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="accessoryImage"
+                        placeholder="example.jpg"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="cancel-btn"
+                    onclick="closeModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    class="save-btn"
+                    onclick="saveAccessory()"
+                >
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div class="toast" id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage">
+        Changes saved successfully
+    </span>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   DEFAULT ACCESSORIES
+===================================================== */
+
+const defaultAccessories = [
+
+    {
+        id: 1,
+        name: "Wireless Buds",
+        category: "Audio",
+        price: 1499,
+        stock: 12,
+        image: "wirelessbuds.jpg"
+    },
+
+    {
+        id: 2,
+        name: "Wireless Headphones",
+        category: "Audio",
+        price: 2499,
+        stock: 8,
+        image: "wirelessheadphones.avif"
+    },
+
+    {
+        id: 3,
+        name: "Selfie Stick",
+        category: "Smart Gadgets",
+        price: 699,
+        stock: 15,
+        image: "selfiestick.jpeg"
+    },
+
+    {
+        id: 4,
+        name: "Smart Watch",
+        category: "Smart Gadgets",
+        price: 2999,
+        stock: 7,
+        image: "smartwatch.jpeg"
+    },
+
+    {
+        id: 5,
+        name: "Neckband",
+        category: "Audio",
+        price: 1299,
+        stock: 10,
+        image: "neckband.jpeg"
+    },
+
+    {
+        id: 6,
+        name: "Mobile Tempered Glass",
+        category: "Protection",
+        price: 299,
+        stock: 25,
+        image: "mobiletemperedglass.jpeg"
+    },
+
+    {
+        id: 7,
+        name: "Phone Cover",
+        category: "Protection",
+        price: 399,
+        stock: 18,
+        image: "phonecover.jpeg"
+    },
+
+    {
+        id: 8,
+        name: "Power Bank",
+        category: "Power",
+        price: 1799,
+        stock: 6,
+        image: "powerbank.jpeg"
+    },
+
+    {
+        id: 9,
+        name: "Laptop",
+        category: "Computer",
+        price: 49999,
+        stock: 3,
+        image: "laptop.avif"
+    },
+
+    {
+        id: 10,
+        name: "Charger Cover",
+        category: "Protection",
+        price: 249,
+        stock: 14,
+        image: "chargercover.webp"
+    },
+
+    {
+        id: 11,
+        name: "Magnetic Phone Stand",
+        category: "Stands",
+        price: 599,
+        stock: 9,
+        image: "magneticphonestand.jpeg"
+    },
+
+    {
+        id: 12,
+        name: "Pen Drive",
+        category: "Storage",
+        price: 799,
+        stock: 11,
+        image: "pendrive.webp"
+    },
+
+    {
+        id: 13,
+        name: "Phone Stand",
+        category: "Stands",
+        price: 449,
+        stock: 13,
+        image: "phonestand.webp"
+    },
+
+    {
+        id: 14,
+        name: "Tripod",
+        category: "Stands",
+        price: 999,
+        stock: 5,
+        image: "tripoid.avif"
+    },
+
+    {
+        id: 15,
+        name: "Camera Lens",
+        category: "Smart Gadgets",
+        price: 799,
+        stock: 7,
+        image: "cameralens.jpeg"
+    },
+
+    {
+        id: 16,
+        name: "Wired Earphone",
+        category: "Audio",
+        price: 499,
+        stock: 20,
+        image: "wiredearphone.jpeg"
+    },
+
+    {
+        id: 17,
+        name: "Phone Wall Stand",
+        category: "Stands",
+        price: 649,
+        stock: 4,
+        image: "phonewall stand.webp"
+    },
+
+    {
+        id: 18,
+        name: "Bluetooth Speaker",
+        category: "Audio",
+        price: 1899,
+        stock: 8,
+        image: "bluetoothspeaker.jpeg"
+    },
+
+    {
+        id: 19,
+        name: "SIM Card",
+        category: "Other",
+        price: 100,
+        stock: 2,
+        image: "simcard.jpeg"
+    },
+
+    {
+        id: 20,
+        name: "Laptop Charger",
+        category: "Power",
+        price: 1599,
+        stock: 0,
+        image: "laptopcharger.jpeg"
+    }
+
+];
+
+
+/* =====================================================
+   LOAD DATA
+===================================================== */
+
+let accessories =
+    JSON.parse(localStorage.getItem("smchAccessories")) ||
+    defaultAccessories;
+
+
+/* =====================================================
+   SAVE DATA
+===================================================== */
+
+function saveData() {
+
+    localStorage.setItem(
+        "smchAccessories",
+        JSON.stringify(accessories)
+    );
+
+}
+
+
+/* =====================================================
+   GET STATUS
+===================================================== */
+
+function getStatus(stock) {
+
+    if (Number(stock) <= 0) {
+
+        return {
+            className: "out-stock",
+            text: "Out of Stock",
+            icon: "fa-circle-xmark"
+        };
+
+    }
+
+    if (Number(stock) <= 5) {
+
+        return {
+            className: "low-stock",
+            text: "Low Stock",
+            icon: "fa-triangle-exclamation"
+        };
+
+    }
+
+    return {
+        className: "in-stock",
+        text: "In Stock",
+        icon: "fa-circle-check"
+    };
+
+}
+
+
+/* =====================================================
+   DISPLAY TABLE
+===================================================== */
+
+function renderAccessories() {
+
+    const tbody =
+        document.getElementById("accessoryTableBody");
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const category =
+        document.getElementById("categoryFilter").value;
+
+    const stockFilter =
+        document.getElementById("stockFilter").value;
+
+
+    const filtered = accessories.filter(item => {
+
+        const matchesSearch =
+            item.name.toLowerCase().includes(search) ||
+            item.category.toLowerCase().includes(search);
+
+
+        const matchesCategory =
+            category === "all" ||
+            item.category === category;
+
+
+        let matchesStock = true;
+
+        if (stockFilter === "in") {
+
+            matchesStock = Number(item.stock) > 5;
+
+        }
+
+        if (stockFilter === "low") {
+
+            matchesStock =
+                Number(item.stock) > 0 &&
+                Number(item.stock) <= 5;
+
+        }
+
+        if (stockFilter === "out") {
+
+            matchesStock = Number(item.stock) <= 0;
+
+        }
+
+
+        return (
+            matchesSearch &&
+            matchesCategory &&
+            matchesStock
+        );
+
+    });
+
+
+    tbody.innerHTML = "";
+
+
+    filtered.forEach((item, index) => {
+
+        const status = getStatus(item.stock);
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+
+            <td>
+                <strong>${index + 1}</strong>
+            </td>
+
+            <td>
+
+                <div class="accessory-image">
+
+                    <img
+                        src="../images/${item.image}"
+                        alt="${escapeHtml(item.name)}"
+                        onerror="this.src='../images/accessories-placeholder.png'"
+                    >
+
+                </div>
+
+            </td>
+
+            <td>
+
+                <div class="accessory-name">
+                    ${escapeHtml(item.name)}
+                </div>
+
+            </td>
+
+            <td>
+
+                <span class="category">
+                    ${escapeHtml(item.category)}
+                </span>
+
+            </td>
+
+            <td>
+
+                <span class="price">
+                    ₹${Number(item.price).toLocaleString("en-IN")}
+                </span>
+
+            </td>
+
+            <td>
+
+                <span class="stock-number">
+                    ${Number(item.stock)}
+                </span>
+
+            </td>
+
+            <td>
+
+                <span class="status ${status.className}">
+
+                    <i class="fa-solid ${status.icon}"></i>
+
+                    ${status.text}
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <div class="action-buttons">
+
+                    <button
+                        class="action-btn edit-btn"
+                        onclick="openEditModal(${item.id})"
+                        title="Edit"
+                    >
+
+                        <i class="fa-solid fa-pen"></i>
+
+                        Edit
+
+                    </button>
+
+
+                    <button
+                        class="action-btn delete-btn"
+                        onclick="deleteAccessory(${item.id})"
+                        title="Delete"
+                    >
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                </div>
+
+            </td>
+
+        `;
+
+        tbody.appendChild(row);
+
+    });
+
+
+    document.getElementById("showingText").textContent =
+        `Showing ${filtered.length} of ${accessories.length} accessories`;
+
+    updateSummary();
+
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+function updateSummary() {
+
+    let inStock = 0;
+    let lowStock = 0;
+    let outStock = 0;
+
+
+    accessories.forEach(item => {
+
+        const qty = Number(item.stock);
+
+        if (qty <= 0) {
+
+            outStock++;
+
+        } else if (qty <= 5) {
+
+            lowStock++;
+
+        } else {
+
+            inStock++;
+
+        }
+
+    });
+
+
+    document.getElementById("totalProducts").textContent =
+        accessories.length;
+
+    document.getElementById("inStockCount").textContent =
+        inStock;
+
+    document.getElementById("lowStockCount").textContent =
+        lowStock;
+
+    document.getElementById("outStockCount").textContent =
+        outStock;
+
+}
+
+
+/* =====================================================
+   EDIT MODAL
+===================================================== */
+
+function openEditModal(id) {
+
+    const item =
+        accessories.find(accessory => accessory.id === id);
+
+    if (!item) return;
+
+
+    document.getElementById("modalTitle").textContent =
+        "Edit Accessory";
+
+    document.getElementById("editId").value =
+        item.id;
+
+    document.getElementById("accessoryName").value =
+        item.name;
+
+    document.getElementById("accessoryCategory").value =
+        item.category;
+
+    document.getElementById("accessoryPrice").value =
+        item.price;
+
+    document.getElementById("accessoryStock").value =
+        item.stock;
+
+    document.getElementById("accessoryImage").value =
+        item.image;
+
+
+    document
+        .getElementById("accessoryModal")
+        .classList.add("show");
+
+}
+
+
+/* =====================================================
+   ADD MODAL
+===================================================== */
+
+function openAddModal() {
+
+    document.getElementById("modalTitle").textContent =
+        "Add New Accessory";
+
+    document.getElementById("editId").value = "";
+
+    document.getElementById("accessoryName").value = "";
+
+    document.getElementById("accessoryCategory").value =
+        "Audio";
+
+    document.getElementById("accessoryPrice").value = "";
+
+    document.getElementById("accessoryStock").value = "";
+
+    document.getElementById("accessoryImage").value = "";
+
+
+    document
+        .getElementById("accessoryModal")
+        .classList.add("show");
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeModal() {
+
+    document
+        .getElementById("accessoryModal")
+        .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   SAVE ACCESSORY
+===================================================== */
+
+function saveAccessory() {
+
+    const id =
+        document.getElementById("editId").value;
+
+    const name =
+        document.getElementById("accessoryName").value.trim();
+
+    const category =
+        document.getElementById("accessoryCategory").value;
+
+    const price =
+        Number(document.getElementById("accessoryPrice").value);
+
+    const stock =
+        Number(document.getElementById("accessoryStock").value);
+
+    const image =
+        document.getElementById("accessoryImage").value.trim();
+
+
+    if (!name) {
+
+        alert("Please enter accessory name.");
+        return;
+
+    }
+
+    if (!image) {
+
+        alert("Please enter image file name.");
+        return;
+
+    }
+
+    if (price < 0 || Number.isNaN(price)) {
+
+        alert("Please enter a valid price.");
+        return;
+
+    }
+
+    if (stock < 0 || Number.isNaN(stock)) {
+
+        alert("Please enter a valid stock quantity.");
+        return;
+
+    }
+
+
+    /* EDIT EXISTING */
+
+    if (id) {
+
+        const item =
+            accessories.find(
+                accessory => accessory.id === Number(id)
+            );
+
+        if (item) {
+
+            item.name = name;
+            item.category = category;
+            item.price = price;
+            item.stock = stock;
+            item.image = image;
+
+        }
+
+        saveData();
+
+        renderAccessories();
+
+        closeModal();
+
+        showToast("Accessory updated successfully!");
+
+        return;
+
+    }
+
+
+    /* ADD NEW */
+
+    const newAccessory = {
+
+        id: Date.now(),
+
+        name: name,
+
+        category: category,
+
+        price: price,
+
+        stock: stock,
+
+        image: image
+
+    };
+
+
+    accessories.push(newAccessory);
+
+    saveData();
+
+    renderAccessories();
+
+    closeModal();
+
+    showToast("New accessory added successfully!");
+
+}
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+function deleteAccessory(id) {
+
+    const item =
+        accessories.find(accessory => accessory.id === id);
+
+    if (!item) return;
+
+
+    const confirmDelete =
+        confirm(
+            `Are you sure you want to delete "${item.name}"?`
+        );
+
+
+    if (!confirmDelete) return;
+
+
+    accessories =
+        accessories.filter(
+            accessory => accessory.id !== id
+        );
+
+
+    saveData();
+
+    renderAccessories();
+
+    showToast("Accessory deleted successfully!");
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+    const toastMessage =
+        document.getElementById("toastMessage");
+
+    toastMessage.textContent = message;
+
+    toast.classList.add("show");
+
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2500);
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   SEARCH + FILTER EVENTS
+===================================================== */
+
+document
+    .getElementById("searchInput")
+    .addEventListener("input", renderAccessories);
+
+
+document
+    .getElementById("categoryFilter")
+    .addEventListener("change", renderAccessories);
+
+
+document
+    .getElementById("stockFilter")
+    .addEventListener("change", renderAccessories);
+
+
+/* =====================================================
+   TOP SEARCH
+===================================================== */
+
+document
+    .getElementById("topSearch")
+    .addEventListener("input", function() {
+
+        document.getElementById("searchInput").value =
+            this.value;
+
+        renderAccessories();
+
+    });
+
+
+/* =====================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+===================================================== */
+
+document
+    .getElementById("accessoryModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeModal();
+
+        }
+
+    });
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+renderAccessories();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2031 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Book Repair | Smart Mobile Care Hub</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome Premium Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f4f7fb;
+            color: #17243d;
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+
+            position: fixed;
+
+            left: 0;
+            top: 0;
+
+            width: 270px;
+            height: 100vh;
+
+            background: #061a35;
+
+            color: white;
+
+            padding: 25px 18px;
+
+            box-shadow:
+                8px 0 30px rgba(0, 0, 0, 0.08);
+
+            z-index: 1000;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding:
+                5px 10px 25px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.12);
+        }
+
+
+        .logo-icon {
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0b5cff,
+                    #3185ff
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(11,92,255,0.35);
+        }
+
+
+        .logo h2 {
+
+            font-size: 17px;
+
+            font-weight: 800;
+        }
+
+
+        .logo h2 span {
+
+            color: #6ca5ff;
+        }
+
+
+        /* MENU */
+
+        .menu {
+
+            margin-top: 28px;
+        }
+
+
+        .menu-title {
+
+            color: #7187a7;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            padding:
+                0 13px 12px;
+        }
+
+
+        .menu a {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            text-decoration: none;
+
+            color: #cbd6e8;
+
+            padding: 14px 15px;
+
+            border-radius: 12px;
+
+            margin-bottom: 7px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        .menu a i {
+
+            width: 22px;
+
+            text-align: center;
+
+            font-size: 16px;
+        }
+
+
+        .menu a:hover,
+        .menu a.active {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #0b5cff,
+                    #176fff
+                );
+
+            color: white;
+
+            transform:
+                translateX(3px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(11,92,255,0.25);
+        }
+
+
+        /* LOGOUT */
+
+        .logout {
+
+            position: absolute;
+
+            left: 18px;
+            right: 18px;
+
+            bottom: 25px;
+        }
+
+
+        .logout a {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 14px 15px;
+
+            color: #cbd6e8;
+
+            text-decoration: none;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,0.06);
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        .logout a:hover {
+
+            background: #0b5cff;
+
+            color: white;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+
+            margin-left: 270px;
+
+            min-height: 100vh;
+
+            padding: 30px 38px;
+        }
+
+
+        /* =========================
+           TOPBAR
+        ========================= */
+
+        .topbar {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 28px;
+        }
+
+
+        .page-title h1 {
+
+            color: #071b36;
+
+            font-size: 28px;
+
+            font-weight: 800;
+        }
+
+
+        .page-title p {
+
+            margin-top: 6px;
+
+            color: #73819a;
+
+            font-size: 13px;
+        }
+
+
+        /* USER */
+
+        .user-box {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            background: white;
+
+            padding:
+                9px 15px 9px 9px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(17,42,80,0.07);
+        }
+
+
+        .user-icon {
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 12px;
+
+            background: #eaf2ff;
+
+            color: #0b5cff;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .user-box strong {
+
+            display: block;
+
+            color: #071b36;
+
+            font-size: 13px;
+        }
+
+
+        .user-box span {
+
+            color: #7b8ba5;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #061a35,
+                    #0b5cff
+                );
+
+            color: white;
+
+            padding: 28px 32px;
+
+            border-radius: 22px;
+
+            margin-bottom: 28px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(6,26,53,0.18);
+        }
+
+
+        .hero h2 {
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        .hero p {
+
+            color: #dce8ff;
+
+            font-size: 12px;
+        }
+
+
+        .hero-icon {
+
+            width: 72px;
+            height: 72px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,0.13);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+        }
+
+
+        /* =========================
+           FORM CARD
+        ========================= */
+
+        .form-card {
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 32px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(17,42,80,0.07);
+        }
+
+
+        /* SECTION */
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding-bottom: 18px;
+
+            margin-bottom: 25px;
+
+            border-bottom:
+                1px solid #edf1f7;
+        }
+
+
+        .section-icon {
+
+            width: 43px;
+            height: 43px;
+
+            border-radius: 13px;
+
+            background: #eaf2ff;
+
+            color: #0b5cff;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .section-title h3 {
+
+            color: #071b36;
+
+            font-size: 17px;
+
+            font-weight: 800;
+        }
+
+
+        .section-title p {
+
+            color: #8491a6;
+
+            font-size: 11px;
+
+            margin-top: 3px;
+        }
+
+
+        /* =========================
+           FORM GRID
+        ========================= */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .form-group.full {
+
+            grid-column: 1 / -1;
+        }
+
+
+        /* LABEL */
+
+        label {
+
+            color: #34445d;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        label span {
+
+            color: #0b5cff;
+        }
+
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-box {
+
+            position: relative;
+        }
+
+
+        .input-box > i {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #6681a8;
+
+            font-size: 14px;
+
+            pointer-events: none;
+
+            z-index: 2;
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            border:
+                1px solid #dce4ef;
+
+            border-radius: 12px;
+
+            background: #fbfcfe;
+
+            padding:
+                13px 15px 13px 43px;
+
+            font-family:
+                "Inter", sans-serif;
+
+            font-size: 13px;
+
+            color: #1d2c44;
+
+            outline: none;
+
+            transition: 0.25s;
+        }
+
+
+        textarea {
+
+            min-height: 115px;
+
+            resize: vertical;
+
+            padding-top: 14px;
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color: #0b5cff;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(11,92,255,0.08);
+        }
+
+
+        /* =========================
+           REPAIR ID BOX
+           ALWAYS VISIBLE
+        ========================= */
+
+        .repair-id-container {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f7faff,
+                    #eef5ff
+                );
+
+            border:
+                1px solid #d6e5ff;
+
+            border-radius: 15px;
+
+            padding: 15px;
+
+            margin-top: 2px;
+        }
+
+
+        .repair-id-container label {
+
+            color: #071b36;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+
+        .repair-id-container label i {
+
+            color: #0b5cff;
+
+            margin-right: 5px;
+        }
+
+
+        .repair-id-help {
+
+            margin-top: 8px;
+
+            color: #7c8ca5;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+        }
+
+
+        .repair-id-help i {
+
+            color: #0b5cff;
+
+            margin-right: 4px;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .button-row {
+
+            display: flex;
+
+            justify-content:
+                flex-end;
+
+            gap: 12px;
+
+            margin-top: 28px;
+        }
+
+
+        .btn {
+
+            border: none;
+
+            border-radius: 12px;
+
+            padding:
+                14px 22px;
+
+            font-family:
+                "Inter", sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .btn-back {
+
+            background: #edf2f8;
+
+            color: #52627b;
+        }
+
+
+        .btn-back:hover {
+
+            background: #dfe7f2;
+        }
+
+
+        .btn-primary {
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0b5cff,
+                    #176fff
+                );
+
+            box-shadow:
+                0 10px 20px
+                rgba(11,92,255,0.22);
+        }
+
+
+        .btn-primary:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 14px 25px
+                rgba(11,92,255,0.30);
+        }
+
+
+        /* =========================
+           SUCCESS CARD
+        ========================= */
+
+        .success-card {
+
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 28px;
+
+            text-align: center;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #061a35,
+                    #0b5cff
+                );
+
+            color: white;
+
+            box-shadow:
+                0 15px 35px
+                rgba(6,26,53,0.18);
+        }
+
+
+        .success-icon {
+
+            width: 65px;
+            height: 65px;
+
+            margin:
+                0 auto 15px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.15);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 28px;
+        }
+
+
+        .success-card h2 {
+
+            font-size: 21px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        .success-card p {
+
+            color: #dce9ff;
+
+            font-size: 12px;
+        }
+
+
+        .generated-id {
+
+            display: inline-block;
+
+            margin:
+                18px 0 12px;
+
+            padding:
+                13px 25px;
+
+            background: white;
+
+            color: #0b5cff;
+
+            border-radius: 12px;
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                margin-left: 220px;
+                padding: 25px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+
+                position: relative;
+
+                width: 100%;
+
+                height: auto;
+            }
+
+            .logout {
+
+                position: static;
+
+                margin-top: 20px;
+            }
+
+            .main {
+
+                margin-left: 0;
+
+                padding: 20px;
+            }
+
+            .topbar {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+            }
+
+            .hero {
+
+                padding: 24px;
+            }
+
+            .form-card {
+
+                padding: 22px;
+            }
+
+            .button-row {
+
+                flex-direction: column;
+            }
+
+            .btn {
+
+                width: 100%;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+
+                <i class="fa-solid fa-mobile-screen-button"></i>
+
+            </div>
+
+
+            <h2>
+                Smart <span>Care</span>
+            </h2>
+
+        </div>
+
+
+        <!-- MENU -->
+
+        <div class="menu">
+
+
+            <div class="menu-title">
+                Customer Menu
+            </div>
+
+
+            <!-- USER DASHBOARD -->
+
+            <a href="user-dashboard.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+
+            <!-- BOOK REPAIR -->
+
+            <a href="book-repair.html"
+               class="active">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                Book Repair
+
+            </a>
+
+
+            <!-- REPAIR STATUS -->
+
+            <a href="repair-status.html">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                Repair Status
+
+            </a>
+
+
+            <!-- MOBILE PHONES -->
+
+            <a href="mobile-phones.html">
+
+                <i class="fa-solid fa-mobile-screen"></i>
+
+                Mobile Phones
+
+            </a>
+
+
+            <!-- ACCESSORIES -->
+
+            <a href="accessories.html">
+
+                <i class="fa-solid fa-headphones"></i>
+
+                Accessories
+
+            </a>
+
+
+            <!-- OFFERS -->
+
+            <a href="offers-resale.html">
+
+                <i class="fa-solid fa-tags"></i>
+
+                Offers & Resale
+
+            </a>
+
+
+            <!-- FEEDBACK -->
+
+            <a href="feedback.html">
+
+                <i class="fa-solid fa-comment-dots"></i>
+
+                Feedback
+
+            </a>
+
+
+            <!-- SUPPORT -->
+
+            <a href="customer-support.html">
+
+                <i class="fa-solid fa-headset"></i>
+
+                Customer Support
+
+            </a>
+
+
+        </div>
+
+
+        <!-- LOGOUT -->
+
+        <div class="logout">
+
+            <a href="../login.html">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+
+            <div class="page-title">
+
+                <h1>
+                    Book Mobile Repair
+                </h1>
+
+                <p>
+                    Schedule a professional repair service for your mobile.
+                </p>
+
+            </div>
+
+
+            <div class="user-box">
+
+                <div class="user-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="customerNameTop">
+                        Customer
+                    </strong>
+
+                    <span>
+                        Smart Care Member
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="hero">
+
+
+            <div>
+
+                <h2>
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Professional Mobile Care
+
+                </h2>
+
+
+                <p>
+
+                    Book your repair easily and manage your service request.
+
+                </p>
+
+            </div>
+
+
+            <div class="hero-icon">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <section class="form-card">
+
+
+            <!-- SECTION TITLE -->
+
+            <div class="section-title">
+
+
+                <div class="section-icon">
+
+                    <i class="fa-solid fa-file-circle-plus"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Repair Booking Details
+                    </h3>
+
+                    <p>
+                        Enter your mobile and repair information
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form id="repairForm">
+
+
+                <div class="form-grid">
+
+
+                    <!-- CUSTOMER NAME -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Customer Name <span>*</span>
+                        </label>
+
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="customerName"
+                                placeholder="Enter your full name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHONE NUMBER -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Phone Number <span>*</span>
+                        </label>
+
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            <input
+                                type="tel"
+                                id="phoneNumber"
+                                placeholder="Enter 10-digit mobile number"
+                                maxlength="10"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MOBILE BRAND -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile Brand <span>*</span>
+                        </label>
+
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+
+
+                            <select
+                                id="mobileBrand"
+                                required
+                            >
+
+                                <option value="">
+                                    Select Mobile Brand
+                                </option>
+
+                                <option value="Apple">
+                                    Apple
+                                </option>
+
+                                <option value="Samsung">
+                                    Samsung
+                                </option>
+
+                                <option value="OnePlus">
+                                    OnePlus
+                                </option>
+
+                                <option value="Xiaomi">
+                                    Xiaomi
+                                </option>
+
+                                <option value="Redmi">
+                                    Redmi
+                                </option>
+
+                                <option value="Realme">
+                                    Realme
+                                </option>
+
+                                <option value="Vivo">
+                                    Vivo
+                                </option>
+
+                                <option value="Oppo">
+                                    Oppo
+                                </option>
+
+                                <option value="Motorola">
+                                    Motorola
+                                </option>
+
+                                <option value="Nothing">
+                                    Nothing
+                                </option>
+
+                                <option value="Google">
+                                    Google
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MOBILE MODEL -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile Model <span>*</span>
+                        </label>
+
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-mobile"></i>
+
+                            <input
+                                type="text"
+                                id="mobileModel"
+                                placeholder="Example: iPhone 17 Pro Max"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         REPAIR SERVICE
+                    ================================================== -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Repair Service <span>*</span>
+                        </label>
+
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-wrench"></i>
+
+
+                            <select
+                                id="repairService"
+                                required
+                            >
+
+                                <option value="">
+                                    Select Repair Service
+                                </option>
+
+                                <option value="Screen Replacement">
+                                    Screen Replacement
+                                </option>
+
+                                <option value="Battery Replacement">
+                                    Battery Replacement
+                                </option>
+
+                                <option value="Charging Port Repair">
+                                    Charging Port Repair
+                                </option>
+
+                                <option value="Water Damage">
+                                    Water Damage
+                                </option>
+
+                                <option value="Software Issue">
+                                    Software Issue
+                                </option>
+
+                                <option value="Camera Repair">
+                                    Camera Repair
+                                </option>
+
+                                <option value="Speaker Repair">
+                                    Speaker Repair
+                                </option>
+
+                                <option value="Display Issue">
+                                    Display Issue
+                                </option>
+
+                                <!-- OTHERS -->
+
+                                <option value="Others">
+                                    Others
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ENTER REPAIR ID
+                         ALWAYS VISIBLE
+                    ================================================== -->
+
+                    <div class="form-group repair-id-container">
+
+
+                        <label>
+
+                            <i class="fa-solid fa-fingerprint"></i>
+
+                            Enter Repair ID
+
+                            <span>*</span>
+
+                        </label>
+
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-id-card"></i>
+
+
+                            <input
+                                type="text"
+                                id="repairIdInput"
+                                placeholder="Enter your Repair ID"
+                            >
+
+                        </div>
+
+
+                        <div class="repair-id-help">
+
+                            <i class="fa-solid fa-circle-info"></i>
+
+                            Enter your existing Repair ID if you already have
+                            a repair request.
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- DATE -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Preferred Date <span>*</span>
+                        </label>
+
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-calendar-days"></i>
+
+
+                            <input
+                                type="date"
+                                id="repairDate"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TIME -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Preferred Time <span>*</span>
+                        </label>
+
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-clock"></i>
+
+
+                            <input
+                                type="time"
+                                id="repairTime"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROBLEM -->
+
+                    <div class="form-group full">
+
+                        <label>
+                            Problem Description <span>*</span>
+                        </label>
+
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-message"></i>
+
+
+                            <textarea
+                                id="problemDescription"
+                                placeholder="Describe your mobile problem..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="button-row">
+
+
+                    <!-- DASHBOARD -->
+
+                    <button
+                        type="button"
+                        class="btn btn-back"
+                        onclick="goDashboard()"
+                    >
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Back to Dashboard
+
+                    </button>
+
+
+                    <!-- BOOK -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                        Book Repair
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+            <!-- =================================================
+                 SUCCESS CARD
+            ================================================== -->
+
+            <div
+                class="success-card"
+                id="successCard"
+            >
+
+
+                <div class="success-icon">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+
+                <h2>
+                    Repair Booking Successful!
+                </h2>
+
+
+                <p>
+                    Your repair request has been registered successfully.
+                </p>
+
+
+                <div
+                    class="generated-id"
+                    id="generatedRepairId"
+                >
+                    SMC-000000
+                </div>
+
+
+                <p>
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Please save your Repair ID to check your repair status.
+
+                </p>
+
+
+                <br>
+
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="goRepairStatus()"
+                >
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Check Repair Status
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* ==========================================
+           CUSTOMER NAME
+        ========================================== */
+
+        const loggedInUser =
+            localStorage.getItem("loggedInUser");
+
+
+        if (loggedInUser) {
+
+            document.getElementById(
+                "customerNameTop"
+            ).textContent = loggedInUser;
+
+        }
+
+
+        /* ==========================================
+           SET TODAY AS MINIMUM DATE
+        ========================================== */
+
+        const today = new Date();
+
+
+        const year =
+            today.getFullYear();
+
+
+        const month =
+            String(
+                today.getMonth() + 1
+            ).padStart(2, "0");
+
+
+        const day =
+            String(
+                today.getDate()
+            ).padStart(2, "0");
+
+
+        const todayDate =
+            `${year}-${month}-${day}`;
+
+
+        document.getElementById(
+            "repairDate"
+        ).min = todayDate;
+
+
+        /* ==========================================
+           GENERATE REPAIR ID
+        ========================================== */
+
+        function generateRepairId() {
+
+            return "SMC-" +
+                Math.floor(
+                    100000 +
+                    Math.random() * 900000
+                );
+
+        }
+
+
+        /* ==========================================
+           BOOK REPAIR
+        ========================================== */
+
+        document
+            .getElementById("repairForm")
+            .addEventListener(
+                "submit",
+                function(event) {
+
+
+                    event.preventDefault();
+
+
+                    /* CUSTOMER */
+
+                    const customerName =
+                        document.getElementById(
+                            "customerName"
+                        ).value.trim();
+
+
+                    /* PHONE */
+
+                    const phoneNumber =
+                        document.getElementById(
+                            "phoneNumber"
+                        ).value.trim();
+
+
+                    /* BRAND */
+
+                    const mobileBrand =
+                        document.getElementById(
+                            "mobileBrand"
+                        ).value;
+
+
+                    /* MODEL */
+
+                    const mobileModel =
+                        document.getElementById(
+                            "mobileModel"
+                        ).value.trim();
+
+
+                    /* SERVICE */
+
+                    const service =
+                        document.getElementById(
+                            "repairService"
+                        ).value;
+
+
+                    /* REPAIR ID */
+
+                    const enteredRepairId =
+                        document.getElementById(
+                            "repairIdInput"
+                        ).value.trim();
+
+
+                    /* DATE */
+
+                    const repairDate =
+                        document.getElementById(
+                            "repairDate"
+                        ).value;
+
+
+                    /* TIME */
+
+                    const repairTime =
+                        document.getElementById(
+                            "repairTime"
+                        ).value;
+
+
+                    /* PROBLEM */
+
+                    const problem =
+                        document.getElementById(
+                            "problemDescription"
+                        ).value.trim();
+
+
+                    /* =================================
+                       PHONE VALIDATION
+                    ================================= */
+
+                    if (
+                        !/^[0-9]{10}$/
+                            .test(phoneNumber)
+                    ) {
+
+                        alert(
+                            "Please enter a valid 10-digit phone number."
+                        );
+
+                        return;
+
+                    }
+
+
+                    /* =================================
+                       REPAIR ID
+                    =================================
+
+                       User enters Repair ID if available.
+
+                       If empty, a new Repair ID
+                       will be generated automatically.
+                    ================================= */
+
+                    let repairId;
+
+
+                    if (enteredRepairId !== "") {
+
+                        repairId =
+                            enteredRepairId;
+
+                    } else {
+
+                        repairId =
+                            generateRepairId();
+
+                    }
+
+
+                    /* =================================
+                       REPAIR DATA
+                    ================================= */
+
+                    const repairData = {
+
+                        repairId:
+                            repairId,
+
+                        customerName:
+                            customerName,
+
+                        phoneNumber:
+                            phoneNumber,
+
+                        mobileBrand:
+                            mobileBrand,
+
+                        mobileModel:
+                            mobileModel,
+
+                        repairService:
+                            service,
+
+                        repairDate:
+                            repairDate,
+
+                        repairTime:
+                            repairTime,
+
+                        problemDescription:
+                            problem,
+
+                        status:
+                            "Pending",
+
+                        createdAt:
+                            new Date()
+                                .toLocaleString()
+
+                    };
+
+
+                    /* =================================
+                       SAVE DATA
+                    ================================= */
+
+                    localStorage.setItem(
+                        "repairData",
+                        JSON.stringify(
+                            repairData
+                        )
+                    );
+
+
+                    /* =================================
+                       SHOW SUCCESS
+                    ================================= */
+
+                    document.getElementById(
+                        "generatedRepairId"
+                    ).textContent =
+                        repairId;
+
+
+                    document.getElementById(
+                        "successCard"
+                    ).style.display =
+                        "block";
+
+
+                    /* Scroll */
+
+                    document.getElementById(
+                        "successCard"
+                    ).scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+
+                }
+            );
+
+
+        /* ==========================================
+           GO TO DASHBOARD
+        ========================================== */
+
+        function goDashboard() {
+
+            window.location.href =
+                "user-dashboard.html";
+
+        }
+
+
+        /* ==========================================
+           GO TO REPAIR STATUS
+        ========================================== */
+
+        function goRepairStatus() {
+
+            window.location.href =
+                "repair-status.html";
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
+```

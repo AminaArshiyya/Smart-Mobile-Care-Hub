@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Mobile Care Hub - Feedback</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        /* =========================
+           BASIC RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(0, 119, 255, 0.18),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #03152d,
+                    #061f3f,
+                    #082b54
+                );
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 260px;
+            height: 100vh;
+
+            background: #03152d;
+
+            border-right:
+                1px solid rgba(255,255,255,0.08);
+
+            padding: 25px 18px;
+
+            z-index: 1000;
+
+        }
+
+
+        /* LOGO */
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding:
+                8px 10px 30px;
+
+        }
+
+
+        .logo-icon {
+
+            width: 45px;
+            height: 45px;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087cff,
+                    #004da8
+                );
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,124,255,0.30);
+
+        }
+
+
+        .logo-icon i {
+
+            font-size: 21px;
+
+        }
+
+
+        .logo-text h2 {
+
+            font-size: 17px;
+
+            font-weight: 800;
+
+        }
+
+
+        .logo-text p {
+
+            color: #76baff;
+
+            font-size: 11px;
+
+            margin-top: 3px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* MENU */
+
+        .menu {
+
+            margin-top: 5px;
+
+        }
+
+
+        .menu a {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 14px 15px;
+
+            margin-bottom: 7px;
+
+            border-radius: 11px;
+
+            color: #b8c7d9;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+
+        }
+
+
+        .menu a i {
+
+            width: 20px;
+
+            text-align: center;
+
+            font-size: 16px;
+
+        }
+
+
+        .menu a:hover,
+        .menu a.active {
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #087cff,
+                    #075dcc
+                );
+
+            box-shadow:
+                0 7px 20px
+                rgba(0,110,255,0.22);
+
+        }
+
+
+        /* LOGOUT */
+
+        .logout {
+
+            position: absolute;
+
+            left: 18px;
+            right: 18px;
+
+            bottom: 25px;
+
+        }
+
+
+        .logout a {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 14px 15px;
+
+            border-radius: 11px;
+
+            color: #ffaaaa;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .logout a:hover {
+
+            background:
+                rgba(255,70,70,0.12);
+
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+
+            margin-left: 260px;
+
+            min-height: 100vh;
+
+            padding: 35px;
+
+        }
+
+
+        /* TOP BAR */
+
+        .topbar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .title h1 {
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+        }
+
+
+        .title p {
+
+            margin-top: 7px;
+
+            color: #9fb2c8;
+
+            font-size: 14px;
+
+        }
+
+
+        .user-profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 8px 15px 8px 8px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+        }
+
+
+        .user-icon {
+
+            width: 36px;
+            height: 36px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #087cff;
+
+        }
+
+
+        .user-profile span {
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* =========================
+           FEEDBACK AREA
+        ========================= */
+
+        .feedback-area {
+
+            max-width: 1050px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                0.85fr 1.15fr;
+
+            gap: 25px;
+
+        }
+
+
+        /* =========================
+           LEFT CARD
+        ========================= */
+
+        .info-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 24px;
+
+            padding: 38px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #087cff,
+                    #043d82
+                );
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,0.25);
+
+        }
+
+
+        .info-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            border-radius: 50%;
+
+            border:
+                40px solid
+                rgba(255,255,255,0.06);
+
+            right: -100px;
+            bottom: -100px;
+
+        }
+
+
+        .info-icon {
+
+            width: 72px;
+            height: 72px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,0.14);
+
+            margin-bottom: 27px;
+
+        }
+
+
+        .info-icon i {
+
+            font-size: 31px;
+
+        }
+
+
+        .info-card h2 {
+
+            font-size: 27px;
+
+            line-height: 1.3;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .info-card > p {
+
+            color: #d9eaff;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* BENEFITS */
+
+        .benefits {
+
+            margin-top: 30px;
+
+        }
+
+
+        .benefit {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 17px;
+
+            color: #edf6ff;
+
+            font-size: 13px;
+
+            font-weight: 500;
+
+        }
+
+
+        .benefit i {
+
+            font-size: 15px;
+
+        }
+
+
+        /* =========================
+           FORM CARD
+        ========================= */
+
+        .form-card {
+
+            background: white;
+
+            color: #132b47;
+
+            border-radius: 24px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,0.25);
+
+        }
+
+
+        .form-header {
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .form-header h2 {
+
+            color: #06244a;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+        }
+
+
+        .form-header p {
+
+            margin-top: 7px;
+
+            color: #77879a;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================
+           FORM GROUP
+        ========================= */
+
+        .form-group {
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #173657;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .input-container {
+
+            position: relative;
+
+        }
+
+
+        .input-container i {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #087cff;
+
+            font-size: 15px;
+
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            border:
+                1px solid #d8e1ec;
+
+            border-radius: 11px;
+
+            background: #f9fbfd;
+
+            padding:
+                13px 14px 13px 43px;
+
+            outline: none;
+
+            color: #183452;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+
+        }
+
+
+        textarea {
+
+            min-height: 120px;
+
+            padding: 14px;
+
+            resize: vertical;
+
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            background: white;
+
+            border-color: #087cff;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(8,124,255,0.09);
+
+        }
+
+
+        /* =========================
+           STAR RATING
+        ========================= */
+
+        .rating-title {
+
+            display: block;
+
+            margin-bottom: 9px;
+
+            color: #173657;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .stars {
+
+            display: flex;
+
+            flex-direction: row-reverse;
+
+            justify-content: flex-end;
+
+            gap: 5px;
+
+        }
+
+
+        .stars input {
+
+            display: none;
+
+        }
+
+
+        .stars label {
+
+            font-size: 34px;
+
+            color: #d6dde7;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .stars label:hover,
+        .stars label:hover ~ label,
+        .stars input:checked ~ label {
+
+            color: #f5b400;
+
+            transform: scale(1.08);
+
+        }
+
+
+        .rating-help {
+
+            margin-top: 5px;
+
+            color: #8592a2;
+
+            font-size: 11px;
+
+        }
+
+
+        /* =========================
+           SUBMIT BUTTON
+        ========================= */
+
+        .submit-btn {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 12px;
+
+            padding: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087cff,
+                    #064da9
+                );
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px
+                rgba(8,124,255,0.25);
+
+            transition: 0.3s;
+
+        }
+
+
+        .submit-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 14px 30px
+                rgba(8,124,255,0.35);
+
+        }
+
+
+        .submit-btn:active {
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        .submit-btn i {
+
+            margin-right: 8px;
+
+        }
+
+
+        /* =========================
+           SUCCESS MESSAGE
+        ========================= */
+
+        .success-box {
+
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 16px;
+
+            border-radius: 12px;
+
+            background: #eafaf0;
+
+            border:
+                1px solid #b8e6c8;
+
+            color: #16733b;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .success-box.show {
+
+            display: block;
+
+            animation:
+                successAnimation 0.4s ease;
+
+        }
+
+
+        .success-box i {
+
+            margin-right: 7px;
+
+            font-size: 16px;
+
+        }
+
+
+        @keyframes successAnimation {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(-8px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .sidebar {
+
+                width: 220px;
+
+            }
+
+            .main {
+
+                margin-left: 220px;
+
+                padding: 25px;
+
+            }
+
+            .feedback-area {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .sidebar {
+
+                position: relative;
+
+                width: 100%;
+
+                height: auto;
+
+            }
+
+            .logout {
+
+                position: static;
+
+                margin-top: 15px;
+
+            }
+
+            .main {
+
+                margin-left: 0;
+
+                padding: 20px;
+
+            }
+
+            .topbar {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+
+            }
+
+            .info-card,
+            .form-card {
+
+                padding: 25px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     SIDEBAR
+================================================== -->
+
+<aside class="sidebar">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-mobile-screen-button"></i>
+
+        </div>
+
+
+        <div class="logo-text">
+
+            <h2>Smart Mobile</h2>
+
+            <p>Care Hub</p>
+
+        </div>
+
+    </div>
+
+
+
+    <nav class="menu">
+
+
+        <a href="user-dashboard.html">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="book-repair.html">
+
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            <span>Book Repair</span>
+
+        </a>
+
+
+        <a href="repair-status.html">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <span>Repair Status</span>
+
+        </a>
+
+
+        <a href="mobile-phones.html">
+
+            <i class="fa-solid fa-mobile-screen"></i>
+
+            <span>Mobile Phones</span>
+
+        </a>
+
+
+        <a href="accessories.html">
+
+            <i class="fa-solid fa-headphones"></i>
+
+            <span>Accessories</span>
+
+        </a>
+
+
+        <a href="offers-resale.html">
+
+            <i class="fa-solid fa-tags"></i>
+
+            <span>Offers & Resale</span>
+
+        </a>
+
+
+        <a href="feedback.html" class="active">
+
+            <i class="fa-solid fa-comment-dots"></i>
+
+            <span>Feedback</span>
+
+        </a>
+
+
+        <a href="customer-support.html">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <span>Customer Support</span>
+
+        </a>
+
+
+    </nav>
+
+
+
+    <div class="logout">
+
+        <a href="../login.html">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- ==================================================
+     MAIN CONTENT
+================================================== -->
+
+<main class="main">
+
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+
+        <div class="title">
+
+            <h1>Feedback</h1>
+
+            <p>
+                Share your experience with Smart Mobile Care Hub
+            </p>
+
+        </div>
+
+
+        <div class="user-profile">
+
+            <div class="user-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+            <span id="customerDisplay">
+                Customer
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         FEEDBACK AREA
+    ================================================== -->
+
+    <div class="feedback-area">
+
+
+        <!-- LEFT INFORMATION CARD -->
+
+        <section class="info-card">
+
+
+            <div class="info-icon">
+
+                <i class="fa-solid fa-comments"></i>
+
+            </div>
+
+
+            <h2>
+                We Value<br>
+                Your Feedback
+            </h2>
+
+
+            <p>
+
+                Your valuable feedback helps us improve
+                our mobile repair services, products and
+                customer experience.
+
+            </p>
+
+
+            <div class="benefits">
+
+
+                <div class="benefit">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <span>
+                        Rate your service experience
+                    </span>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <span>
+                        Share your valuable opinion
+                    </span>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <span>
+                        Help us improve our service
+                    </span>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <span>
+                        Your feedback reaches Admin
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             FEEDBACK FORM
+        ================================================== -->
+
+        <section class="form-card">
+
+
+            <div class="form-header">
+
+                <h2>
+                    Give Your Feedback
+                </h2>
+
+                <p>
+                    Tell us about your recent experience.
+                </p>
+
+            </div>
+
+
+
+            <form id="feedbackForm">
+
+
+                <!-- CUSTOMER NAME -->
+
+                <div class="form-group">
+
+                    <label for="customerName">
+                        Customer Name
+                    </label>
+
+
+                    <div class="input-container">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="customerName"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+
+                    <div class="input-container">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter your phone number"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SERVICE -->
+
+                <div class="form-group">
+
+                    <label for="service">
+                        Service Used
+                    </label>
+
+
+                    <div class="input-container">
+
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                        <select id="service" required>
+
+                            <option value="">
+                                Select Service
+                            </option>
+
+                            <option value="Mobile Repair">
+                                Mobile Repair
+                            </option>
+
+                            <option value="Mobile Purchase">
+                                Mobile Purchase
+                            </option>
+
+                            <option value="Accessories">
+                                Accessories
+                            </option>
+
+                            <option value="Mobile Resale">
+                                Mobile Resale
+                            </option>
+
+                            <option value="Customer Support">
+                                Customer Support
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- REPAIR ID -->
+
+                <div class="form-group">
+
+                    <label for="repairId">
+
+                        Repair / Order ID
+
+                        <span style="
+                            color:#8794a4;
+                            font-weight:400;
+                        ">
+                            (Optional)
+                        </span>
+
+                    </label>
+
+
+                    <div class="input-container">
+
+                        <i class="fa-solid fa-hashtag"></i>
+
+                        <input
+                            type="text"
+                            id="repairId"
+                            placeholder="Example: SMC-123456"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- STAR RATING -->
+
+                <div class="form-group">
+
+
+                    <span class="rating-title">
+                        Overall Experience
+                    </span>
+
+
+                    <div class="stars">
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star5"
+                            value="5"
+                        >
+
+                        <label
+                            for="star5"
+                            title="Excellent"
+                        >
+                            ★
+                        </label>
+
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star4"
+                            value="4"
+                        >
+
+                        <label
+                            for="star4"
+                            title="Very Good"
+                        >
+                            ★
+                        </label>
+
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star3"
+                            value="3"
+                        >
+
+                        <label
+                            for="star3"
+                            title="Good"
+                        >
+                            ★
+                        </label>
+
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star2"
+                            value="2"
+                        >
+
+                        <label
+                            for="star2"
+                            title="Fair"
+                        >
+                            ★
+                        </label>
+
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star1"
+                            value="1"
+                        >
+
+                        <label
+                            for="star1"
+                            title="Poor"
+                        >
+                            ★
+                        </label>
+
+
+                    </div>
+
+
+                    <div class="rating-help">
+
+                        Select 1 to 5 stars
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- FEEDBACK -->
+
+                <div class="form-group">
+
+                    <label for="feedbackMessage">
+                        Your Feedback
+                    </label>
+
+
+                    <textarea
+                        id="feedbackMessage"
+                        placeholder="Write your valuable feedback here..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- SUBMIT BUTTON -->
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="submitFeedbackBtn"
+                >
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Submit Feedback
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- SUCCESS MESSAGE -->
+
+            <div
+                id="successBox"
+                class="success-box"
+            >
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Feedback Submitted Successfully!
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* ===============================
+       GET ELEMENTS
+    =============================== */
+
+    const feedbackForm =
+        document.getElementById("feedbackForm");
+
+    const successBox =
+        document.getElementById("successBox");
+
+    const customerDisplay =
+        document.getElementById("customerDisplay");
+
+    const customerName =
+        document.getElementById("customerName");
+
+
+
+    /* ===============================
+       SHOW LOGGED-IN USER
+    =============================== */
+
+    const loggedInUser =
+        localStorage.getItem("loggedInUser");
+
+
+    if (loggedInUser) {
+
+        customerDisplay.textContent =
+            loggedInUser;
+
+        customerName.value =
+            loggedInUser;
+
+    }
+
+
+
+    /* ===============================
+       FORM SUBMIT
+    =============================== */
+
+    feedbackForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            /* ===============================
+               GET VALUES
+            =============================== */
+
+            const name =
+                document
+                    .getElementById("customerName")
+                    .value
+                    .trim();
+
+
+            const phone =
+                document
+                    .getElementById("phone")
+                    .value
+                    .trim();
+
+
+            const service =
+                document
+                    .getElementById("service")
+                    .value;
+
+
+            const repairId =
+                document
+                    .getElementById("repairId")
+                    .value
+                    .trim();
+
+
+            const message =
+                document
+                    .getElementById("feedbackMessage")
+                    .value
+                    .trim();
+
+
+            const rating =
+                document.querySelector(
+                    'input[name="rating"]:checked'
+                );
+
+
+
+            /* ===============================
+               VALIDATION
+            =============================== */
+
+            if (name === "") {
+
+                alert("Please enter your name.");
+
+                document
+                    .getElementById("customerName")
+                    .focus();
+
+                return;
+
+            }
+
+
+            if (phone === "") {
+
+                alert("Please enter your phone number.");
+
+                document
+                    .getElementById("phone")
+                    .focus();
+
+                return;
+
+            }
+
+
+            if (service === "") {
+
+                alert("Please select the service you used.");
+
+                document
+                    .getElementById("service")
+                    .focus();
+
+                return;
+
+            }
+
+
+            if (!rating) {
+
+                alert("Please select your star rating.");
+
+                return;
+
+            }
+
+
+            if (message === "") {
+
+                alert("Please enter your feedback.");
+
+                document
+                    .getElementById("feedbackMessage")
+                    .focus();
+
+                return;
+
+            }
+
+
+
+            /* ===============================
+               CREATE FEEDBACK DATA
+            =============================== */
+
+            const feedbackData = {
+
+                id:
+                    "FB-" +
+                    Date.now(),
+
+                customerName:
+                    name,
+
+                phone:
+                    phone,
+
+                service:
+                    service,
+
+                repairId:
+                    repairId || "N/A",
+
+                rating:
+                    Number(rating.value),
+
+                message:
+                    message,
+
+                date:
+                    new Date()
+                        .toLocaleDateString("en-IN"),
+
+                time:
+                    new Date()
+                        .toLocaleTimeString("en-IN"),
+
+                createdAt:
+                    new Date().toISOString()
+
+            };
+
+
+
+            /* ===============================
+               GET EXISTING FEEDBACK
+            =============================== */
+
+            let feedbackList = [];
+
+
+            try {
+
+                const savedFeedback =
+                    localStorage.getItem(
+                        "customerFeedback"
+                    );
+
+
+                if (savedFeedback) {
+
+                    feedbackList =
+                        JSON.parse(savedFeedback);
+
+                }
+
+
+                if (!Array.isArray(feedbackList)) {
+
+                    feedbackList = [];
+
+                }
+
+            }
+
+            catch (error) {
+
+                feedbackList = [];
+
+            }
+
+
+
+            /* ===============================
+               ADD NEW FEEDBACK
+            =============================== */
+
+            feedbackList.push(feedbackData);
+
+
+
+            /* ===============================
+               SAVE TO LOCAL STORAGE
+            =============================== */
+
+            localStorage.setItem(
+                "customerFeedback",
+                JSON.stringify(feedbackList)
+            );
+
+
+
+            /* ===============================
+               SHOW SUCCESS MESSAGE
+            =============================== */
+
+            successBox.classList.add("show");
+
+
+            /* ===============================
+               RESET FORM
+            =============================== */
+
+            feedbackForm.reset();
+
+
+            /* Keep logged-in username */
+
+            if (loggedInUser) {
+
+                customerName.value =
+                    loggedInUser;
+
+            }
+
+
+
+            /* ===============================
+               SCROLL TO SUCCESS MESSAGE
+            =============================== */
+
+            setTimeout(function () {
+
+                successBox.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 100);
+
+
+
+            /* ===============================
+               HIDE SUCCESS MESSAGE
+               AFTER 5 SECONDS
+            =============================== */
+
+            setTimeout(function () {
+
+                successBox.classList.remove("show");
+
+            }, 5000);
+
+
+        }
+    );
+
+});
+
+</script>
+
+
+</body>
+
+</html>

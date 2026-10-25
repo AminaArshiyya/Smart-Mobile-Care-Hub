@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    overflow: hidden;
+}
+
+/* Background Image */
+.background {
+    position: fixed;
+    inset: 0;
+
+    background-image: url("images/mobile.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: -2;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    z-index: -1;
+}
+
+/* Login Box */
+.login-container {
+    width: 400px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+}
+
+.login-container h1 {
+    color: #111827;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* Input */
+.login-container input {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.login-container input:focus {
+    border-color: #0066ff;
+
+    box-shadow: 0 0 5px rgba(0, 102, 255, 0.3);
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.buttons button {
+    flex: 1;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #0066ff;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.buttons button:hover {
+    background: #004dcc;
+
+    transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+
+    .login-container {
+        width: 90%;
+        padding: 30px 25px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}

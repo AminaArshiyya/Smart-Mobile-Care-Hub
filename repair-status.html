@@ -1,0 +1,1836 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <a href="user-dashboard.html">Dashboard</a>
+
+    <title>Repair Status | Smart Mobile Care Hub</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome Premium Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            background: #f5f8fc;
+            color: #071b36;
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            width: 270px;
+            height: 100vh;
+
+            background: #071b36;
+
+            padding: 25px 18px;
+
+            box-shadow: 5px 0 25px rgba(0,0,0,0.12);
+
+            z-index: 1000;
+        }
+
+        /* LOGO */
+
+        .logo {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .logo-icon {
+            width: 58px;
+            height: 58px;
+
+            margin: auto;
+
+            background: white;
+            color: #0b5cff;
+
+            border-radius: 16px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 26px;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .logo h2 {
+            color: white;
+
+            margin-top: 12px;
+
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #5da9ff;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+        /* MENU */
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .menu a {
+            text-decoration: none;
+
+            color: #dce9f8;
+
+            padding: 14px 15px;
+
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .menu a i {
+            width: 22px;
+
+            text-align: center;
+
+            font-size: 17px;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: white;
+            color: #071b36;
+
+            transform: translateX(4px);
+        }
+
+        .logout {
+            margin-top: 25px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        /* ================= MAIN ================= */
+
+        .main {
+            margin-left: 270px;
+
+            padding: 35px;
+        }
+
+        /* TOP BAR */
+
+        .topbar {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .topbar h1 {
+            font-size: 36px;
+
+            font-weight: 800;
+
+            color: #071b36;
+        }
+
+        .topbar p {
+            margin-top: 7px;
+
+            color: #64748b;
+
+            font-size: 15px;
+
+            font-weight: 600;
+        }
+
+        /* PROFILE */
+
+        .profile {
+            background: white;
+
+            padding: 10px 16px;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            box-shadow: 0 8px 25px rgba(7,27,54,0.08);
+        }
+
+        .profile-icon {
+            width: 45px;
+            height: 45px;
+
+            background: #071b36;
+
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile strong {
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+        .profile small {
+            color: #64748b;
+        }
+
+        /* BACK BUTTON */
+
+        .back-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            text-decoration: none;
+
+            color: #0b5cff;
+
+            font-weight: 800;
+
+            margin-bottom: 22px;
+        }
+
+        .back-btn:hover {
+            color: #071b36;
+        }
+
+        /* ================= SEARCH CARD ================= */
+
+        .search-card {
+            background: linear-gradient(
+                135deg,
+                #071b36,
+                #0b5cff
+            );
+
+            padding: 30px;
+
+            border-radius: 22px;
+
+            color: white;
+
+            margin-bottom: 28px;
+
+            box-shadow: 0 15px 35px rgba(7,27,54,0.20);
+        }
+
+        .search-header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .search-header-icon {
+            width: 55px;
+            height: 55px;
+
+            background: white;
+
+            color: #0b5cff;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+        .search-header h2 {
+            font-size: 24px;
+
+            font-weight: 800;
+        }
+
+        .search-header p {
+            margin-top: 5px;
+
+            color: #dceaff;
+
+            font-size: 13px;
+        }
+
+        .search-box {
+            display: flex;
+
+            gap: 12px;
+        }
+
+        .search-box input {
+            flex: 1;
+
+            padding: 15px 18px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            font-size: 15px;
+
+            font-weight: 700;
+        }
+
+        .search-box button {
+            border: none;
+
+            padding: 15px 25px;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: #071b36;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            transition: 0.3s;
+        }
+
+        .search-box button:hover {
+            transform: translateY(-2px);
+
+            box-shadow: 0 8px 20px rgba(0,0,0,0.20);
+        }
+
+        /* ================= STATUS CONTAINER ================= */
+
+        .status-container {
+            display: grid;
+
+            grid-template-columns: 1.2fr 0.8fr;
+
+            gap: 25px;
+        }
+
+        /* CARD */
+
+        .card {
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            box-shadow: 0 10px 35px rgba(7,27,54,0.08);
+
+            margin-bottom: 25px;
+        }
+
+        .card-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 25px;
+        }
+
+        .card-title-icon {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 12px;
+
+            background: #eaf2ff;
+
+            color: #0b5cff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+        }
+
+        .card-title h3 {
+            font-size: 21px;
+
+            font-weight: 800;
+
+            color: #071b36;
+        }
+
+        /* ================= MOBILE DETAILS ================= */
+
+        .mobile-highlight {
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 20px;
+
+            border-radius: 17px;
+
+            background: #f5f8ff;
+
+            border: 1px solid #e1e9f5;
+
+            margin-bottom: 25px;
+        }
+
+        .mobile-icon {
+            width: 70px;
+            height: 70px;
+
+            border-radius: 18px;
+
+            background: #071b36;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+
+            box-shadow: 0 8px 20px rgba(7,27,54,0.18);
+        }
+
+        .mobile-info h2 {
+            font-size: 23px;
+
+            font-weight: 800;
+
+            color: #071b36;
+        }
+
+        .mobile-info p {
+            margin-top: 5px;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+        /* DETAILS GRID */
+
+        .details-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .detail-box {
+            padding: 16px;
+
+            border-radius: 13px;
+
+            background: #f8fafc;
+
+            border: 1px solid #e6edf5;
+        }
+
+        .detail-box span {
+            display: block;
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+        .detail-box strong {
+            color: #071b36;
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+        .detail-box i {
+            color: #0b5cff;
+
+            margin-right: 6px;
+        }
+
+        /* ================= STATUS BADGE ================= */
+
+        .status-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 8px 13px;
+
+            border-radius: 30px;
+
+            background: #fff4d6;
+
+            color: #9a6700;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+        /* ================= TIMELINE ================= */
+
+        .timeline {
+            position: relative;
+
+            margin-top: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+
+            display: flex;
+
+            gap: 18px;
+
+            padding-bottom: 28px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-icon {
+            min-width: 48px;
+            height: 48px;
+
+            border-radius: 50%;
+
+            background: #edf2f7;
+
+            color: #94a3b8;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .timeline-item.completed .timeline-icon {
+            background: #071b36;
+
+            color: white;
+        }
+
+        .timeline-item.current .timeline-icon {
+            background: #0b5cff;
+
+            color: white;
+
+            box-shadow: 0 0 0 6px #e6efff;
+        }
+
+        .timeline-line {
+            position: absolute;
+
+            left: 23px;
+
+            top: 48px;
+
+            width: 2px;
+
+            height: calc(100% - 48px);
+
+            background: #dce4ee;
+        }
+
+        .timeline-item.completed .timeline-line {
+            background: #0b5cff;
+        }
+
+        .timeline-content h4 {
+            font-size: 15px;
+
+            font-weight: 800;
+
+            color: #071b36;
+
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            font-size: 12px;
+
+            color: #64748b;
+
+            font-weight: 600;
+
+            line-height: 1.5;
+        }
+
+        /* ================= QUICK ACTIONS ================= */
+
+        .quick-actions {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+        .quick-action {
+            text-decoration: none;
+
+            padding: 18px;
+
+            border: 2px solid #e4ebf3;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            color: #071b36;
+
+            font-weight: 800;
+
+            transition: 0.3s;
+        }
+
+        .quick-action i {
+            color: #0b5cff;
+
+            font-size: 20px;
+        }
+
+        .quick-action:hover {
+            border-color: #0b5cff;
+
+            transform: translateY(-3px);
+
+            box-shadow: 0 8px 20px rgba(11,92,255,0.10);
+        }
+
+        /* ================= NO DATA ================= */
+
+        .no-data {
+            display: none;
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 60px 30px;
+
+            text-align: center;
+
+            box-shadow: 0 10px 35px rgba(7,27,54,0.08);
+        }
+
+        .no-data i {
+            font-size: 55px;
+
+            color: #0b5cff;
+
+            margin-bottom: 18px;
+        }
+
+        .no-data h2 {
+            color: #071b36;
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+        .no-data p {
+            color: #64748b;
+
+            font-weight: 600;
+
+            margin-bottom: 20px;
+        }
+
+        .new-repair-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            text-decoration: none;
+
+            background: #0b5cff;
+
+            color: white;
+
+            padding: 13px 20px;
+
+            border-radius: 11px;
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+        /* ================= HIDDEN ================= */
+
+        #statusSection {
+            display: none;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1100px) {
+
+            .sidebar {
+                width: 230px;
+            }
+
+            .main {
+                margin-left: 230px;
+            }
+
+            .status-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .sidebar {
+                position: relative;
+
+                width: 100%;
+
+                height: auto;
+            }
+
+            .main {
+                margin-left: 0;
+
+                padding: 20px;
+            }
+
+            .topbar {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+            }
+
+            .topbar h1 {
+                font-size: 29px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box button {
+                justify-content: center;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-highlight {
+                flex-direction: column;
+
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+
+            <h2>SMART MOBILE</h2>
+
+            <span>CARE HUB</span>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <!-- Dashboard -->
+
+            <a href="user-dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+
+
+            <!-- Book Repair -->
+
+            <a href="book-repair.html">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                Book Repair
+            </a>
+
+
+            <!-- Repair Status -->
+
+            <a href="repair-status.html" class="active">
+                <i class="fa-solid fa-chart-line"></i>
+                Repair Status
+            </a>
+
+
+            <!-- Mobile Phones -->
+
+            <a href="mobile-phones.html">
+                <i class="fa-solid fa-mobile-screen"></i>
+                Mobile Phones
+            </a>
+
+
+            <!-- Accessories -->
+
+            <a href="accessories.html">
+                <i class="fa-solid fa-headphones"></i>
+                Accessories
+            </a>
+
+
+            <!-- Offers -->
+
+            <a href="offers-resale.html">
+                <i class="fa-solid fa-tags"></i>
+                Offers & Resale
+            </a>
+
+
+            <!-- Feedback -->
+
+            <a href="feedback.html">
+                <i class="fa-solid fa-comment-dots"></i>
+                Feedback
+            </a>
+
+
+            <!-- Logout -->
+
+            <div class="logout">
+
+                <a href="../login.html">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>Repair Status</h1>
+
+                <p>
+                    Track your mobile repair progress in real time.
+                </p>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="profile-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <div>
+
+                    <strong>Welcome User</strong>
+
+                    <small>Customer Account</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BACK TO DASHBOARD -->
+
+        <a href="user-dashboard.html" class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Dashboard
+
+        </a>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <section class="search-card">
+
+            <div class="search-header">
+
+                <div class="search-header-icon">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>Track Your Repair</h2>
+
+                    <p>
+                        Enter your Repair ID to check the latest status.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="repairIdInput"
+                    placeholder="Enter Repair ID (Example: SMC-123456)"
+                >
+
+
+                <button onclick="searchRepair()">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    Track Repair
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NO DATA ================= -->
+
+        <div class="no-data" id="noData">
+
+            <i class="fa-solid fa-mobile-screen-button"></i>
+
+            <h2>No Repair Found</h2>
+
+            <p>
+                Please enter a valid Repair ID or book a new repair.
+            </p>
+
+            <a href="book-repair.html" class="new-repair-btn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Book New Repair
+
+            </a>
+
+        </div>
+
+
+        <!-- ================= STATUS ================= -->
+
+        <section id="statusSection">
+
+
+            <div class="status-container">
+
+
+                <!-- LEFT SIDE -->
+
+                <div>
+
+
+                    <!-- MOBILE DETAILS -->
+
+                    <div class="card">
+
+                        <div class="card-title">
+
+                            <div class="card-title-icon">
+
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+
+                            </div>
+
+                            <h3>Repair Details</h3>
+
+                        </div>
+
+
+                        <!-- MOBILE HIGHLIGHT -->
+
+                        <div class="mobile-highlight">
+
+                            <div class="mobile-icon">
+
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+
+                            </div>
+
+
+                            <div class="mobile-info">
+
+                                <h2 id="mobileModel">
+                                    Mobile Model
+                                </h2>
+
+                                <p id="mobileBrand">
+                                    Mobile Brand
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DETAILS -->
+
+                        <div class="details-grid">
+
+
+                            <div class="detail-box">
+
+                                <span>
+                                    <i class="fa-solid fa-hashtag"></i>
+                                    Repair ID
+                                </span>
+
+                                <strong id="repairId">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detail-box">
+
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                    Customer Name
+                                </span>
+
+                                <strong id="customerName">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detail-box">
+
+                                <span>
+                                    <i class="fa-solid fa-phone"></i>
+                                    Mobile Number
+                                </span>
+
+                                <strong id="phoneNumber">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detail-box">
+
+                                <span>
+                                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                                    Repair Service
+                                </span>
+
+                                <strong id="repairService">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detail-box">
+
+                                <span>
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    Repair Date
+                                </span>
+
+                                <strong id="repairDate">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detail-box">
+
+                                <span>
+                                    <i class="fa-solid fa-clock"></i>
+                                    Preferred Time
+                                </span>
+
+                                <strong id="repairTime">
+                                    -
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detail-box">
+
+                                <span>
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    Current Status
+                                </span>
+
+                                <strong>
+
+                                    <span
+                                        class="status-badge"
+                                        id="statusBadge"
+                                    >
+
+                                        <i class="fa-solid fa-hourglass-half"></i>
+
+                                        Pending
+
+                                    </span>
+
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detail-box">
+
+                                <span>
+                                    <i class="fa-solid fa-file-lines"></i>
+                                    Problem
+                                </span>
+
+                                <strong id="problemDescription">
+                                    -
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- QUICK ACTIONS -->
+
+                    <div class="card">
+
+                        <div class="card-title">
+
+                            <div class="card-title-icon">
+
+                                <i class="fa-solid fa-bolt"></i>
+
+                            </div>
+
+                            <h3>Quick Actions</h3>
+
+                        </div>
+
+
+                        <div class="quick-actions">
+
+                            <a
+                                href="book-repair.html"
+                                class="quick-action"
+                            >
+
+                                <i class="fa-solid fa-calendar-plus"></i>
+
+                                Book New Repair
+
+                            </a>
+
+
+                            <a
+                                href="user-dashboard.html"
+                                class="quick-action"
+                            >
+
+                                <i class="fa-solid fa-house"></i>
+
+                                Dashboard
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT SIDE -->
+
+                <div>
+
+
+                    <!-- PROGRESS -->
+
+                    <div class="card">
+
+                        <div class="card-title">
+
+                            <div class="card-title-icon">
+
+                                <i class="fa-solid fa-chart-simple"></i>
+
+                            </div>
+
+                            <h3>Repair Progress</h3>
+
+                        </div>
+
+
+                        <div class="timeline">
+
+
+                            <!-- STEP 1 -->
+
+                            <div
+                                class="timeline-item completed"
+                                id="step1"
+                            >
+
+                                <div class="timeline-icon">
+
+                                    <i class="fa-solid fa-clipboard-check"></i>
+
+                                </div>
+
+                                <div class="timeline-line"></div>
+
+                                <div class="timeline-content">
+
+                                    <h4>
+                                        Repair Request Received
+                                    </h4>
+
+                                    <p>
+                                        Your repair request has been successfully received.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 2 -->
+
+                            <div
+                                class="timeline-item current"
+                                id="step2"
+                            >
+
+                                <div class="timeline-icon">
+
+                                    <i class="fa-solid fa-hourglass-half"></i>
+
+                                </div>
+
+                                <div class="timeline-line"></div>
+
+                                <div class="timeline-content">
+
+                                    <h4>
+                                        Repair Pending
+                                    </h4>
+
+                                    <p>
+                                        Your mobile is waiting for technician inspection.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 3 -->
+
+                            <div
+                                class="timeline-item"
+                                id="step3"
+                            >
+
+                                <div class="timeline-icon">
+
+                                    <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                                </div>
+
+                                <div class="timeline-line"></div>
+
+                                <div class="timeline-content">
+
+                                    <h4>
+                                        Repair In Progress
+                                    </h4>
+
+                                    <p>
+                                        Technician is currently repairing your mobile.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 4 -->
+
+                            <div
+                                class="timeline-item"
+                                id="step4"
+                            >
+
+                                <div class="timeline-icon">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                </div>
+
+                                <div class="timeline-content">
+
+                                    <h4>
+                                        Repair Completed
+                                    </h4>
+
+                                    <p>
+                                        Your mobile repair has been completed successfully.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ================= GET ELEMENTS ================= */
+
+        const statusSection =
+            document.getElementById("statusSection");
+
+        const noData =
+            document.getElementById("noData");
+
+
+        /* ================= LOAD REPAIR DATA ================= */
+
+        function loadRepairData() {
+
+            const savedData =
+                localStorage.getItem("repairData");
+
+
+            if (!savedData) {
+
+                statusSection.style.display = "none";
+
+                noData.style.display = "block";
+
+                return;
+
+            }
+
+
+            try {
+
+                const data =
+                    JSON.parse(savedData);
+
+                displayRepair(data);
+
+            }
+
+            catch (error) {
+
+                console.log("Invalid repair data.");
+
+                statusSection.style.display = "none";
+
+                noData.style.display = "block";
+
+            }
+
+        }
+
+
+        /* ================= DISPLAY REPAIR ================= */
+
+        function displayRepair(data) {
+
+            document.getElementById("repairId").textContent =
+                data.repairId || "-";
+
+
+            document.getElementById("customerName").textContent =
+                data.customerName || "-";
+
+
+            document.getElementById("phoneNumber").textContent =
+                data.phoneNumber || "-";
+
+
+            document.getElementById("mobileBrand").textContent =
+                data.mobileBrand || "-";
+
+
+            document.getElementById("mobileModel").textContent =
+                data.mobileModel || "Mobile Model";
+
+
+            document.getElementById("repairService").textContent =
+                data.repairService || "-";
+
+
+            document.getElementById("repairDate").textContent =
+                data.repairDate || "-";
+
+
+            document.getElementById("repairTime").textContent =
+                data.repairTime || "-";
+
+
+            document.getElementById("problemDescription").textContent =
+                data.problemDescription || "-";
+
+
+            updateStatus(data.status || "Pending");
+
+
+            statusSection.style.display = "block";
+
+            noData.style.display = "none";
+
+        }
+
+
+        /* ================= SEARCH REPAIR ================= */
+
+        function searchRepair() {
+
+            const enteredId =
+                document
+                .getElementById("repairIdInput")
+                .value
+                .trim()
+                .toUpperCase();
+
+
+            const savedData =
+                localStorage.getItem("repairData");
+
+
+            if (!enteredId) {
+
+                alert("Please enter your Repair ID.");
+
+                return;
+
+            }
+
+
+            if (!savedData) {
+
+                statusSection.style.display = "none";
+
+                noData.style.display = "block";
+
+                return;
+
+            }
+
+
+            const data =
+                JSON.parse(savedData);
+
+
+            if (
+                data.repairId &&
+                data.repairId.toUpperCase() === enteredId
+            ) {
+
+                displayRepair(data);
+
+            }
+
+            else {
+
+                statusSection.style.display = "none";
+
+                noData.style.display = "block";
+
+                alert("Repair ID not found.");
+
+            }
+
+        }
+
+
+        /* ================= UPDATE STATUS ================= */
+
+        function updateStatus(status) {
+
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
+    const step3 = document.getElementById("step3");
+    const step4 = document.getElementById("step4");
+
+    const statusBadge =
+        document.getElementById("statusBadge");
+
+    // Reset all steps
+    step1.classList.remove("completed", "current");
+    step2.classList.remove("completed", "current");
+    step3.classList.remove("completed", "current");
+    step4.classList.remove("completed", "current");
+
+    // -----------------------------
+    // PENDING
+    // -----------------------------
+    if (status === "Pending") {
+
+        step1.classList.add("completed");
+        step2.classList.add("current");
+
+        statusBadge.innerHTML =
+            '<i class="fa-solid fa-hourglass-half"></i> Pending';
+
+        statusBadge.style.background = "#fff4d6";
+        statusBadge.style.color = "#9a6700";
+    }
+
+    // -----------------------------
+    // IN PROGRESS
+    // -----------------------------
+    else if (status === "In Progress") {
+
+        step1.classList.add("completed");
+        step2.classList.add("completed");
+        step3.classList.add("current");
+
+        statusBadge.innerHTML =
+            '<i class="fa-solid fa-screwdriver-wrench"></i> In Progress';
+
+        statusBadge.style.background = "#e7f0ff";
+        statusBadge.style.color = "#0b5cff";
+    }
+
+    // -----------------------------
+    // COMPLETED
+    // -----------------------------
+    else if (status === "Completed") {
+
+        step1.classList.add("completed");
+        step2.classList.add("completed");
+        step3.classList.add("completed");
+        step4.classList.add("current");
+
+        statusBadge.innerHTML =
+            '<i class="fa-solid fa-circle-check"></i> Completed';
+
+        statusBadge.style.background = "#e7f8ef";
+        statusBadge.style.color = "#16834a";
+    }
+
+    // -----------------------------
+    // READY FOR PICKUP
+    // -----------------------------
+    else if (status === "Ready for Pickup") {
+
+        step1.classList.add("completed");
+        step2.classList.add("completed");
+        step3.classList.add("completed");
+        step4.classList.add("current");
+
+        statusBadge.innerHTML =
+            '<i class="fa-solid fa-box-open"></i> Ready for Pickup';
+
+        statusBadge.style.background = "#e7f0ff";
+        statusBadge.style.color = "#0b5cff";
+    }
+
+    // -----------------------------
+    // CANCELLED
+    // -----------------------------
+    else if (status === "Cancelled") {
+
+        step1.classList.add("completed");
+
+        statusBadge.innerHTML =
+            '<i class="fa-solid fa-circle-xmark"></i> Cancelled';
+
+        statusBadge.style.background = "#ffe8e8";
+        statusBadge.style.color = "#d32f2f";
+    }
+
+    else {
+
+        statusBadge.innerHTML =
+            '<i class="fa-solid fa-circle-info"></i> ' + status;
+
+        statusBadge.style.background = "#eaf2ff";
+        statusBadge.style.color = "#0b5cff";
+    }
+
+
+
+            /* Reset */
+
+            step1.classList.remove(
+                "completed",
+                "current"
+            );
+
+            step2.classList.remove(
+                "completed",
+                "current"
+            );
+
+            step3.classList.remove(
+                "completed",
+                "current"
+            );
+
+            step4.classList.remove(
+                "completed",
+                "current"
+            );
+
+
+            /* PENDING */
+
+            if (status === "Pending") {
+
+                step1.classList.add("completed");
+
+                step2.classList.add("current");
+
+                statusBadge.innerHTML =
+                    '<i class="fa-solid fa-hourglass-half"></i> Pending';
+
+                statusBadge.style.background =
+                    "#fff4d6";
+
+                statusBadge.style.color =
+                    "#9a6700";
+
+            }
+
+
+            /* IN PROGRESS */
+
+            else if (status === "In Progress") {
+
+                step1.classList.add("completed");
+
+                step2.classList.add("completed");
+
+                step3.classList.add("current");
+
+                statusBadge.innerHTML =
+                    '<i class="fa-solid fa-screwdriver-wrench"></i> In Progress';
+
+                statusBadge.style.background =
+                    "#e7f0ff";
+
+                statusBadge.style.color =
+                    "#0b5cff";
+
+            }
+
+
+            /* COMPLETED */
+
+            else if (status === "Completed") {
+
+                step1.classList.add("completed");
+
+                step2.classList.add("completed");
+
+                step3.classList.add("completed");
+
+                step4.classList.add("current");
+
+                statusBadge.innerHTML =
+                    '<i class="fa-solid fa-circle-check"></i> Completed';
+
+                statusBadge.style.background =
+                    "#e7f8ef";
+
+                statusBadge.style.color =
+                    "#16834a";
+
+            }
+
+        }
+
+
+        /* ================= ENTER KEY SEARCH ================= */
+
+        document
+        .getElementById("repairIdInput")
+        .addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+
+                searchRepair();
+
+            }
+
+        });
+
+
+        /* ================= PAGE LOAD ================= */
+
+        window.addEventListener(
+            "DOMContentLoaded",
+            loadRepairData
+        );
+
+    </script>
+
+</body>
+</html>
+```

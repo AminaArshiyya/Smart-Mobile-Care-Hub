@@ -1,0 +1,1606 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>View Feedback | Smart Mobile Care Hub</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top right, #dcecff 0%, transparent 30%),
+                linear-gradient(135deg, #eef5ff, #f8fbff);
+            color: #14243d;
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 270px;
+            height: 100vh;
+            background: #061a35;
+            padding: 24px 16px;
+            z-index: 1000;
+            box-shadow: 8px 0 30px rgba(0, 30, 80, 0.12);
+            overflow-y: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 12px 25px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #087cff, #0055d9);
+            color: white;
+            font-size: 21px;
+            box-shadow: 0 8px 20px rgba(8, 124, 255, 0.3);
+        }
+
+        .logo-text h2 {
+            color: white;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .logo-text p {
+            color: #91a9c9;
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .menu-title {
+            color: #7894b8;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            padding: 12px 14px;
+            text-transform: uppercase;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #c7d7ec;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px 15px;
+            margin: 4px 0;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .sidebar a i {
+            width: 20px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            color: white;
+            background: linear-gradient(135deg, #087cff, #0758d4);
+            box-shadow: 0 8px 18px rgba(8, 124, 255, 0.22);
+            transform: translateX(3px);
+        }
+
+        .logout {
+            margin-top: 15px;
+        }
+
+        .logout a {
+            background: rgba(255,255,255,0.06);
+        }
+
+        .logout a:hover {
+            background: #d93030;
+        }
+
+        /* ================= MAIN ================= */
+
+        .main {
+            margin-left: 270px;
+            min-height: 100vh;
+            padding: 30px 35px;
+        }
+
+        /* ================= TOPBAR ================= */
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .topbar h1 {
+            color: #061a35;
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .topbar p {
+            color: #71829a;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .admin-box {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            background: white;
+            padding: 9px 15px 9px 9px;
+            border-radius: 14px;
+            box-shadow: 0 7px 25px rgba(24, 67, 120, 0.08);
+        }
+
+        .admin-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e5f0ff;
+            color: #087cff;
+        }
+
+        .admin-box strong {
+            display: block;
+            color: #172a45;
+            font-size: 12px;
+        }
+
+        .admin-box span {
+            display: block;
+            color: #8090a7;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #061a35, #0b5cff);
+            border-radius: 22px;
+            padding: 30px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            box-shadow: 0 18px 40px rgba(0, 69, 170, 0.18);
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            color: #dceaff;
+            max-width: 700px;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .hero-icon {
+            width: 82px;
+            height: 82px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.13);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 35px;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 17px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 10px 30px rgba(25, 65, 120, 0.07);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eaf3ff;
+            color: #087cff;
+            font-size: 19px;
+        }
+
+        .stat-card h3 {
+            color: #061a35;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .stat-card p {
+            color: #7a8ba2;
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        /* ================= TOOLBAR ================= */
+
+        .toolbar {
+            background: white;
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 22px;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(25, 65, 120, 0.07);
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7d91ad;
+        }
+
+        .search-box input {
+            width: 100%;
+            border: 1px solid #dce6f2;
+            border-radius: 11px;
+            padding: 12px 14px 12px 40px;
+            outline: none;
+            font-size: 12px;
+            color: #243853;
+        }
+
+        .search-box input:focus {
+            border-color: #087cff;
+            box-shadow: 0 0 0 3px rgba(8,124,255,0.08);
+        }
+
+        .filter {
+            min-width: 160px;
+        }
+
+        .filter select {
+            width: 100%;
+            border: 1px solid #dce6f2;
+            border-radius: 11px;
+            padding: 12px;
+            outline: none;
+            font-size: 12px;
+            color: #243853;
+            background: white;
+        }
+
+        /* ================= FEEDBACK AREA ================= */
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .section-title h3 {
+            color: #061a35;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .section-title span {
+            color: #71829a;
+            font-size: 11px;
+        }
+
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feedback-card {
+            background: white;
+            border-radius: 19px;
+            padding: 23px;
+            box-shadow: 0 10px 30px rgba(25, 65, 120, 0.07);
+            border: 1px solid #edf2f8;
+            transition: 0.25s ease;
+        }
+
+        .feedback-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(25, 65, 120, 0.11);
+        }
+
+        .customer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 17px;
+        }
+
+        .customer-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #087cff, #0758d4);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 15px;
+        }
+
+        .customer-info h4 {
+            color: #14243d;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .customer-info p {
+            color: #8190a5;
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+        .rating {
+            color: #ffb000;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .rating-number {
+            color: #687b96;
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        .feedback-message {
+            background: #f7faff;
+            border-left: 4px solid #087cff;
+            border-radius: 9px;
+            padding: 15px;
+            margin-bottom: 16px;
+            color: #405571;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .feedback-message i {
+            color: #9db5d3;
+            margin-right: 6px;
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px;
+        }
+
+        .detail {
+            background: #f9fbfe;
+            border: 1px solid #edf2f8;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .detail span {
+            display: block;
+            color: #8a9ab0;
+            font-size: 9px;
+            margin-bottom: 4px;
+        }
+
+        .detail strong {
+            color: #304562;
+            font-size: 10px;
+        }
+
+        .feedback-footer {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid #edf2f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .date-time {
+            color: #8190a5;
+            font-size: 10px;
+        }
+
+        .date-time i {
+            color: #087cff;
+            margin-right: 5px;
+        }
+
+        .delete-btn {
+            border: none;
+            cursor: pointer;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: #fff1f1;
+            color: #d73535;
+            transition: 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #d73535;
+            color: white;
+        }
+
+        /* ================= EMPTY ================= */
+
+        .empty {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 55px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(25,65,120,0.07);
+        }
+
+        .empty-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: #edf5ff;
+            color: #087cff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            font-size: 28px;
+        }
+
+        .empty h3 {
+            margin-top: 17px;
+            color: #172a45;
+            font-size: 17px;
+        }
+
+        .empty p {
+            color: #8291a6;
+            font-size: 11px;
+            margin-top: 7px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1100px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feedback-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                margin-left: 220px;
+                padding: 22px;
+            }
+
+            .toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .hero-icon {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+
+        <div class="logo-text">
+            <h2>Smart Mobile</h2>
+            <p>CARE HUB • ADMIN</p>
+        </div>
+
+    </div>
+
+
+    <div class="menu-title">Admin Menu</div>
+
+
+    <a href="admin-dashboard.html">
+        <i class="fa-solid fa-house"></i>
+        Dashboard
+    </a>
+
+
+    <a href="repair-management.html">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        Update Repair Status
+    </a>
+
+
+    <a href="mobile-stock.html">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        Mobile Stock
+    </a>
+
+
+    <a href="accessories-stock.html">
+        <i class="fa-solid fa-headphones"></i>
+        Accessories Stock
+    </a>
+
+
+    <a href="billing.html">
+        <i class="fa-solid fa-file-invoice-dollar"></i>
+        Billing
+    </a>
+
+
+    <a href="customer-data.html">
+        <i class="fa-solid fa-users"></i>
+        Customer Data
+    </a>
+
+
+    <a href="orders.html">
+        <i class="fa-solid fa-cart-shopping"></i>
+        Customer Orders
+    </a>
+
+
+    <a href="viewfeedback.html">
+    <i class="fa-solid fa-star"></i>
+    View Feedback
+</a>
+
+
+    <div class="menu-title">Account</div>
+
+
+    <div class="logout">
+
+        <a href="../login.html" onclick="logoutAdmin()">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h1>View Customer Feedback</h1>
+
+            <p>
+                Monitor feedback submitted by Smart Mobile Care Hub customers.
+            </p>
+
+        </div>
+
+
+        <div class="admin-box">
+
+            <div class="admin-icon">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+
+            <div>
+
+                <strong id="adminName">
+                    Administrator
+                </strong>
+
+                <span>
+                    Admin Panel
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div>
+
+            <h2>
+                Customer Feedback Center
+            </h2>
+
+            <p>
+                View ratings, comments, service experiences and customer
+                details submitted through the User Feedback module.
+                This page is for viewing customer feedback only.
+            </p>
+
+        </div>
+
+
+        <div class="hero-icon">
+
+            <i class="fa-solid fa-comments"></i>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-comments"></i>
+            </div>
+
+            <div>
+
+                <h3 id="totalFeedback">
+                    0
+                </h3>
+
+                <p>
+                    Total Feedback
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+            <div>
+
+                <h3 id="fiveStar">
+                    0
+                </h3>
+
+                <p>
+                    Five Star Reviews
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-chart-simple"></i>
+            </div>
+
+            <div>
+
+                <h3 id="averageRating">
+                    0.0
+                </h3>
+
+                <p>
+                    Average Rating
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-face-smile"></i>
+            </div>
+
+            <div>
+
+                <h3 id="positiveFeedback">
+                    0
+                </h3>
+
+                <p>
+                    Positive Reviews
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH + FILTER -->
+
+    <section class="toolbar">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search customer name, phone, service or feedback..."
+                oninput="renderFeedback()"
+            >
+
+        </div>
+
+
+        <div class="filter">
+
+            <select
+                id="ratingFilter"
+                onchange="renderFeedback()"
+            >
+
+                <option value="all">
+                    All Ratings
+                </option>
+
+                <option value="5">
+                    ★★★★★ 5 Star
+                </option>
+
+                <option value="4">
+                    ★★★★ 4 Star
+                </option>
+
+                <option value="3">
+                    ★★★ 3 Star
+                </option>
+
+                <option value="2">
+                    ★★ 2 Star
+                </option>
+
+                <option value="1">
+                    ★ 1 Star
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEEDBACK TITLE -->
+
+    <div class="section-title">
+
+        <h3>
+            Customer Reviews
+        </h3>
+
+        <span id="resultCount">
+            0 feedback
+        </span>
+
+    </div>
+
+
+    <!-- FEEDBACK CARDS -->
+
+    <section
+        class="feedback-grid"
+        id="feedbackContainer"
+    ></section>
+
+
+    <!-- EMPTY -->
+
+    <section
+        class="empty"
+        id="emptyState"
+    >
+
+        <div class="empty-icon">
+
+            <i class="fa-regular fa-comment-dots"></i>
+
+        </div>
+
+        <h3 id="emptyTitle">
+            No Customer Feedback Yet
+        </h3>
+
+        <p id="emptyText">
+            Customer feedback submitted from the User module
+            will appear here.
+        </p>
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+    /* =====================================================
+       ADMIN LOGIN CHECK
+    ===================================================== */
+
+    const loggedInUser =
+        localStorage.getItem("loggedInUser");
+
+    const userType =
+        localStorage.getItem("userType");
+
+
+    /*
+       If your project uses admin login,
+       this protects the admin page.
+    */
+
+    if (!loggedInUser || userType !== "admin") {
+
+        window.location.href = "../login.html";
+
+    }
+
+
+    /* SHOW ADMIN NAME */
+
+    if (loggedInUser) {
+
+        document.getElementById("adminName").textContent =
+            loggedInUser;
+
+    }
+
+
+    /* =====================================================
+       GET FEEDBACK FROM USER MODULE
+    ===================================================== */
+
+    function getFeedback() {
+
+        try {
+
+            return JSON.parse(
+                localStorage.getItem("customerFeedback")
+            ) || [];
+
+        } catch (error) {
+
+            console.error(
+                "Feedback data error:",
+                error
+            );
+
+            return [];
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CREATE STAR HTML
+    ===================================================== */
+
+    function createStars(rating) {
+
+        let stars = "";
+
+        for (let i = 1; i <= 5; i++) {
+
+            if (i <= rating) {
+
+                stars += "★";
+
+            } else {
+
+                stars += "☆";
+
+            }
+
+        }
+
+        return stars;
+
+    }
+
+
+    /* =====================================================
+       CUSTOMER INITIALS
+    ===================================================== */
+
+    function getInitials(name) {
+
+        if (!name) {
+            return "CU";
+        }
+
+        const words =
+            name.trim().split(/\s+/);
+
+        if (words.length === 1) {
+
+            return words[0]
+                .substring(0, 2)
+                .toUpperCase();
+
+        }
+
+        return (
+            words[0][0] +
+            words[words.length - 1][0]
+        ).toUpperCase();
+
+    }
+
+
+    /* =====================================================
+       SAFE HTML
+    ===================================================== */
+
+    function escapeHTML(value) {
+
+        if (value === null || value === undefined) {
+            return "";
+        }
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* =====================================================
+       UPDATE STATISTICS
+    ===================================================== */
+
+    function updateStats(feedbackList) {
+
+        const total =
+            feedbackList.length;
+
+
+        const fiveStar =
+            feedbackList.filter(
+                item => Number(item.rating) === 5
+            ).length;
+
+
+        let average = 0;
+
+
+        if (total > 0) {
+
+            const totalRating =
+                feedbackList.reduce(
+                    (sum, item) =>
+                        sum + Number(item.rating || 0),
+                    0
+                );
+
+            average =
+                totalRating / total;
+
+        }
+
+
+        const positive =
+            feedbackList.filter(
+                item =>
+                    Number(item.rating) >= 4
+            ).length;
+
+
+        document.getElementById(
+            "totalFeedback"
+        ).textContent = total;
+
+
+        document.getElementById(
+            "fiveStar"
+        ).textContent = fiveStar;
+
+
+        document.getElementById(
+            "averageRating"
+        ).textContent =
+            average.toFixed(1);
+
+
+        document.getElementById(
+            "positiveFeedback"
+        ).textContent = positive;
+
+    }
+
+
+    /* =====================================================
+       DISPLAY FEEDBACK
+    ===================================================== */
+
+    function renderFeedback() {
+
+        const allFeedback =
+            getFeedback();
+
+
+        updateStats(allFeedback);
+
+
+        const searchText =
+            document
+            .getElementById("searchInput")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+        const ratingFilter =
+            document
+            .getElementById("ratingFilter")
+            .value;
+
+
+        const filtered =
+            allFeedback.filter(function(item) {
+
+                const name =
+                    String(
+                        item.customerName || ""
+                    ).toLowerCase();
+
+
+                const phone =
+                    String(
+                        item.phone || ""
+                    ).toLowerCase();
+
+
+                const service =
+                    String(
+                        item.service || ""
+                    ).toLowerCase();
+
+
+                const message =
+                    String(
+                        item.message || ""
+                    ).toLowerCase();
+
+
+                const matchesSearch =
+                    name.includes(searchText) ||
+                    phone.includes(searchText) ||
+                    service.includes(searchText) ||
+                    message.includes(searchText);
+
+
+                const matchesRating =
+                    ratingFilter === "all" ||
+                    Number(item.rating) ===
+                    Number(ratingFilter);
+
+
+                return (
+                    matchesSearch &&
+                    matchesRating
+                );
+
+            });
+
+
+        const container =
+            document.getElementById(
+                "feedbackContainer"
+            );
+
+
+        const emptyState =
+            document.getElementById(
+                "emptyState"
+            );
+
+
+        const resultCount =
+            document.getElementById(
+                "resultCount"
+            );
+
+
+        container.innerHTML = "";
+
+
+        resultCount.textContent =
+            filtered.length +
+            (
+                filtered.length === 1
+                    ? " feedback"
+                    : " feedbacks"
+            );
+
+
+        /* NO RESULTS */
+
+        if (filtered.length === 0) {
+
+            emptyState.style.display = "block";
+
+            if (allFeedback.length === 0) {
+
+                document.getElementById(
+                    "emptyTitle"
+                ).textContent =
+                    "No Customer Feedback Yet";
+
+
+                document.getElementById(
+                    "emptyText"
+                ).textContent =
+                    "Feedback submitted by customers from the User module will appear here.";
+
+            } else {
+
+                document.getElementById(
+                    "emptyTitle"
+                ).textContent =
+                    "No Matching Feedback";
+
+
+                document.getElementById(
+                    "emptyText"
+                ).textContent =
+                    "Try changing the search text or rating filter.";
+
+            }
+
+            return;
+
+        }
+
+
+        emptyState.style.display = "none";
+
+
+        /* DISPLAY CARDS */
+
+        filtered
+            .slice()
+            .reverse()
+            .forEach(function(item) {
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "feedback-card";
+
+
+                const rating =
+                    Number(item.rating || 0);
+
+
+                card.innerHTML = `
+
+                    <div class="customer-top">
+
+                        <div class="customer-info">
+
+                            <div class="avatar">
+                                ${escapeHTML(
+                                    getInitials(
+                                        item.customerName
+                                    )
+                                )}
+                            </div>
+
+                            <div>
+
+                                <h4>
+                                    ${escapeHTML(
+                                        item.customerName ||
+                                        "Customer"
+                                    )}
+                                </h4>
+
+                                <p>
+                                    ${escapeHTML(
+                                        item.email ||
+                                        "Email not provided"
+                                    )}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="rating">
+
+                            ${createStars(rating)}
+
+                            <span class="rating-number">
+                                ${rating}/5
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feedback-message">
+
+                        <i class="fa-solid fa-quote-left"></i>
+
+                        ${escapeHTML(
+                            item.message ||
+                            "No feedback message"
+                        )}
+
+                    </div>
+
+
+                    <div class="details">
+
+                        <div class="detail">
+
+                            <span>
+                                <i class="fa-solid fa-phone"></i>
+                                Phone
+                            </span>
+
+                            <strong>
+                                ${escapeHTML(
+                                    item.phone ||
+                                    "N/A"
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <span>
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                Service
+                            </span>
+
+                            <strong>
+                                ${escapeHTML(
+                                    item.service ||
+                                    "N/A"
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <span>
+                                <i class="fa-solid fa-fingerprint"></i>
+                                Repair ID
+                            </span>
+
+                            <strong>
+                                ${escapeHTML(
+                                    item.repairId ||
+                                    "N/A"
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <span>
+                                <i class="fa-solid fa-face-smile"></i>
+                                Experience
+                            </span>
+
+                            <strong>
+                                ${escapeHTML(
+                                    item.experience ||
+                                    "N/A"
+                                )}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feedback-footer">
+
+                        <div class="date-time">
+
+                            <i class="fa-regular fa-calendar"></i>
+
+                            ${escapeHTML(
+                                item.date ||
+                                "Date not available"
+                            )}
+
+                            &nbsp;&nbsp;
+
+                            <i class="fa-regular fa-clock"></i>
+
+                            ${escapeHTML(
+                                item.time ||
+                                ""
+                            )}
+
+                        </div>
+
+
+                        <button
+                            class="delete-btn"
+                            title="Delete Feedback"
+                            onclick="deleteFeedback('${escapeHTML(
+                                item.id || ""
+                            )}')"
+                        >
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+    }
+
+
+    /* =====================================================
+       DELETE FEEDBACK
+    ===================================================== */
+
+    function deleteFeedback(feedbackId) {
+
+        if (!feedbackId) {
+            return;
+        }
+
+
+        const confirmDelete =
+            confirm(
+                "Are you sure you want to delete this feedback?"
+            );
+
+
+        if (!confirmDelete) {
+            return;
+        }
+
+
+        let feedbackList =
+            getFeedback();
+
+
+        feedbackList =
+            feedbackList.filter(
+                item =>
+                    String(item.id) !==
+                    String(feedbackId)
+            );
+
+
+        localStorage.setItem(
+            "customerFeedback",
+            JSON.stringify(feedbackList)
+        );
+
+
+        renderFeedback();
+
+    }
+
+
+    /* =====================================================
+       AUTO REFRESH WHEN USER SUBMITS FEEDBACK
+    ===================================================== */
+
+    window.addEventListener(
+        "storage",
+        function(event) {
+
+            if (
+                event.key ===
+                "customerFeedback"
+            ) {
+
+                renderFeedback();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       REFRESH WHEN ADMIN RETURNS TO PAGE
+    ===================================================== */
+
+    window.addEventListener(
+        "focus",
+        function() {
+
+            renderFeedback();
+
+        }
+    );
+
+
+    /* =====================================================
+       LOGOUT
+    ===================================================== */
+
+    function logoutAdmin() {
+
+        localStorage.removeItem(
+            "loggedInUser"
+        );
+
+        localStorage.removeItem(
+            "userType"
+        );
+
+    }
+
+
+    /* =====================================================
+       INITIAL LOAD
+    ===================================================== */
+
+    renderFeedback();
+
+</script>
+
+</body>
+</html>
+```

@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Mobile Care Hub - Recharge</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Inter", sans-serif; background: #f4f7fb; color: #122f51; }
+  button, input, select { font-family: inherit; }
+  button { cursor: pointer; }
+  a { text-decoration: none; }
+  [hidden] { display: none !important; }
+  .top-header { height: 72px; background: white; display: flex; align-items: center; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; box-shadow: 0 3px 18px rgba(8,43,92,0.10); }
+  .brand-box { width: 245px; height: 72px; background: #082b5c; display: flex; align-items: center; padding: 0 20px; color: white; border-radius: 0 0 12px 0; }
+  .brand-icon { width: 42px; height: 42px; border: 2px solid white; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 19px; margin-right: 12px; flex-shrink: 0; }
+  .brand-text h1 { font-size: 15px; font-weight: 800; white-space: nowrap; }
+  .brand-text span { display: block; margin-top: 4px; color: #dbe6f4; font-size: 10px; }
+  .header-main { flex: 1; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 25px; }
+  .menu-toggle { display: none; width: 40px; height: 40px; border: 1px solid #dce5ef; border-radius: 10px; background: white; color: #12375f; font-size: 16px; }
+  .header-search { width: 480px; max-width: 48%; height: 42px; border: 1px solid #dce5ef; border-radius: 22px; display: flex; align-items: center; padding: 0 16px; background: #fbfcfe; }
+  .header-search i { color: #6d8097; margin-right: 10px; font-size: 14px; }
+  .header-search input { width: 100%; border: none; outline: none; background: transparent; font-size: 12px; }
+  .header-right { display: flex; align-items: center; gap: 19px; }
+  .header-icon { color: #12375f; font-size: 17px; }
+  .header-divider { width: 1px; height: 28px; background: #dce4ed; }
+  .user-profile { display: flex; align-items: center; gap: 9px; color: #14385f; font-size: 12px; font-weight: 800; }
+  .user-avatar { width: 37px; height: 37px; border-radius: 50%; background: #092e61; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .sidebar { position: fixed; top: 72px; left: 0; bottom: 0; width: 245px; background: #082b5c; padding: 25px 12px; z-index: 900; overflow-y: auto; }
+  .sidebar-title { color: white; font-size: 12px; font-weight: 800; padding: 0 14px; margin-bottom: 15px; }
+  .sidebar-menu { display: flex; flex-direction: column; gap: 5px; }
+  .sidebar-link { min-height: 45px; display: flex; align-items: center; gap: 14px; padding: 0 15px; color: #dce6f4; border-radius: 8px; font-size: 12px; font-weight: 600; transition: 0.25s; }
+  .sidebar-link i { width: 21px; text-align: center; font-size: 15px; }
+  .sidebar-link:hover { background: rgba(255,255,255,0.10); color: white; }
+  .sidebar-link.active { background: #15477f; color: white; border-left: 4px solid white; padding-left: 11px; }
+  .sidebar-backdrop { display: none; }
+  .main-content { margin-left: 245px; padding: 94px 25px 60px; min-height: 100vh; }
+  .content-wrapper { max-width: 1250px; margin: auto; }
+  .hero { min-height: 190px; background: linear-gradient(110deg, #082b5c, #0b3975, #123f78); border-radius: 18px; padding: 35px 40px; color: white; position: relative; overflow: hidden; margin-bottom: 20px; box-shadow: 0 12px 35px rgba(8,43,92,0.18); }
+  .hero::before { content: ""; position: absolute; width: 260px; height: 260px; border: 1px solid rgba(255,255,255,0.10); border-radius: 50%; right: -70px; top: -100px; }
+  .hero::after { content: ""; position: absolute; width: 150px; height: 150px; border: 1px solid rgba(255,255,255,0.08); border-radius: 50%; right: 90px; bottom: -90px; }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: 20px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.20); font-size: 11px; font-weight: 700; margin-bottom: 12px; }
+  .hero h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+  .hero p { font-size: 13px; color: #dbe7f5; line-height: 1.6; max-width: 600px; }
+  .recharge-layout { display: grid; grid-template-columns: 1fr 0.7fr; gap: 20px; align-items: start; }
+  .recharge-card, .info-card, .summary-card { background: white; border: 1px solid #e0e7ef; border-radius: 16px; box-shadow: 0 7px 22px rgba(15,45,80,0.05); }
+  .side-column { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 92px; }
+  .card-header { padding: 20px 22px; border-bottom: 1px solid #e8edf3; display: flex; align-items: center; gap: 12px; }
+  .card-header-icon { width: 42px; height: 42px; background: #eaf1f9; color: #092e61; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .card-header h3 { color: #092e61; font-size: 17px; font-weight: 800; }
+  .card-header p { color: #7a8a9d; font-size: 11px; margin-top: 4px; }
+  .card-body { padding: 22px; }
+  .form-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; color: #284361; font-size: 12px; font-weight: 800; margin-bottom: 8px; }
+  .input-wrapper { position: relative; }
+  .input-wrapper i { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: #72849b; font-size: 14px; }
+  .form-group input, .form-group select { width: 100%; height: 47px; border: 1px solid #d7e1eb; border-radius: 9px; background: #fbfcfe; outline: none; padding: 0 13px 0 40px; color: #173653; font-size: 13px; font-weight: 600; }
+  .form-group select { padding-left: 13px; }
+  .form-group input:focus, .form-group select:focus { border-color: #092e61; background: white; box-shadow: 0 0 0 3px rgba(9,46,97,0.07); }
+  .form-group input.invalid { border-color: #d64545; background: #fff8f8; }
+  .field-error { color: #c23434; font-size: 11px; font-weight: 600; margin-top: 6px; }
+  .operator-title { color: #284361; font-size: 12px; font-weight: 800; margin-bottom: 10px; }
+  .operator-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-bottom: 20px; }
+  .operator-option, .plan, .payment-option { position: relative; }
+  .operator-option input, .plan input, .payment-option input { position: absolute; opacity: 0; }
+  .operator-label { min-height: 78px; border: 1px solid #dce4ec; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; cursor: pointer; color: #294462; font-weight: 800; transition: 0.2s; background: white; }
+  .operator-label i { font-size: 20px; color: #092e61; }
+  .operator-label span { font-size: 11px; }
+  .operator-option input:checked + .operator-label { border-color: #092e61; background: #edf4fb; box-shadow: 0 5px 15px rgba(9,46,97,0.10); color: #092e61; }
+  .operator-option input:focus-visible + .operator-label, .plan input:focus-visible + .plan-label, .payment-option input:focus-visible + .payment-label { outline: 2px solid #092e61; outline-offset: 2px; }
+  .active-pack { border: 1px solid #cfe0f1; background: #f3f8fd; border-radius: 12px; padding: 14px 16px; margin-bottom: 20px; }
+  .ap-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .ap-title { color: #092e61; font-size: 12px; font-weight: 800; display: flex; align-items: center; gap: 7px; }
+  .ap-title i { color: #159b68; }
+  .ap-demo { font-size: 10px; color: #7a8a9d; font-weight: 600; }
+  .ap-main { color: #203e5e; font-size: 13px; font-weight: 600; }
+  .ap-main strong { font-size: 18px; color: #092e61; font-weight: 800; margin-right: 4px; }
+  .ap-bar { height: 6px; border-radius: 6px; background: #dbe7f3; margin: 10px 0 8px; overflow: hidden; }
+  .ap-bar div { height: 100%; background: #092e61; border-radius: 6px; }
+  .ap-meta { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: #5b7089; font-size: 11px; font-weight: 600; }
+  .plans-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 11px; gap: 10px; }
+  .plans-title strong { color: #203e5e; font-size: 12px; font-weight: 800; }
+  .plans-title span { color: #8290a2; font-size: 11px; }
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 12px; scrollbar-width: thin; }
+  .tab { flex-shrink: 0; height: 34px; padding: 0 14px; border: 1px solid #dce4ec; border-radius: 18px; background: white; color: #3d5875; font-size: 11px; font-weight: 700; transition: 0.2s; }
+  .tab:hover { border-color: #9fb5cd; }
+  .tab[aria-selected="true"] { background: #092e61; border-color: #092e61; color: white; }
+  .tab:focus-visible { outline: 2px solid #092e61; outline-offset: 2px; }
+  .plans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .plan-label { display: block; height: 100%; border: 1px solid #dce4ec; border-radius: 10px; padding: 14px; cursor: pointer; background: white; transition: 0.2s; position: relative; }
+  .plan-label:hover { border-color: #9fb5cd; }
+  .plan input:checked + .plan-label { border-color: #092e61; background: #edf4fb; box-shadow: 0 5px 15px rgba(9,46,97,0.08); }
+  .plan-flag { position: absolute; top: -9px; right: 12px; background: #159b68; color: white; font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 10px; }
+  .plan-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .plan-price { color: #092e61; font-size: 18px; font-weight: 800; }
+  .plan-days { color: #75879c; font-size: 11px; font-weight: 700; }
+  .plan-data { color: #203e5e; font-size: 12px; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 7px; }
+  .plan-data i { color: #5b7ea4; font-size: 11px; }
+  .plan-details { color: #536b86; font-size: 11px; line-height: 1.5; }
+  .chip { display: inline-block; margin-top: 8px; background: #e7f7ef; color: #12805a; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px; }
+  .empty-state { grid-column: 1 / -1; text-align: center; padding: 28px 10px; color: #8a98a9; font-size: 12px; }
+  .empty-state i { font-size: 24px; color: #092e61; margin-bottom: 8px; display: block; }
+  .payment-title { color: #284361; font-size: 12px; font-weight: 800; margin: 22px 0 10px; }
+  .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .payment-label { border: 1px solid #dce4ec; border-radius: 10px; min-height: 57px; padding: 10px; display: flex; align-items: center; gap: 9px; cursor: pointer; font-size: 11px; font-weight: 800; color: #294462; background: white; }
+  .payment-label i { color: #092e61; font-size: 17px; }
+  .payment-option input:checked + .payment-label { border-color: #092e61; background: #edf4fb; color: #092e61; }
+  .form-alert { margin-top: 18px; background: #fff3f3; border: 1px solid #f1c4c4; color: #b02e2e; border-radius: 9px; padding: 11px 14px; font-size: 12px; font-weight: 600; }
+  .recharge-btn { width: 100%; height: 50px; border: none; border-radius: 9px; background: #092e61; color: white; font-size: 13px; font-weight: 800; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 9px; transition: 0.25s; }
+  .recharge-btn:hover { background: #0d4383; }
+  .recharge-btn:focus-visible, .done-btn:focus-visible, .choice-btn:focus-visible { outline: 2px solid #092e61; outline-offset: 3px; }
+  .summary-card .card-body { padding: 18px 22px 22px; }
+  .sum-row { display: flex; justify-content: space-between; gap: 14px; padding: 9px 0; border-bottom: 1px solid #edf1f5; font-size: 12px; }
+  .sum-row span { color: #7b8b9e; }
+  .sum-row strong { color: #284361; text-align: right; }
+  .sum-total { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding: 13px 14px; background: #edf4fb; border-radius: 10px; color: #092e61; font-size: 13px; font-weight: 800; }
+  .sum-total strong { font-size: 20px; }
+  .info-card { overflow: hidden; }
+  .info-banner { background: #092e61; color: white; padding: 22px; text-align: center; }
+  .info-banner-icon { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 12px; border: 2px solid rgba(255,255,255,0.7); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .info-banner h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+  .info-banner p { color: #d9e5f3; font-size: 11px; line-height: 1.5; }
+  .info-body { padding: 12px 20px; }
+  .feature { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #edf1f5; }
+  .feature:last-child { border-bottom: none; }
+  .feature-icon { width: 36px; height: 36px; flex-shrink: 0; background: #edf4fb; color: #092e61; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .feature h4 { color: #284361; font-size: 12px; font-weight: 800; margin-bottom: 3px; }
+  .feature p { color: #8190a2; font-size: 11px; line-height: 1.5; }
+  .overlay { position: fixed; inset: 0; background: rgba(3,18,39,0.72); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 5000; }
+  .overlay.show { display: flex; }
+  .modal-box { width: min(560px, 100%); max-height: 92vh; overflow-y: auto; background: white; border-radius: 18px; padding: 28px; box-shadow: 0 25px 80px rgba(0,0,0,0.30); animation: modalOpen 0.25s ease; }
+  .modal-box.small { width: min(430px, 100%); text-align: center; padding: 32px 26px; }
+  @keyframes modalOpen { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+  .modal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+  .modal-head h2 { color: #092e61; font-size: 19px; font-weight: 800; }
+  .modal-head p { color: #7a8a9d; font-size: 12px; margin-top: 4px; line-height: 1.5; }
+  .modal-close { width: 34px; height: 34px; flex-shrink: 0; border: 1px solid #dce4ec; border-radius: 50%; background: white; color: #52667d; font-size: 14px; }
+  .choice-active { background: #f3f8fd; border: 1px solid #cfe0f1; border-radius: 10px; padding: 11px 14px; font-size: 12px; color: #284361; margin-bottom: 14px; line-height: 1.6; }
+  .choice-card { border: 1px solid #dce4ec; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+  .choice-card h3 { color: #092e61; font-size: 14px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .choice-card > p { color: #6f8096; font-size: 12px; line-height: 1.55; margin-bottom: 12px; }
+  .choice-btn { width: 100%; height: 44px; border: none; border-radius: 9px; background: #092e61; color: white; font-size: 12px; font-weight: 800; }
+  .choice-btn:hover { background: #0d4383; }
+  .choice-btn.outline { background: white; color: #092e61; border: 1.5px solid #092e61; }
+  .choice-btn.outline:hover { background: #edf4fb; }
+  .choice-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  .upgrade-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+  .upgrade-option { position: relative; }
+  .upgrade-option input { position: absolute; opacity: 0; }
+  .upgrade-option label { display: flex; justify-content: space-between; align-items: center; gap: 12px; border: 1px solid #dce4ec; border-radius: 10px; padding: 11px 13px; cursor: pointer; background: white; }
+  .upgrade-option input:checked + label { border-color: #092e61; background: #edf4fb; }
+  .upgrade-option input:focus-visible + label { outline: 2px solid #092e61; outline-offset: 2px; }
+  .up-left strong { color: #092e61; font-size: 15px; font-weight: 800; }
+  .up-left span { color: #5b7089; font-size: 11px; margin-left: 6px; font-weight: 600; }
+  .up-left small { display: block; color: #6f8096; font-size: 11px; margin-top: 3px; }
+  .up-gain { flex-shrink: 0; color: #12805a; background: #e7f7ef; border-radius: 8px; padding: 4px 8px; font-size: 10px; font-weight: 800; text-align: right; }
+  .no-upgrade { background: #f5f8fb; color: #6f8096; font-size: 12px; padding: 12px; border-radius: 9px; margin-bottom: 12px; }
+  .success-icon { width: 70px; height: 70px; border-radius: 50%; background: #e7f7ef; color: #159b68; display: flex; align-items: center; justify-content: center; margin: 0 auto 17px; font-size: 30px; }
+  .modal-box.small h2 { color: #092e61; font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .modal-box.small > p { color: #748398; font-size: 12px; line-height: 1.6; margin-bottom: 18px; }
+  .recharge-summary { background: #f5f8fb; border-radius: 10px; padding: 13px; text-align: left; margin-bottom: 18px; }
+  .summary-row { display: flex; justify-content: space-between; gap: 15px; padding: 6px 0; font-size: 11px; }
+  .summary-row span { color: #7b8b9e; }
+  .summary-row strong { color: #284361; text-align: right; }
+  .done-btn { width: 100%; height: 45px; border: none; border-radius: 9px; background: #092e61; color: white; font-size: 12px; font-weight: 800; }
+  .op-logo { display: inline-block; line-height: 0; }
+  .op-logo svg { display: block; width: 100%; height: auto; }
+  .operator-label { position: relative; min-height: 108px; padding: 14px 10px 11px; gap: 10px; border-width: 1.5px; }
+  .operator-label .op-logo { width: 92px; filter: drop-shadow(0 3px 6px rgba(9,46,97,0.12)); }
+  .operator-label span { font-size: 11px; }
+  .operator-option:hover .operator-label { border-color: #9fb5cd; transform: translateY(-2px); }
+  .operator-option input:checked + .operator-label::after { content: "\f058"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; top: 8px; right: 9px; color: #092e61; font-size: 16px; }
+  .hero-logos { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+  .hero-logos .op-logo { width: 78px; filter: drop-shadow(0 5px 12px rgba(0,0,0,0.28)); }
+  .net-banner { display: flex; align-items: center; gap: 14px; background: linear-gradient(110deg, #082b5c, #0d4383); color: white; border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; }
+  .net-banner .op-logo { width: 78px; flex-shrink: 0; }
+  .net-banner h4 { font-size: 14px; font-weight: 800; }
+  .net-banner p { font-size: 11px; color: #cfe0f3; margin-top: 3px; }
+  .ap-title .op-logo { width: 52px; }
+  .sum-net { display: inline-flex; align-items: center; gap: 8px; justify-content: flex-end; }
+  .sum-net .op-logo { width: 46px; }
+  .success-logo { width: 100px; margin: -4px auto 16px; }
+  .plan-label:hover { transform: translateY(-1px); }
+  @media (max-width: 1100px) {
+    .recharge-layout { grid-template-columns: 1fr; }
+    .side-column { position: static; }
+    .header-search { width: 350px; }
+  }
+  @media (max-width: 850px) {
+    .sidebar { width: 210px; }
+    .brand-box { width: 210px; }
+    .main-content { margin-left: 210px; }
+  }
+  @media (max-width: 650px) {
+    .sidebar { transform: translateX(-100%); transition: transform 0.25s; width: 250px; z-index: 1100; }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar-backdrop.show { display: block; position: fixed; inset: 72px 0 0 0; background: rgba(3,18,39,0.5); z-index: 1050; }
+    .menu-toggle { display: block; }
+    .brand-box { width: auto; padding: 0 14px; }
+    .brand-text { display: none; }
+    .main-content { margin-left: 0; padding: 88px 15px 40px; }
+    .header-search { display: none; }
+    .header-main { padding: 0 15px; }
+    .hero { padding: 28px 24px; }
+    .hero h2 { font-size: 23px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .operator-grid { grid-template-columns: repeat(2, 1fr); }
+    .plans-grid, .payment-grid { grid-template-columns: 1fr; }
+    .card-body { padding: 18px; }
+    .modal-box { padding: 22px 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="top-header">
+  <div class="brand-box">
+    <div class="brand-icon">
+      <i class="fa-solid fa-mobile-screen-button"></i>
+    </div>
+    <div class="brand-text">
+      <h1>Smart Mobile Care Hub</h1>
+      <span>Smart Service • Easy Recharge</span>
+    </div>
+  </div>
+  <div class="header-main">
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Open menu"
+      onclick="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="header-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        type="text"
+        id="planSearch"
+        placeholder="Search plans by price, data or validity..."
+        oninput="onSearch(this.value)">
+    </div>
+    <div class="header-right">
+      <div class="header-icon">
+        <i class="fa-regular fa-bell"></i>
+      </div>
+      <div class="header-divider"></div>
+      <div class="user-profile">
+        <div class="user-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <span>User</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleMenu()"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-title">
+    USER MENU
+  </div>
+  <nav class="sidebar-menu">
+    <a href="user-dashboard.html" class="sidebar-link">
+      <i class="fa-solid fa-house"></i>
+      Dashboard
+    </a>
+    <a href="book-repair.html" class="sidebar-link">
+      <i class="fa-solid fa-screwdriver-wrench"></i>
+      Book Repair
+    </a>
+    <a href="repair-status.html" class="sidebar-link">
+      <i class="fa-solid fa-location-dot"></i>
+      Repair Status
+    </a>
+    <a href="mobile-phones.html" class="sidebar-link">
+      <i class="fa-solid fa-mobile-screen-button"></i>
+      Mobile Phones
+    </a>
+    <a href="accessories.html" class="sidebar-link">
+      <i class="fa-solid fa-headphones"></i>
+      Accessories
+    </a>
+    <a href="recharge.html" class="sidebar-link active">
+      <i class="fa-solid fa-bolt"></i>
+      Recharge
+    </a>
+    <a href="offers-resale.html" class="sidebar-link">
+      <i class="fa-solid fa-tags"></i>
+      Offers &amp; Resale
+    </a>
+    <a href="feedback.html" class="sidebar-link">
+      <i class="fa-solid fa-comment-dots"></i>
+      Feedback
+    </a>
+  </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+  <div class="content-wrapper">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <i class="fa-solid fa-bolt"></i>
+          QUICK &amp; EASY RECHARGE
+        </div>
+        <h2>Mobile Recharge</h2>
+        <p>
+          Recharge your prepaid mobile with your preferred
+          network. Pick a plan, top-up or data add-on, and
+          continue with your current pack or upgrade it.
+        </p>
+        <div class="hero-logos" aria-label="Supported networks">
+          <span class="op-logo" data-op="Airtel"></span>
+          <span class="op-logo" data-op="Jio"></span>
+          <span class="op-logo" data-op="BSNL"></span>
+          <span class="op-logo" data-op="Vodafone Idea"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECHARGE AREA -->
+    <section class="recharge-layout">
+
+      <!-- LEFT -->
+      <div class="recharge-card">
+        <div class="card-header">
+          <div class="card-header-icon">
+            <i class="fa-solid fa-mobile-screen"></i>
+          </div>
+          <div>
+            <h3>Recharge Your Mobile</h3>
+            <p>Enter your mobile number and select your plan.</p>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <!-- MOBILE NUMBER + CIRCLE -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="mobileNumber">
+                Mobile Number
+              </label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-phone"></i>
+                <input
+                  type="tel"
+                  id="mobileNumber"
+                  inputmode="numeric"
+                  maxlength="10"
+                  placeholder="Enter 10-digit mobile number"
+                  oninput="validateNumber()">
+              </div>
+              <div class="field-error" id="numberError" hidden></div>
+            </div>
+            <div class="form-group">
+              <label for="circle">
+                Circle
+              </label>
+              <select id="circle" onchange="renderSummary()">
+                <option>Tamil Nadu</option>
+                <option>Kerala</option>
+                <option>Karnataka</option>
+                <option>Andhra Pradesh &amp; Telangana</option>
+                <option>Maharashtra</option>
+                <option>Delhi NCR</option>
+                <option>Gujarat</option>
+                <option>Punjab</option>
+                <option>Rajasthan</option>
+                <option>Uttar Pradesh</option>
+                <option>West Bengal</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- OPERATOR -->
+          <div class="operator-title">
+            Select Mobile Network
+          </div>
+          <div class="operator-grid">
+            <div class="operator-option">
+              <input type="radio" name="operator" id="airtel" value="Airtel" onchange="selectOperator()">
+              <label for="airtel" class="operator-label">
+                <span class="op-logo" data-op="Airtel"></span>
+                <span>Airtel</span>
+              </label>
+            </div>
+            <div class="operator-option">
+              <input type="radio" name="operator" id="jio" value="Jio" onchange="selectOperator()">
+              <label for="jio" class="operator-label">
+                <span class="op-logo" data-op="Jio"></span>
+                <span>Jio</span>
+              </label>
+            </div>
+            <div class="operator-option">
+              <input type="radio" name="operator" id="bsnl" value="BSNL" onchange="selectOperator()">
+              <label for="bsnl" class="operator-label">
+                <span class="op-logo" data-op="BSNL"></span>
+                <span>BSNL</span>
+              </label>
+            </div>
+            <div class="operator-option">
+              <input type="radio" name="operator" id="vi" value="Vodafone Idea" onchange="selectOperator()">
+              <label for="vi" class="operator-label">
+                <span class="op-logo" data-op="Vodafone Idea"></span>
+                <span>Vi</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- ACTIVE PACK -->
+          <div class="active-pack" id="activePack" hidden></div>
+          <div class="net-banner" id="netBanner" hidden></div>
+
+          <!-- PLANS -->
+          <div class="plans-section">
+            <div class="plans-title">
+              <strong>
+                Available Recharge Plans
+              </strong>
+              <span id="planHint">
+                Select a network
+              </span>
+            </div>
+            <div class="tabs" id="planTabs" role="tablist" aria-label="Plan categories" hidden></div>
+            <div class="plans-grid" id="plansContainer">
+              <div class="empty-state">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                Select your mobile network to view plans.
+              </div>
+            </div>
+          </div>
+
+          <!-- PAYMENT -->
+          <div class="payment-title">
+            Payment Method
+          </div>
+          <div class="payment-grid">
+            <div class="payment-option">
+              <input type="radio" name="payment" id="online" value="Online Payment" checked>
+              <label for="online" class="payment-label">
+                <i class="fa-solid fa-credit-card"></i>
+                Online Payment
+              </label>
+            </div>
+            <div class="payment-option">
+              <input type="radio" name="payment" id="cash" value="Cash on Delivery">
+              <label for="cash" class="payment-label">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                Cash on Delivery
+              </label>
+            </div>
+          </div>
+
+          <!-- ERROR + BUTTON -->
+          <div class="form-alert" id="formAlert" role="alert" hidden></div>
+          <button
+            class="recharge-btn"
+            onclick="completeRecharge()">
+            <i class="fa-solid fa-bolt"></i>
+            Recharge Now
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="side-column">
+        <div class="summary-card">
+          <div class="card-header">
+            <div class="card-header-icon">
+              <i class="fa-solid fa-receipt"></i>
+            </div>
+            <div>
+              <h3>Recharge Summary</h3>
+              <p>Updates as you choose.</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="sum-row"><span>Mobile Number</span><strong id="sumMobile">-</strong></div>
+            <div class="sum-row"><span>Network</span><strong id="sumNetwork">-</strong></div>
+            <div class="sum-row"><span>Plan</span><strong id="sumPlan">-</strong></div>
+            <div class="sum-row"><span>Benefits</span><strong id="sumBenefit">-</strong></div>
+            <div class="sum-row"><span>Validity</span><strong id="sumValidity">-</strong></div>
+            <div class="sum-total">
+              <span>Amount to pay</span>
+              <strong id="sumAmount">₹0</strong>
+            </div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-banner">
+            <div class="info-banner-icon">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <h3>Easy Mobile Recharge</h3>
+            <p>
+              Fast, simple and convenient mobile recharge
+              through Smart Mobile Care Hub.
+            </p>
+          </div>
+          <div class="info-body">
+            <div class="feature">
+              <div class="feature-icon"><i class="fa-solid fa-sim-card"></i></div>
+              <div>
+                <h4>Multiple Networks</h4>
+                <p>Choose Airtel, Jio, BSNL or Vi.</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon"><i class="fa-solid fa-list-check"></i></div>
+              <div>
+                <h4>Every Recharge Type</h4>
+                <p>Unlimited packs, long validity, annual plans, top-ups and data add-ons.</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon"><i class="fa-solid fa-arrow-up-right-dots"></i></div>
+              <div>
+                <h4>Continue or Upgrade</h4>
+                <p>Keep your current pack or move to a bigger one before you pay.</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <div>
+                <h4>Quick Confirmation</h4>
+                <p>Get instant confirmation after completing your recharge.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</main>
+
+<!-- CONTINUE / UPGRADE MODAL -->
+<div class="overlay" id="choiceModal" onclick="if(event.target===this) closeChoice()">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="choiceTitle">
+    <div class="modal-head">
+      <div>
+        <h2 id="choiceTitle">Continue or upgrade your pack?</h2>
+        <p>Choose how you want to recharge before you pay.</p>
+      </div>
+      <button class="modal-close" aria-label="Close" onclick="closeChoice()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div id="choiceBody"></div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="overlay" id="successModal">
+  <div class="modal-box small" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="success-icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <div class="success-logo" id="successLogo"></div>
+    <h2 id="successTitle">Your Recharge Was Successful</h2>
+    <p id="successText">
+      Your recharge request has been successfully placed.
+    </p>
+    <div class="recharge-summary" id="successSummary"></div>
+    <button class="done-btn" onclick="closeSuccess()">
+      Done
+    </button>
+  </div>
+</div>
+
+<script>
+  /* PLAN DATA (sample plans - update prices as operators change)
+     main row: [price, validityDays, dataText, GBperDay, flag, 5G] */
+  const MAIN_PLANS = {
+    Airtel: [
+      [199,  28,  "2 GB total",  0,   "",           false],
+      [299,  28,  "1 GB/day",    1,   "",           false],
+      [349,  28,  "1.5 GB/day",  1.5, "POPULAR",    true ],
+      [449,  28,  "3 GB/day",    3,   "",           true ],
+      [479,  56,  "1.5 GB/day",  1.5, "",           true ],
+      [549,  56,  "2 GB/day",    2,   "",           true ],
+      [719,  84,  "1.5 GB/day",  1.5, "",           true ],
+      [979,  84,  "2 GB/day",    2,   "BEST VALUE", true ],
+      [1799, 365, "24 GB total", 0,   "",           false],
+      [3599, 365, "2 GB/day",    2,   "",           true ]
+    ],
+    Jio: [
+      [199,  18,  "1.5 GB/day",  1.5, "",           false],
+      [299,  28,  "1.5 GB/day",  1.5, "",           true ],
+      [349,  28,  "2 GB/day",    2,   "POPULAR",    true ],
+      [449,  28,  "3 GB/day",    3,   "",           true ],
+      [479,  56,  "1.5 GB/day",  1.5, "",           true ],
+      [629,  56,  "2 GB/day",    2,   "",           true ],
+      [799,  84,  "1.5 GB/day",  1.5, "",           true ],
+      [899,  90,  "2 GB/day",    2,   "BEST VALUE", true ],
+      [999,  98,  "2 GB/day",    2,   "",           true ],
+      [3599, 365, "2.5 GB/day",  2.5, "",           true ]
+    ],
+    BSNL: [
+      [107,  35,  "3 GB total",   0,   "",           false],
+      [153,  26,  "1 GB/day",     1,   "",           false],
+      [199,  30,  "2 GB/day",     2,   "POPULAR",    false],
+      [299,  30,  "3 GB/day",     3,   "",           false],
+      [485,  82,  "1.5 GB/day",   1.5, "",           false],
+      [599,  84,  "3 GB/day",     3,   "BEST VALUE", false],
+      [997,  160, "2 GB/day",     2,   "",           false],
+      [1999, 365, "600 GB total", 0,   "",           false]
+    ],
+    "Vodafone Idea": [
+      [199,  28,  "1 GB/day",    1,   "",           false],
+      [299,  28,  "1.5 GB/day",  1.5, "POPULAR",    false],
+      [349,  28,  "2 GB/day",    2,   "",           false],
+      [479,  56,  "1.5 GB/day",  1.5, "",           false],
+      [499,  28,  "3 GB/day",    3,   "",           false],
+      [719,  84,  "1.5 GB/day",  1.5, "",           false],
+      [979,  84,  "2 GB/day",    2,   "BEST VALUE", false],
+      [3499, 365, "1.5 GB/day",  1.5, "",           false]
+    ]
+  };
+
+  /* Talktime top-ups: [pay, talktime received] */
+  const TOPUPS = [
+    [10,  "₹7.47 talktime"],
+    [20,  "₹14.95 talktime"],
+    [50,  "₹39.37 talktime"],
+    [100, "₹81.75 talktime"],
+    [200, "₹171 talktime"],
+    [500, "₹500 full talktime"]
+  ];
+
+  /* Data add-ons: [price, dataText, validityDays (0 = with current pack)] */
+  const ADDONS = [
+    [19, "1 GB",  1],
+    [29, "2 GB",  2],
+    [59, "5 GB",  7],
+    [99, "12 GB", 0]
+  ];
+
+  /* Build the full plan list for every operator */
+  const PLANS = {};
+
+  Object.keys(MAIN_PLANS).forEach(function (op) {
+    const list = [];
+
+    MAIN_PLANS[op].forEach(function (r) {
+      list.push({
+        type: "main",
+        price: r[0],
+        days: r[1],
+        data: r[2],
+        gb: r[3],
+        flag: r[4],
+        five: r[5],
+        info: "Unlimited calls • 100 SMS/day"
+      });
+    });
+
+    TOPUPS.forEach(function (r) {
+      list.push({
+        type: "topup",
+        price: r[0],
+        days: 0,
+        data: r[1],
+        gb: 0,
+        flag: "",
+        five: false,
+        info: "Talktime for calls and SMS. Validity stays the same."
+      });
+    });
+
+    ADDONS.forEach(function (r) {
+      list.push({
+        type: "addon",
+        price: r[0],
+        days: r[2],
+        data: r[1] + " data",
+        gb: 0,
+        flag: "",
+        five: false,
+        info: r[2] === 0
+          ? "Valid till your current pack ends."
+          : "Valid for " + r[2] + (r[2] === 1 ? " day." : " days.")
+      });
+    });
+
+    list.forEach(function (p, i) {
+      p.id = op.replace(/\s/g, "").slice(0, 3).toLowerCase() + "_" + i;
+      p.operator = op;
+    });
+
+    PLANS[op] = list;
+  });
+
+  const TABS = [
+    { key: "all",     label: "All plans",     test: function (p) { return true; } },
+    { key: "popular", label: "Popular",       test: function (p) { return p.type === "main" && p.flag !== ""; } },
+    { key: "data",    label: "Daily data",    test: function (p) { return p.type === "main" && p.gb >= 2 && p.days < 300; } },
+    { key: "long",    label: "Long validity", test: function (p) { return p.type === "main" && p.days >= 56 && p.days < 300; } },
+    { key: "annual",  label: "Annual",        test: function (p) { return p.type === "main" && p.days >= 300; } },
+    { key: "topup",   label: "Top-up",        test: function (p) { return p.type === "topup"; } },
+    { key: "addon",   label: "Data add-on",   test: function (p) { return p.type === "addon"; } }
+  ];
+
+  /* NETWORK LOGOS (logo-style badges drawn in SVG).
+     To use the official logo files instead, save them in an
+     "images" folder and replace each value with an <img> tag,
+     for example: '<img src="images/airtel.png" alt="Airtel">' */
+  const LOGO_FONT = 'font-family="Inter, Arial, sans-serif" font-weight="800" text-anchor="middle"';
+
+  const LOGOS = {
+    "Airtel":
+      '<svg viewBox="0 0 120 48" role="img" aria-label="Airtel">' +
+      '<rect x="0.5" y="0.5" width="119" height="47" rx="10" fill="#fff" stroke="#dbe4ee"/>' +
+      '<text x="60" y="33" ' + LOGO_FONT + ' font-size="27" letter-spacing="-1" fill="#E40000">airtel</text>' +
+      '</svg>',
+    "Jio":
+      '<svg viewBox="0 0 120 48" role="img" aria-label="Jio">' +
+      '<rect width="120" height="48" rx="10" fill="#0F3CC9"/>' +
+      '<text x="60" y="34" ' + LOGO_FONT + ' font-size="29" fill="#fff">Jio</text>' +
+      '</svg>',
+    "BSNL":
+      '<svg viewBox="0 0 120 48" role="img" aria-label="BSNL">' +
+      '<rect x="0.5" y="0.5" width="119" height="47" rx="10" fill="#fff" stroke="#dbe4ee"/>' +
+      '<text x="60" y="31" ' + LOGO_FONT + ' font-size="26" letter-spacing="1" fill="#0A4DA2">BSNL</text>' +
+      '<rect x="32" y="37" width="56" height="3" rx="1.5" fill="#F7931E"/>' +
+      '</svg>',
+    "Vodafone Idea":
+      '<svg viewBox="0 0 120 48" role="img" aria-label="Vi">' +
+      '<rect x="0.5" y="0.5" width="119" height="47" rx="10" fill="#fff" stroke="#dbe4ee"/>' +
+      '<text x="60" y="35" ' + LOGO_FONT + ' font-size="31"><tspan fill="#E60000">V</tspan><tspan fill="#FFB400">i</tspan></text>' +
+      '</svg>'
+  };
+
+  function logoHtml(op) {
+    return '<span class="op-logo">' + (LOGOS[op] || "") + '</span>';
+  }
+
+  function bannerInner(title, sub) {
+    return logoHtml(state.operator) +
+      '<div><h4>' + esc(title) + '</h4><p>' + esc(sub) + '</p></div>';
+  }
+
+  function esc(text) {
+    return String(text)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  function initLogos() {
+    document.querySelectorAll(".op-logo[data-op]").forEach(function (el) {
+      el.innerHTML = LOGOS[el.getAttribute("data-op")] || "";
+    });
+  }
+
+  /* STATE + HELPERS */
+  const state = {
+    operator: null,
+    tab: "popular",
+    planId: null,
+    search: "",
+    active: null,
+    upgradeId: null,
+    pendingPlan: null
+  };
+
+  function $(id) {
+    return document.getElementById(id);
+  }
+
+  function money(n) {
+    return "₹" + n;
+  }
+
+  function gbText(n) {
+    return Number.isInteger(n) ? String(n) : n.toFixed(1);
+  }
+
+  function addDays(date, days) {
+    const d = new Date(date.getTime());
+    d.setDate(d.getDate() + days);
+    return d;
+  }
+
+  function fmtDate(date) {
+    return date.toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric"
+    });
+  }
+
+  function mainPlans(op) {
+    return PLANS[op].filter(function (p) { return p.type === "main"; });
+  }
+
+  function getPlan(id) {
+    if (!state.operator || !id) return null;
+    return PLANS[state.operator].find(function (p) { return p.id === id; }) || null;
+  }
+
+  function validityText(p) {
+    if (p.type === "topup") return "No change";
+    if (p.type === "addon") return p.days === 0 ? "With current pack" : p.days + (p.days === 1 ? " Day" : " Days");
+    return p.days + " Days";
+  }
+
+  function isValidNumber(n) {
+    return /^[6-9]\d{9}$/.test(n);
+  }
+
+  function showAlert(msg) {
+    const box = $("formAlert");
+    box.textContent = msg;
+    box.hidden = false;
+    box.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function clearAlert() {
+    $("formAlert").hidden = true;
+  }
+
+  /* MENU (mobile) */
+  function toggleMenu() {
+    $("sidebar").classList.toggle("open");
+    $("sidebarBackdrop").classList.toggle("show");
+  }
+
+  /* MOBILE NUMBER */
+  function validateNumber() {
+    const input = $("mobileNumber");
+    input.value = input.value.replace(/\D/g, "").slice(0, 10);
+    const err = $("numberError");
+    if (input.value.length === 10 && !isValidNumber(input.value)) {
+      err.textContent = "Mobile numbers start with 6, 7, 8 or 9.";
+      err.hidden = false;
+      input.classList.add("invalid");
+    } else {
+      err.hidden = true;
+      input.classList.remove("invalid");
+    }
+    clearAlert();
+    refreshActivePack();
+    renderSummary();
+  }
+
+  /* OPERATOR + PLANS */
+  function selectOperator() {
+    const selected = document.querySelector('input[name="operator"]:checked');
+    if (!selected) return;
+    state.operator = selected.value;
+    state.tab = "popular";
+    state.search = "";
+    $("planSearch").value = "";
+    const first = PLANS[state.operator].find(TABS[1].test);
+    state.planId = first ? first.id : null;
+    clearAlert();
+    renderBanner();
+    renderTabs();
+    renderPlans();
+    refreshActivePack();
+    renderSummary();
+  }
+
+  function renderBanner() {
+    const box = $("netBanner");
+    if (!state.operator) {
+      box.hidden = true;
+      return;
+    }
+    box.innerHTML = bannerInner(
+      state.operator === "Vodafone Idea" ? "Vi (Vodafone Idea) prepaid" : state.operator + " prepaid",
+      "Unlimited packs, long validity, annual plans, top-ups and data add-ons."
+    );
+    box.hidden = false;
+  }
+
+  function onSearch(value) {
+    state.search = value.trim().toLowerCase();
+    if (!state.operator) return;
+    if (state.search && state.tab !== "all") {
+      state.tab = "all";
+      renderTabs();
+    }
+    renderPlans();
+  }
+
+  function setTab(key) {
+    state.tab = key;
+    renderTabs();
+    renderPlans();
+  }
+
+  function renderTabs() {
+    const wrap = $("planTabs");
+    wrap.hidden = !state.operator;
+    wrap.innerHTML = TABS.map(function (t) {
+      return '<button type="button" class="tab" role="tab" aria-selected="' +
+        (t.key === state.tab) + '" onclick="setTab(\'' + t.key + '\')">' +
+        t.label + '</button>';
+    }).join("");
+  }
+
+  function planMatchesSearch(p, q) {
+    if (!q) return true;
+    const hay = (p.price + " " + p.data + " " + validityText(p) + " " + p.type).toLowerCase();
+    return hay.indexOf(q) !== -1;
+  }
+
+  function renderPlans() {
+    const container = $("plansContainer");
+    const hint = $("planHint");
+    if (!state.operator) return;
+    const tab = TABS.find(function (t) { return t.key === state.tab; });
+    let list = PLANS[state.operator]
+      .filter(tab.test)
+      .filter(function (p) { return planMatchesSearch(p, state.search); });
+    list = list.slice().sort(function (a, b) {
+      if (a.type !== b.type) return 0;
+      return a.price - b.price;
+    });
+    hint.textContent = state.operator + " • " + list.length + (list.length === 1 ? " plan" : " plans");
+    if (!list.length) {
+      container.innerHTML =
+        '<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i>' +
+        'No plans match your search. Try a price like 299 or a word like "2 GB".</div>';
+      return;
+    }
+    container.innerHTML = list.map(function (p) {
+      const dataIcon = p.type === "topup" ? "fa-phone-volume" : "fa-database";
+      return '' +
+        '<div class="plan">' +
+          '<input type="radio" name="rechargePlan" id="pl_' + p.id + '" value="' + p.id + '"' +
+            (p.id === state.planId ? " checked" : "") +
+            ' onchange="onPlanChange(\'' + p.id + '\')">' +
+          '<label for="pl_' + p.id + '" class="plan-label">' +
+            (p.flag ? '<span class="plan-flag">' + p.flag + '</span>' : "") +
+            '<div class="plan-top">' +
+              '<span class="plan-price">' + money(p.price) + '</span>' +
+              '<span class="plan-days">' + validityText(p) + '</span>' +
+            '</div>' +
+            '<div class="plan-data"><i class="fa-solid ' + dataIcon + '"></i>' + p.data + '</div>' +
+            '<div class="plan-details">' + p.info + '</div>' +
+            (p.five ? '<span class="chip">Unlimited 5G</span>' : "") +
+          '</label>' +
+        '</div>';
+    }).join("");
+  }
+
+  function onPlanChange(id) {
+    state.planId = id;
+    clearAlert();
+    renderSummary();
+  }
+
+  /* ACTIVE PACK (demo - in the live system read this from the
+     database / operator API using the mobile number) */
+  function computeActivePack(number, op) {
+    let seed = 0;
+    for (let i = 0; i < number.length; i++) seed += Number(number[i]) * (i + 3);
+    const options = mainPlans(op).filter(function (p) { return p.days <= 98; });
+    const pack = options[seed % options.length];
+    const daysLeft = (seed * 7) % pack.days + 1;
+    return {
+      plan: pack,
+      daysLeft: daysLeft,
+      expiry: addDays(new Date(), daysLeft),
+      percent: Math.round((daysLeft / pack.days) * 100)
+    };
+  }
+
+  function refreshActivePack() {
+    const box = $("activePack");
+    const number = $("mobileNumber").value;
+    if (!state.operator || !isValidNumber(number)) {
+      state.active = null;
+      box.hidden = true;
+      return;
+    }
+    const a = computeActivePack(number, state.operator);
+    state.active = a;
+    box.innerHTML =
+      '<div class="ap-head">' +
+        '<span class="ap-title">' + logoHtml(state.operator) + ' Your active pack</span>' +
+        '<span class="ap-demo">Demo data</span>' +
+      '</div>' +
+      '<div class="ap-main"><strong>' + money(a.plan.price) + '</strong>' +
+        a.plan.days + ' Days • ' + a.plan.data + '</div>' +
+      '<div class="ap-bar"><div style="width:' + a.percent + '%"></div></div>' +
+      '<div class="ap-meta">' +
+        '<span>' + a.daysLeft + (a.daysLeft === 1 ? ' day left' : ' days left') + '</span>' +
+        '<span>Expires on ' + fmtDate(a.expiry) + '</span>' +
+      '</div>';
+    box.hidden = false;
+  }
+
+  /* SUMMARY */
+  function renderSummary() {
+    const p = getPlan(state.planId);
+    const number = $("mobileNumber").value;
+    $("sumMobile").textContent = number.length ? number : "-";
+    $("sumNetwork").innerHTML = state.operator
+      ? '<span class="sum-net">' + logoHtml(state.operator) + esc($("circle").value) + '</span>'
+      : "-";
+    if (!p) {
+      $("sumPlan").textContent = "-";
+      $("sumBenefit").textContent = "-";
+      $("sumValidity").textContent = "-";
+      $("sumAmount").textContent = "₹0";
+      return;
+    }
+    const label = p.type === "topup" ? "Top-up" : (p.type === "addon" ? "Data add-on" : "Pack");
+    $("sumPlan").textContent = label + " " + money(p.price);
+    $("sumBenefit").textContent = p.data;
+    $("sumValidity").textContent = validityText(p);
+    $("sumAmount").textContent = money(p.price);
+  }
+
+  /* RECHARGE NOW -> CONTINUE OR UPGRADE */
+  function completeRecharge() {
+    clearAlert();
+    const mobile = $("mobileNumber").value.trim();
+    if (!isValidNumber(mobile)) {
+      $("mobileNumber").classList.add("invalid");
+      $("mobileNumber").focus();
+      showAlert("Enter a valid 10-digit mobile number that starts with 6, 7, 8 or 9.");
+      return;
+    }
+    if (!state.operator) {
+      showAlert("Select your mobile network.");
+      return;
+    }
+    const plan = getPlan(state.planId);
+    if (!plan) {
+      showAlert("Select a recharge plan, top-up or data add-on.");
+      return;
+    }
+    if (!document.querySelector('input[name="payment"]:checked')) {
+      showAlert("Select a payment method.");
+      return;
+    }
+    if (!state.active) refreshActivePack();
+    openChoice(plan);
+  }
+
+  function upgradeOptions(base) {
+    return mainPlans(state.operator)
+      .filter(function (p) {
+        return p.price > base.price && p.days >= base.days;
+      })
+      .sort(function (a, b) { return a.price - b.price; })
+      .slice(0, 3);
+  }
+
+  function gainText(p, base) {
+    const parts = ["+" + money(p.price - base.price)];
+    if (p.days > base.days) parts.push("+" + (p.days - base.days) + " days");
+    if (p.gb > 0 && base.gb > 0 && p.gb > base.gb) {
+      parts.push("+" + gbText(p.gb - base.gb) + " GB/day");
+    } else if (p.gb > 0 && base.gb === 0) {
+      parts.push("daily data");
+    }
+    return parts.join(" • ");
+  }
+
+  function continueText(p) {
+    if (p.type === "topup") {
+      return p.data + " is added to your balance right away. Your current pack stays as it is.";
+    }
+    if (p.type === "addon") {
+      return p.data + " is added on top of your current pack.";
+    }
+    return "Recharge " + money(p.price) + " for " + p.days + " days. It starts after your current pack ends on " +
+      fmtDate(state.active.expiry) + ".";
+  }
+
+  function openChoice(plan) {
+    state.pendingPlan = plan;
+    const a = state.active;
+    const base = (plan.type === "main" && plan.price >= a.plan.price) ? plan : a.plan;
+    const options = upgradeOptions(base);
+    state.upgradeId = options.length ? options[0].id : null;
+
+    const continueLabel = plan.type === "main"
+      ? "Continue with this pack"
+      : (plan.type === "topup" ? "Continue with the top-up" : "Continue with the add-on");
+
+    let upgradeHtml;
+    if (options.length) {
+      upgradeHtml =
+        '<div class="upgrade-list">' +
+        options.map(function (o, i) {
+          return '' +
+            '<div class="upgrade-option">' +
+              '<input type="radio" name="upgrade" id="up_' + o.id + '" value="' + o.id + '"' +
+                (i === 0 ? " checked" : "") +
+                ' onchange="pickUpgrade(\'' + o.id + '\')">' +
+              '<label for="up_' + o.id + '">' +
+                '<div class="up-left">' +
+                  '<strong>' + money(o.price) + '</strong><span>' + o.days + ' Days</span>' +
+                  '<small>' + o.data + (o.five ? " • Unlimited 5G" : "") + '</small>' +
+                '</div>' +
+                '<div class="up-gain">' + gainText(o, base) + '</div>' +
+              '</label>' +
+            '</div>';
+        }).join("") +
+        '</div>' +
+        '<button class="choice-btn outline" id="upgradeBtn" onclick="confirmUpgrade()">' +
+          'Upgrade to ' + money(options[0].price) +
+        '</button>';
+    } else {
+      upgradeHtml =
+        '<div class="no-upgrade">You already picked one of the biggest packs for ' + state.operator +
+        '. There is nothing higher to upgrade to.</div>';
+    }
+
+    $("choiceBody").innerHTML =
+      '<div class="net-banner">' +
+        bannerInner(state.operator === "Vodafone Idea" ? "Vi (Vodafone Idea)" : state.operator,
+          "Recharging " + $("mobileNumber").value + " • " + esc($("circle").value)) +
+      '</div>' +
+      '<div class="choice-active">' +
+        '<strong>Active pack:</strong> ' + money(a.plan.price) + ' • ' + a.plan.days + ' Days • ' + a.plan.data +
+        '<br>' + a.daysLeft + (a.daysLeft === 1 ? ' day left' : ' days left') +
+        ' • Expires on ' + fmtDate(a.expiry) +
+      '</div>' +
+      '<div class="choice-card">' +
+        '<h3><i class="fa-solid fa-rotate-right"></i> Continue with the pack</h3>' +
+        '<p>' + continueText(plan) + '</p>' +
+        '<button class="choice-btn" onclick="confirmContinue()">' +
+          continueLabel + ' • ' + money(plan.price) +
+        '</button>' +
+      '</div>' +
+      '<div class="choice-card">' +
+        '<h3><i class="fa-solid fa-arrow-up-right-dots"></i> Upgrade the pack</h3>' +
+        '<p>' + (plan.type === "main"
+          ? "Get more data or validity than your current and selected pack. It starts today."
+          : "Move your active pack to a bigger one. It starts today.") + '</p>' +
+        upgradeHtml +
+      '</div>';
+
+    $("choiceModal").classList.add("show");
+  }
+
+  function pickUpgrade(id) {
+    state.upgradeId = id;
+    const p = getPlan(id);
+    $("upgradeBtn").textContent = "Upgrade to " + money(p.price);
+  }
+
+  function closeChoice() {
+    $("choiceModal").classList.remove("show");
+  }
+
+  function confirmContinue() {
+    finishRecharge(state.pendingPlan, "continue");
+  }
+
+  function confirmUpgrade() {
+    const p = getPlan(state.upgradeId);
+    if (p) finishRecharge(p, "upgrade");
+  }
+
+  /* FINISH + SAVE */
+  function finishRecharge(plan, mode) {
+    closeChoice();
+    const today = new Date();
+    const a = state.active;
+    let validFrom = "-";
+    let validTill = "-";
+
+    if (plan.type === "main") {
+      const start = mode === "continue" ? addDays(today, a.daysLeft) : today;
+      validFrom = fmtDate(start);
+      validTill = fmtDate(addDays(start, plan.days));
+    } else if (plan.type === "addon") {
+      validFrom = fmtDate(today);
+      validTill = plan.days === 0
+        ? fmtDate(a.expiry) + " (current pack)"
+        : fmtDate(addDays(today, plan.days));
+    } else {
+      validFrom = fmtDate(today);
+      validTill = "Validity unchanged";
+    }
+
+    const typeLabel = mode === "upgrade" ? "Pack upgraded" : (
+      plan.type === "main" ? "Pack continued" :
+      plan.type === "topup" ? "Top-up added" : "Data add-on added"
+    );
+
+    const payment = document.querySelector('input[name="payment"]:checked').value;
+    const mobile = $("mobileNumber").value.trim();
+    const orderId = "SMCH" + String(Date.now()).slice(-8);
+
+    const rows = [
+      ["Order ID", orderId],
+      ["Mobile Number", mobile],
+      ["Network", state.operator + " • " + $("circle").value],
+      ["Recharge Type", typeLabel],
+      ["Plan", money(plan.price) + " • " + plan.data],
+      ["Valid From", validFrom],
+      ["Valid Till", validTill],
+      ["Amount Paid", money(plan.price)],
+      ["Payment", payment]
+    ];
+
+    $("successLogo").innerHTML = logoHtml(state.operator);
+    $("successSummary").innerHTML = rows.map(function (r) {
+      return '<div class="summary-row"><span>' + r[0] + '</span><strong>' + r[1] + '</strong></div>';
+    }).join("");
+    $("successText").textContent = mode === "upgrade"
+      ? "Your pack has been upgraded. The new benefits start today."
+      : "Your recharge request has been successfully placed.";
+    $("successModal").classList.add("show");
+
+    /* Save latest recharge + history */
+    const rechargeData = {
+      orderId: orderId,
+      mobileNumber: mobile,
+      operator: state.operator,
+      circle: $("circle").value,
+      type: plan.type,
+      mode: mode,
+      plan: plan.price,
+      data: plan.data,
+      validity: validityText(plan),
+      validFrom: validFrom,
+      validTill: validTill,
+      payment: payment,
+      date: new Date().toLocaleString()
+    };
+
+    try {
+      localStorage.setItem("latestRecharge", JSON.stringify(rechargeData));
+      const history = JSON.parse(localStorage.getItem("rechargeHistory") || "[]");
+      history.unshift(rechargeData);
+      localStorage.setItem("rechargeHistory", JSON.stringify(history.slice(0, 50)));
+    } catch (e) {
+      /* storage not available - recharge still completes */
+    }
+  }
+
+  function closeSuccess() {
+    $("successModal").classList.remove("show");
+  }
+
+  initLogos();
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeChoice();
+      closeSuccess();
+    }
+  });
+</script>
+</body>
+</html>

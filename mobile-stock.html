@@ -1,0 +1,3038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart Mobile Care Hub - Mobile Stock</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    background:#f4f7fb;
+    color:#173657;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =========================
+   TOP HEADER
+========================= */
+
+.top-header{
+    height:78px;
+    background:#082b5c;
+    color:white;
+
+    display:flex;
+    align-items:center;
+
+    position:sticky;
+    top:0;
+    z-index:2000;
+
+    box-shadow:0 5px 25px rgba(0,0,0,.16);
+}
+
+.brand-area{
+    width:310px;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 25px;
+
+    border-right:1px solid rgba(255,255,255,.14);
+}
+
+.brand-icon{
+    width:48px;
+    height:48px;
+
+    border:2px solid white;
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    margin-right:13px;
+}
+
+.brand-text h1{
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:-.4px;
+}
+
+.brand-text p{
+    margin-top:3px;
+    color:#d5e4f5;
+    font-size:11px;
+    font-weight:500;
+}
+
+.header-right{
+    flex:1;
+
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+
+    gap:22px;
+
+    padding:0 28px;
+}
+
+.header-search{
+    width:360px;
+    height:42px;
+
+    border:1px solid rgba(255,255,255,.30);
+    border-radius:22px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 15px;
+
+    background:rgba(255,255,255,.07);
+}
+
+.header-search i{
+    margin-right:10px;
+    color:#dbe9f8;
+}
+
+.header-search input{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:white;
+    font-size:12px;
+}
+
+.header-search input::placeholder{
+    color:#c8d8e9;
+}
+
+.header-icon{
+    position:relative;
+    font-size:19px;
+    color:white;
+}
+
+.notification{
+    position:relative;
+}
+
+.notification-badge{
+    position:absolute;
+
+    top:-10px;
+    right:-10px;
+
+    width:19px;
+    height:19px;
+
+    border-radius:50%;
+
+    background:#e93445;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:9px;
+    font-weight:800;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.profile-icon{
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    background:white;
+    color:#082b5c;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+}
+
+/* =========================
+   TOP MODULE NAVIGATION
+========================= */
+
+.module-nav{
+    background:white;
+
+    min-height:62px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:7px;
+
+    padding:9px 20px;
+
+    border-bottom:1px solid #dce5ee;
+
+    box-shadow:0 3px 15px rgba(15,45,80,.07);
+
+    position:sticky;
+    top:78px;
+
+    z-index:1500;
+
+    overflow-x:auto;
+}
+
+.module-link{
+    height:43px;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    padding:0 17px;
+
+    border-radius:9px;
+
+    color:#294968;
+
+    font-size:12px;
+    font-weight:700;
+
+    white-space:nowrap;
+
+    transition:.25s;
+}
+
+.module-link i{
+    font-size:14px;
+}
+
+.module-link:hover{
+    background:#edf4fb;
+    color:#092e61;
+}
+
+.module-link.active{
+    background:#092e61;
+    color:white;
+
+    box-shadow:0 6px 15px rgba(9,46,97,.20);
+}
+
+.module-link.logout{
+    color:#d33b4c;
+}
+
+.module-link.logout:hover{
+    background:#fff0f2;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    padding:28px 30px 50px;
+
+    max-width:1750px;
+
+    margin:auto;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header{
+    background:
+        linear-gradient(
+            105deg,
+            #082b5c,
+            #0b3975 55%,
+            #15528e
+        );
+
+    min-height:190px;
+
+    border-radius:18px;
+
+    color:white;
+
+    padding:32px 38px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 32px rgba(8,43,92,.18);
+
+    margin-bottom:24px;
+}
+
+.page-header::before{
+    content:"";
+
+    position:absolute;
+
+    width:330px;
+    height:330px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:50%;
+
+    right:-100px;
+    top:-145px;
+}
+
+.page-header::after{
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:50%;
+
+    right:80px;
+    bottom:-180px;
+}
+
+.header-content{
+    position:relative;
+    z-index:2;
+}
+
+.header-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:7px 13px;
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    border-radius:20px;
+
+    font-size:11px;
+    font-weight:800;
+
+    margin-bottom:12px;
+}
+
+.page-header h2{
+    font-size:32px;
+    font-weight:800;
+
+    margin-bottom:8px;
+}
+
+.page-header p{
+    font-size:14px;
+    color:#d9e7f5;
+
+    max-width:720px;
+
+    line-height:1.6;
+}
+
+/* =========================
+   SUMMARY CARDS
+========================= */
+
+.summary-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:16px;
+
+    margin-bottom:23px;
+}
+
+.summary-card{
+    background:white;
+
+    border:1px solid #dce5ee;
+
+    border-radius:14px;
+
+    padding:19px;
+
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+
+    box-shadow:0 5px 18px rgba(20,48,82,.05);
+}
+
+.summary-icon{
+    width:52px;
+    height:52px;
+
+    border-radius:12px;
+
+    background:#eaf2fa;
+    color:#092e61;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+}
+
+.summary-card:nth-child(2) .summary-icon{
+    background:#e9f8f3;
+    color:#07946c;
+}
+
+.summary-card:nth-child(3) .summary-icon{
+    background:#fff6df;
+    color:#e59600;
+}
+
+.summary-card:nth-child(4) .summary-icon{
+    background:#ffecef;
+    color:#d92e45;
+}
+
+.summary-info span{
+    display:block;
+
+    color:#708299;
+
+    font-size:11px;
+    font-weight:700;
+
+    margin-bottom:5px;
+}
+
+.summary-info strong{
+    color:#092e61;
+
+    font-size:24px;
+    font-weight:800;
+}
+
+/* =========================
+   TOOLBAR
+========================= */
+
+.toolbar{
+    background:white;
+
+    border:1px solid #dce5ee;
+
+    border-radius:14px;
+
+    padding:16px;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 5px 18px rgba(20,48,82,.04);
+}
+
+.search-box{
+    flex:1;
+
+    height:47px;
+
+    border:1px solid #d3dee9;
+
+    border-radius:9px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+
+    background:#fbfcfe;
+}
+
+.search-box i{
+    color:#667e98;
+    margin-right:10px;
+}
+
+.search-box input{
+    width:100%;
+
+    border:none;
+    outline:none;
+
+    background:transparent;
+
+    color:#193a5c;
+
+    font-size:13px;
+    font-weight:600;
+}
+
+.filter-select{
+    height:47px;
+
+    min-width:170px;
+
+    border:1px solid #d3dee9;
+
+    border-radius:9px;
+
+    background:#fbfcfe;
+
+    color:#244363;
+
+    padding:0 13px;
+
+    outline:none;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.add-mobile-btn{
+    height:47px;
+
+    padding:0 19px;
+
+    border:none;
+
+    border-radius:9px;
+
+    background:#092e61;
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    font-size:12px;
+    font-weight:800;
+
+    white-space:nowrap;
+
+    transition:.2s;
+}
+
+.add-mobile-btn:hover{
+    background:#0d4383;
+    transform:translateY(-1px);
+}
+
+/* =========================
+   TABLE CARD
+========================= */
+
+.table-card{
+    background:white;
+
+    border:1px solid #dce5ee;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:0 7px 25px rgba(20,48,82,.06);
+}
+
+.table-top{
+    padding:19px 20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border-bottom:1px solid #e3eaf1;
+}
+
+.table-top h3{
+    color:#092e61;
+
+    font-size:19px;
+    font-weight:800;
+}
+
+.table-top p{
+    color:#718299;
+
+    font-size:11px;
+    font-weight:600;
+}
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+
+    min-width:1250px;
+}
+
+thead{
+    background:#092e61;
+    color:white;
+}
+
+th{
+    padding:15px 12px;
+
+    text-align:left;
+
+    font-size:11px;
+    font-weight:800;
+
+    white-space:nowrap;
+}
+
+td{
+    padding:13px 12px;
+
+    border-bottom:1px solid #e7edf3;
+
+    color:#294968;
+
+    font-size:12px;
+    font-weight:600;
+
+    vertical-align:middle;
+}
+
+tbody tr{
+    transition:.18s;
+}
+
+tbody tr:hover{
+    background:#f7faff;
+}
+
+.serial{
+    color:#71839a;
+    font-weight:800;
+}
+
+.product-image{
+    width:82px;
+    height:92px;
+
+    background:#f6f9fc;
+
+    border:1px solid #e0e7ee;
+
+    border-radius:10px;
+
+    padding:7px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+}
+
+.brand{
+    color:#092e61;
+
+    font-size:13px;
+    font-weight:800;
+}
+
+.model{
+    color:#183b5d;
+
+    font-size:13px;
+    font-weight:800;
+
+    max-width:170px;
+}
+
+.sub-text{
+    display:block;
+
+    margin-top:4px;
+
+    color:#8090a2;
+
+    font-size:10px;
+    font-weight:600;
+}
+
+.storage{
+    color:#294968;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.price{
+    color:#092e61;
+
+    font-size:14px;
+    font-weight:800;
+}
+
+.stock-number{
+    font-size:14px;
+    font-weight:800;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+    display:inline-flex;
+
+    align-items:center;
+    gap:7px;
+
+    padding:7px 10px;
+
+    border-radius:20px;
+
+    font-size:10px;
+    font-weight:800;
+
+    white-space:nowrap;
+}
+
+.status i{
+    font-size:7px;
+}
+
+.status.in{
+    color:#087b5b;
+    background:#e5f8f2;
+}
+
+.status.low{
+    color:#bd7600;
+    background:#fff4dc;
+}
+
+.status.out{
+    color:#c92c42;
+    background:#ffe8ed;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.actions{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.action-btn{
+    min-width:38px;
+    height:36px;
+
+    border-radius:7px;
+
+    border:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:11px;
+    font-weight:800;
+
+    transition:.2s;
+}
+
+.view-btn{
+    background:#eaf2fa;
+    color:#092e61;
+}
+
+.edit-btn{
+    background:#092e61;
+    color:white;
+}
+
+.delete-btn{
+    background:#ffecef;
+    color:#d42d45;
+}
+
+.action-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty-row{
+    text-align:center;
+
+    padding:45px!important;
+
+    color:#718299;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-overlay{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(3,18,39,.72);
+
+    backdrop-filter:blur(5px);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:5000;
+}
+
+.modal-overlay.show{
+    display:flex;
+}
+
+.modal{
+    width:min(620px,100%);
+
+    max-height:92vh;
+
+    overflow-y:auto;
+
+    background:white;
+
+    border-radius:18px;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+
+    animation:modalOpen .2s ease;
+}
+
+@keyframes modalOpen{
+    from{
+        opacity:0;
+        transform:translateY(15px) scale(.98);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.modal-header{
+    background:#092e61;
+
+    color:white;
+
+    padding:20px 23px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.modal-title{
+    display:flex;
+    align-items:center;
+
+    gap:11px;
+}
+
+.modal-title i{
+    font-size:19px;
+}
+
+.modal-title h3{
+    font-size:18px;
+    font-weight:800;
+}
+
+.close-btn{
+    width:34px;
+    height:34px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.13);
+
+    color:white;
+
+    font-size:15px;
+}
+
+.modal-body{
+    padding:24px;
+}
+
+.form-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:16px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    display:block;
+
+    color:#244363;
+
+    font-size:12px;
+    font-weight:800;
+
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+
+    height:45px;
+
+    border:1px solid #d3dee9;
+
+    border-radius:8px;
+
+    outline:none;
+
+    padding:0 12px;
+
+    color:#193a5c;
+
+    background:#fbfcfe;
+
+    font-size:12px;
+    font-weight:600;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#092e61;
+
+    background:white;
+
+    box-shadow:0 0 0 3px rgba(9,46,97,.08);
+}
+
+.image-preview{
+    width:100%;
+    height:120px;
+
+    border:1px dashed #cbd8e5;
+
+    border-radius:9px;
+
+    background:#f8fafc;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-top:8px;
+
+    overflow:hidden;
+}
+
+.image-preview img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    padding:10px;
+}
+
+.modal-actions{
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    padding-top:8px;
+}
+
+.cancel-btn,
+.save-btn{
+    height:45px;
+
+    border-radius:8px;
+
+    padding:0 20px;
+
+    font-size:12px;
+    font-weight:800;
+}
+
+.cancel-btn{
+    background:#f1f4f7;
+
+    color:#48627b;
+
+    border:1px solid #dbe3eb;
+}
+
+.save-btn{
+    background:#092e61;
+
+    color:white;
+
+    border:none;
+}
+
+.save-btn:hover{
+    background:#0d4383;
+}
+
+/* =========================
+   VIEW MODAL
+========================= */
+
+.view-details{
+    text-align:center;
+}
+
+.view-details-image{
+    width:170px;
+    height:190px;
+
+    background:#f7f9fc;
+
+    border-radius:13px;
+
+    margin:0 auto 18px;
+
+    padding:12px;
+}
+
+.view-details-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+}
+
+.view-details h3{
+    color:#092e61;
+
+    font-size:21px;
+    font-weight:800;
+
+    margin-bottom:8px;
+}
+
+.view-details p{
+    color:#72839a;
+
+    font-size:12px;
+    font-weight:600;
+}
+
+.details-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.detail-box{
+    background:#f5f8fb;
+
+    border-radius:9px;
+
+    padding:13px;
+
+    text-align:left;
+}
+
+.detail-box span{
+    display:block;
+
+    color:#7b8da1;
+
+    font-size:9px;
+    font-weight:700;
+
+    margin-bottom:5px;
+
+    text-transform:uppercase;
+}
+
+.detail-box strong{
+    color:#173b5d;
+
+    font-size:12px;
+    font-weight:800;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    background:#092e61;
+
+    color:white;
+
+    padding:14px 18px;
+
+    border-radius:10px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:12px;
+    font-weight:800;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.22);
+
+    transform:translateY(100px);
+
+    opacity:0;
+
+    transition:.3s;
+
+    z-index:7000;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.toast i{
+    color:#72e2bd;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+
+    .brand-area{
+        width:270px;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .header-search{
+        width:280px;
+    }
+}
+
+@media(max-width:800px){
+
+    .top-header{
+        height:auto;
+        min-height:75px;
+    }
+
+    .brand-area{
+        width:auto;
+        flex:1;
+    }
+
+    .header-right{
+        padding:0 15px;
+    }
+
+    .header-search,
+    .profile{
+        display:none;
+    }
+
+    .module-nav{
+        top:75px;
+        justify-content:flex-start;
+    }
+
+    .main{
+        padding:20px 15px 40px;
+    }
+
+    .page-header{
+        padding:25px;
+    }
+
+    .page-header h2{
+        font-size:26px;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr;
+    }
+
+    .toolbar{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .filter-select,
+    .add-mobile-btn{
+        width:100%;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     TOP HEADER
+========================= -->
+
+<header class="top-header">
+
+    <div class="brand-area">
+
+        <div class="brand-icon">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+
+        <div class="brand-text">
+            <h1>Smart Mobile Care Hub</h1>
+            <p>Admin • Smart Stock Management</p>
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <div class="header-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="topSearch"
+                placeholder="Search mobile phones, brand, model..."
+            >
+        </div>
+
+        <div class="header-icon notification">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-badge">3</span>
+        </div>
+
+        <div class="header-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+
+        <div class="profile">
+
+            <div class="profile-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <span>Admin</span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     TOP MODULES
+========================= -->
+
+<nav class="module-nav">
+
+    <a href="admin-dashboard.html" class="module-link">
+        <i class="fa-solid fa-house"></i>
+        Dashboard
+    </a>
+
+    <a href="mobile-stock.html" class="module-link active">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        Mobile Stock
+    </a>
+
+    <a href="repair-status.html" class="module-link">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        Repair Status
+    </a>
+
+    <a href="accessories-stock.html" class="module-link">
+        <i class="fa-solid fa-headphones"></i>
+        Accessories Stock
+    </a>
+
+    <a href="billing.html" class="module-link">
+        <i class="fa-solid fa-file-invoice-dollar"></i>
+        Billing
+    </a>
+
+    <a href="customer-data.html" class="module-link">
+        <i class="fa-solid fa-users"></i>
+        Customer Data
+    </a>
+
+    <a href="feedback.html" class="module-link">
+        <i class="fa-solid fa-comments"></i>
+        Feedback
+    </a>
+
+    <a href="../login.html" class="module-link logout">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="main">
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+        <div class="header-content">
+
+            <div class="header-tag">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                MOBILE INVENTORY MANAGEMENT
+            </div>
+
+            <h2>Mobile Stock Management</h2>
+
+            <p>
+                Manage mobile phones, brands, models, storage,
+                prices and stock availability from one professional dashboard.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+
+            <div class="summary-info">
+                <span>Total Models</span>
+                <strong id="totalModels">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div class="summary-info">
+                <span>In Stock</span>
+                <strong id="inStockCount">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <div class="summary-info">
+                <span>Low Stock</span>
+                <strong id="lowStockCount">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+
+            <div class="summary-info">
+                <span>Out of Stock</span>
+                <strong id="outStockCount">0</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOOLBAR -->
+
+    <section class="toolbar">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by brand or model..."
+            >
+
+        </div>
+
+
+        <select id="brandFilter" class="filter-select">
+
+            <option value="all">All Brands</option>
+
+            <option value="Apple">Apple</option>
+            <option value="Oppo">Oppo</option>
+            <option value="Vivo">Vivo</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Google">Google</option>
+            <option value="Realme">Realme</option>
+            <option value="Redmi">Redmi</option>
+            <option value="iQOO">iQOO</option>
+            <option value="Nothing">Nothing</option>
+            <option value="OnePlus">OnePlus</option>
+            <option value="Motorola">Motorola</option>
+
+        </select>
+
+
+        <select id="stockFilter" class="filter-select">
+
+            <option value="all">All Stock Status</option>
+            <option value="in">In Stock</option>
+            <option value="low">Low Stock</option>
+            <option value="out">Out of Stock</option>
+
+        </select>
+
+
+        <button class="add-mobile-btn" onclick="openAddModal()">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Mobile
+
+        </button>
+
+    </section>
+
+
+    <!-- TABLE -->
+
+    <section class="table-card">
+
+        <div class="table-top">
+
+            <div>
+                <h3>Mobile Phone Inventory</h3>
+
+                <p>
+                    View and manage all mobile stock details
+                </p>
+            </div>
+
+            <div>
+                <p id="showingText">
+                    Showing 0 mobile phones
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>IMAGE</th>
+
+                        <th>BRAND</th>
+
+                        <th>MODEL</th>
+
+                        <th>COLOUR</th>
+
+                        <th>STORAGE</th>
+
+                        <th>PRICE</th>
+
+                        <th>STOCK</th>
+
+                        <th>STATUS</th>
+
+                        <th>ACTIONS</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="mobileTableBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     ADD / EDIT MODAL
+========================= -->
+
+<div class="modal-overlay" id="formModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+
+                <i class="fa-solid fa-mobile-screen-button"></i>
+
+                <h3 id="modalTitle">
+                    Add Mobile
+                </h3>
+
+            </div>
+
+            <button class="close-btn" onclick="closeFormModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <form id="mobileForm">
+
+                <input type="hidden" id="editIndex">
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Brand Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="brand"
+                            placeholder="Example: Apple"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Model Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="model"
+                            placeholder="Example: iPhone 18 Pro"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Colour
+                        </label>
+
+                        <input
+                            type="text"
+                            id="colour"
+                            placeholder="Example: Black"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Storage
+                        </label>
+
+                        <input
+                            type="text"
+                            id="storage"
+                            placeholder="Example: 12GB / 256GB"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Price (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="price"
+                            placeholder="Example: 99999"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Stock Quantity
+                        </label>
+
+                        <input
+                            type="number"
+                            id="stock"
+                            placeholder="Example: 10"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Image Path
+                        </label>
+
+                        <input
+                            type="text"
+                            id="image"
+                            placeholder="../images/iphone18pro.jpg"
+                            required
+                            oninput="updatePreview()"
+                        >
+
+                        <div class="image-preview">
+
+                            <img
+                                id="previewImage"
+                                src=""
+                                alt="Preview"
+                                onerror="this.style.display='none'"
+                            >
+
+                            <span id="previewText">
+                                Image preview
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeFormModal()"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     VIEW MODAL
+========================= -->
+
+<div class="modal-overlay" id="viewModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+
+                <i class="fa-solid fa-eye"></i>
+
+                <h3>Mobile Details</h3>
+
+            </div>
+
+            <button
+                class="close-btn"
+                onclick="closeViewModal()"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div class="view-details">
+
+                <div class="view-details-image">
+
+                    <img
+                        id="viewImage"
+                        src=""
+                        alt="Mobile"
+                    >
+
+                </div>
+
+                <h3 id="viewModel"></h3>
+
+                <p id="viewBrand"></p>
+
+
+                <div class="details-grid">
+
+                    <div class="detail-box">
+
+                        <span>Colour</span>
+
+                        <strong id="viewColour"></strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>Storage</span>
+
+                        <strong id="viewStorage"></strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>Price</span>
+
+                        <strong id="viewPrice"></strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>Stock</span>
+
+                        <strong id="viewStock"></strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>Status</span>
+
+                        <strong id="viewStatus"></strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage">
+        Saved successfully
+    </span>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   MOBILE DATA
+========================================= */
+
+const defaultMobiles = [
+
+{
+brand:"Apple",
+model:"iPhone 18 Pro",
+colour:"Burgundy",
+storage:"12GB / 256GB",
+price:164900,
+stock:8,
+image:"../images/iphone18pro.jpg"
+},
+
+{
+brand:"Apple",
+model:"iPhone 17 Pro Max",
+colour:"orange",
+storage:"12GB / 256GB",
+price:159900,
+stock:6,
+image:"../images/iphone17promax1.avif"
+},
+
+{
+brand:"Apple",
+model:"iPhone 16 Pro Max",
+colour:"Natural Titanium",
+storage:"8GB / 256GB",
+price:139900,
+stock:4,
+image:"../images/iphone16pro%20max.webp"
+},
+
+{
+brand:"Apple",
+model:"iPhone 17",
+colour:"Midnight Blue",
+storage:"8GB / 256GB",
+price:89900,
+stock:7,
+image:"../images/iphone17.jpg"
+},
+
+{
+brand:"Apple",
+model:"Apple 11 Pro",
+colour:"Space Grey",
+storage:"4GB / 256GB",
+price:42990,
+stock:3,
+image:"../images/apple11pro.jpg"
+},
+
+{
+brand:"Oppo",
+model:"Reno 10 Pro 5G",
+colour:"Glossy Purple",
+storage:"12GB / 256GB",
+price:39999,
+stock:5,
+image:"../images/oppo%20reno10pro5g.jpg"
+},
+
+{
+brand:"Oppo",
+model:"Reno 13",
+colour:"Midnight Black",
+storage:"12GB / 256GB",
+price:39999,
+stock:2,
+image:"../images/oppo%20reno13.jpg"
+},
+
+{
+brand:"Oppo",
+model:"Find N2 Flip",
+colour:"Astral Black",
+storage:"8GB / 256GB",
+price:69999,
+stock:1,
+image:"../images/oppofindn2flip.jpeg"
+},
+
+{
+brand:"Oppo",
+model:"Find X9S",
+colour:"Graphite Black",
+storage:"12GB / 256GB",
+price:69999,
+stock:4,
+image:"../images/oppofindx9s.jpeg"
+},
+
+{
+brand:"Oppo",
+model:"Find X9 Ultra",
+colour:"Premium Black",
+storage:"16GB / 512GB",
+price:99999,
+stock:0,
+image:"../images/oppofindx9ultra.jpeg"
+},
+
+{
+brand:"Oppo",
+model:"Reno 16 5G",
+colour:"Ocean Blue",
+storage:"12GB / 256GB",
+price:44999,
+stock:3,
+image:"../images/opporeno16%205g.jpeg"
+},
+
+{
+brand:"Vivo",
+model:"T5 5G",
+colour:"Emerald Green",
+storage:"8GB / 128GB",
+price:24999,
+stock:6,
+image:"../images/vivot55g.png"
+},
+
+{
+brand:"Vivo",
+model:"V40",
+colour:"Titanium Grey",
+storage:"12GB / 256GB",
+price:34999,
+stock:5,
+image:"../images/vivov40.png"
+},
+
+{
+brand:"Vivo",
+model:"V70 FE",
+colour:"Premium Blue",
+storage:"12GB / 256GB",
+price:44999,
+stock:3,
+image:"../images/vivov70fe.png"
+},
+
+{
+brand:"Vivo",
+model:"V80",
+colour:"Royal Blue",
+storage:"12GB / 256GB",
+price:49999,
+stock:2,
+image:"../images/vivov80.png"
+},
+
+{
+brand:"Vivo",
+model:"X100",
+colour:"Asteroid Black",
+storage:"16GB / 512GB",
+price:69999,
+stock:4,
+image:"../images/vivox100.jpg"
+},
+
+{
+brand:"Vivo",
+model:"Y31 5G",
+colour:"Ocean Blue",
+storage:"8GB / 128GB",
+price:21999,
+stock:7,
+image:"../images/vivoy315g.webp"
+},
+
+{
+brand:"Samsung",
+model:"Galaxy S25 Ultra",
+colour:"Titanium Black",
+storage:"12GB / 256GB",
+price:149999,
+stock:5,
+image:"../images/samsunggalaxys25ultra.avif"
+},
+
+{
+brand:"Samsung",
+model:"Galaxy S24 Ultra",
+colour:"Titanium Grey",
+storage:"12GB / 256GB",
+price:129999,
+stock:4,
+image:"../images/samsungs24ultra.jpeg"
+},
+
+{
+brand:"Google",
+model:"Pixel 9 Pro",
+colour:"Obsidian Black",
+storage:"16GB / 256GB",
+price:109999,
+stock:3,
+image:"../images/googlepixel9pro.webp"
+},
+
+{
+brand:"Google",
+model:"Pixel 10 Pro",
+colour:"Porcelain White",
+storage:"16GB / 256GB",
+price:119999,
+stock:1,
+image:"../images/googlepixel10pro.jpeg"
+},
+
+{
+brand:"Realme",
+model:"16 Pro 5G",
+colour:"Silver Titanium",
+storage:"12GB / 256GB",
+price:34999,
+stock:6,
+image:"../images/realme16pro5g.webp"
+},
+
+{
+brand:"Realme",
+model:"GT 8 Pro 5G",
+colour:"Racing Black",
+storage:"16GB / 512GB",
+price:54999,
+stock:2,
+image:"../images/realmegt8pro5g.webp"
+},
+
+{
+brand:"Redmi",
+model:"Note 14 Pro 5G",
+colour:"Midnight Black",
+storage:"8GB / 256GB",
+price:29999,
+stock:5,
+image:"../images/redminote14pro5g.jpeg"
+},
+
+{
+brand:"Redmi",
+model:"Note 17 Pro Max 5G",
+colour:"Premium Blue",
+storage:"12GB / 512GB",
+price:39999,
+stock:2,
+image:"../images/redminote17promax5g.png"
+},
+
+{
+brand:"iQOO",
+model:"Z9 Lite 5G",
+colour:"Aqua Blue",
+storage:"6GB / 128GB",
+price:15999,
+stock:7,
+image:"../images/iqooz9lite5g.png"
+},
+
+{
+brand:"iQOO",
+model:"Z11 Lite",
+colour:"Titanium Grey",
+storage:"8GB / 128GB",
+price:19999,
+stock:4,
+image:"../images/iqooz11lite.png"
+},
+
+{
+brand:"iQOO",
+model:"Z11 5G",
+colour:"Phantom Black",
+storage:"12GB / 256GB",
+price:29999,
+stock:1,
+image:"../images/iqooz115g.png"
+},
+
+{
+brand:"Nothing",
+model:"Phone 2",
+colour:"Dark Grey",
+storage:"12GB / 256GB",
+price:44999,
+stock:3,
+image:"../images/Nothingphone2.jpeg"
+},
+
+{
+brand:"Nothing",
+model:"Phone 3",
+colour:"White",
+storage:"12GB / 256GB",
+price:54999,
+stock:2,
+image:"../images/Nothingphone3.webp"
+},
+
+{
+brand:"OnePlus",
+model:"OnePlus 12 5G",
+colour:"Emerald Green",
+storage:"12GB / 256GB",
+price:64999,
+stock:5,
+image:"../images/oneplus12%205g.png"
+},
+
+{
+brand:"OnePlus",
+model:"OnePlus 13 5G",
+colour:"Midnight Blue",
+storage:"16GB / 512GB",
+price:79999,
+stock:3,
+image:"../images/oneplus135g.png"
+},
+
+{
+brand:"Motorola",
+model:"Edge 50 Ultra 5G",
+colour:"Forest Grey",
+storage:"12GB / 512GB",
+price:54999,
+stock:4,
+image:"../images/motorolaedge50ultra5g.jpg"
+},
+
+{
+brand:"Motorola",
+model:"Edge 60 Pro 5G",
+colour:"Premium Blue",
+storage:"12GB / 256GB",
+price:39999,
+stock:2,
+image:"../images/motorolaedge60pro5g.webp"
+}
+
+];
+
+
+/* =========================================
+   LOAD DATA
+========================================= */
+
+let mobiles;
+
+const savedMobiles = localStorage.getItem("smartMobileStock");
+
+if(savedMobiles){
+
+    try{
+
+        mobiles = JSON.parse(savedMobiles);
+
+    }catch(error){
+
+        mobiles = [...defaultMobiles];
+
+    }
+
+}else{
+
+    mobiles = [...defaultMobiles];
+
+}
+
+
+/* =========================================
+   SAVE TO LOCAL STORAGE
+========================================= */
+
+function saveData(){
+
+    localStorage.setItem(
+        "smartMobileStock",
+        JSON.stringify(mobiles)
+    );
+
+}
+
+
+/* =========================================
+   GET STATUS
+========================================= */
+
+function getStatus(stock){
+
+    stock = Number(stock);
+
+    if(stock <= 0){
+
+        return {
+            key:"out",
+            text:"Out of Stock"
+        };
+
+    }
+
+    if(stock <= 2){
+
+        return {
+            key:"low",
+            text:"Low Stock"
+        };
+
+    }
+
+    return {
+        key:"in",
+        text:"In Stock"
+    };
+
+}
+
+
+/* =========================================
+   FORMAT PRICE
+========================================= */
+
+function formatPrice(price){
+
+    return "₹" + Number(price).toLocaleString("en-IN");
+
+}
+
+
+/* =========================================
+   RENDER TABLE
+========================================= */
+
+function renderTable(){
+
+    const tbody =
+        document.getElementById("mobileTableBody");
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const brand =
+        document.getElementById("brandFilter").value;
+
+    const stockFilter =
+        document.getElementById("stockFilter").value;
+
+
+    const filtered = mobiles.filter((mobile)=>{
+
+        const matchesSearch =
+            mobile.brand.toLowerCase().includes(search) ||
+            mobile.model.toLowerCase().includes(search);
+
+        const matchesBrand =
+            brand === "all" ||
+            mobile.brand === brand;
+
+        const status =
+            getStatus(mobile.stock);
+
+        const matchesStock =
+            stockFilter === "all" ||
+            status.key === stockFilter;
+
+        return (
+            matchesSearch &&
+            matchesBrand &&
+            matchesStock
+        );
+
+    });
+
+
+    tbody.innerHTML = "";
+
+
+    if(filtered.length === 0){
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="10" class="empty-row">
+                    <i class="fa-solid fa-box-open"
+                       style="font-size:30px;display:block;margin-bottom:10px;">
+                    </i>
+
+                    No mobile phones found.
+                </td>
+            </tr>
+        `;
+
+        document.getElementById("showingText").textContent =
+            "Showing 0 mobile phones";
+
+        return;
+
+    }
+
+
+    filtered.forEach((mobile)=>{
+
+        const actualIndex =
+            mobiles.indexOf(mobile);
+
+        const status =
+            getStatus(mobile.stock);
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td class="serial">
+                ${actualIndex + 1}
+            </td>
+
+
+            <td>
+
+                <div class="product-image">
+
+                    <img
+                        src="${mobile.image}"
+                        alt="${mobile.model}"
+                        onerror="this.src='https://via.placeholder.com/100x110?text=Phone'"
+                    >
+
+                </div>
+
+            </td>
+
+
+            <td>
+
+                <span class="brand">
+                    ${escapeHTML(mobile.brand)}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <span class="model">
+                    ${escapeHTML(mobile.model)}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <span class="storage">
+                    ${escapeHTML(mobile.colour)}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <span class="storage">
+                    ${escapeHTML(mobile.storage)}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <span class="price">
+                    ${formatPrice(mobile.price)}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <span class="stock-number">
+                    ${mobile.stock}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <span class="status ${status.key}">
+
+                    <i class="fa-solid fa-circle"></i>
+
+                    ${status.text}
+
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="actions">
+
+                    <button
+                        class="action-btn view-btn"
+                        title="View"
+                        onclick="viewMobile(${actualIndex})"
+                    >
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+
+
+                    <button
+                        class="action-btn edit-btn"
+                        title="Edit"
+                        onclick="editMobile(${actualIndex})"
+                    >
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+
+                    <button
+                        class="action-btn delete-btn"
+                        title="Delete"
+                        onclick="deleteMobile(${actualIndex})"
+                    >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </div>
+
+            </td>
+
+        `;
+
+        tbody.appendChild(row);
+
+    });
+
+
+    document.getElementById("showingText").textContent =
+        `Showing ${filtered.length} of ${mobiles.length} mobile phones`;
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================
+   UPDATE SUMMARY
+========================================= */
+
+function updateSummary(){
+
+    let inStock = 0;
+    let lowStock = 0;
+    let outStock = 0;
+
+
+    mobiles.forEach((mobile)=>{
+
+        const status =
+            getStatus(mobile.stock);
+
+        if(status.key === "in"){
+            inStock++;
+        }
+
+        else if(status.key === "low"){
+            lowStock++;
+        }
+
+        else{
+            outStock++;
+        }
+
+    });
+
+
+    document.getElementById("totalModels").textContent =
+        mobiles.length;
+
+    document.getElementById("inStockCount").textContent =
+        inStock;
+
+    document.getElementById("lowStockCount").textContent =
+        lowStock;
+
+    document.getElementById("outStockCount").textContent =
+        outStock;
+
+}
+
+
+/* =========================================
+   ADD MOBILE
+========================================= */
+
+function openAddModal(){
+
+    document.getElementById("mobileForm").reset();
+
+    document.getElementById("editIndex").value = "";
+
+    document.getElementById("modalTitle").textContent =
+        "Add New Mobile";
+
+    document.getElementById("previewImage").style.display =
+        "none";
+
+    document.getElementById("previewText").style.display =
+        "block";
+
+    document.getElementById("formModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================================
+   EDIT MOBILE
+========================================= */
+
+function editMobile(index){
+
+    const mobile = mobiles[index];
+
+    document.getElementById("editIndex").value =
+        index;
+
+    document.getElementById("brand").value =
+        mobile.brand;
+
+    document.getElementById("model").value =
+        mobile.model;
+
+    document.getElementById("colour").value =
+        mobile.colour;
+
+    document.getElementById("storage").value =
+        mobile.storage;
+
+    document.getElementById("price").value =
+        mobile.price;
+
+    document.getElementById("stock").value =
+        mobile.stock;
+
+    document.getElementById("image").value =
+        mobile.image;
+
+    document.getElementById("modalTitle").textContent =
+        "Edit Mobile Details";
+
+    updatePreview();
+
+    document.getElementById("formModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================================
+   SAVE / UPDATE
+========================================= */
+
+document.getElementById("mobileForm")
+.addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+
+    const index =
+        document.getElementById("editIndex").value;
+
+
+    const mobileData = {
+
+        brand:
+            document.getElementById("brand").value.trim(),
+
+        model:
+            document.getElementById("model").value.trim(),
+
+        colour:
+            document.getElementById("colour").value.trim(),
+
+        storage:
+            document.getElementById("storage").value.trim(),
+
+        price:
+            Number(document.getElementById("price").value),
+
+        stock:
+            Number(document.getElementById("stock").value),
+
+        image:
+            document.getElementById("image").value.trim()
+
+    };
+
+
+    if(index === ""){
+
+        mobiles.push(mobileData);
+
+        showToast(
+            "New mobile added successfully!"
+        );
+
+    }else{
+
+        mobiles[Number(index)] =
+            mobileData;
+
+        showToast(
+            "Mobile details updated successfully!"
+        );
+
+    }
+
+
+    saveData();
+
+    renderTable();
+
+    updateSummary();
+
+    closeFormModal();
+
+});
+
+
+/* =========================================
+   DELETE
+========================================= */
+
+function deleteMobile(index){
+
+    const mobile = mobiles[index];
+
+
+    const confirmed =
+        confirm(
+            `Are you sure you want to delete ${mobile.model}?`
+        );
+
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    mobiles.splice(index,1);
+
+    saveData();
+
+    renderTable();
+
+    updateSummary();
+
+    showToast(
+        "Mobile deleted successfully!"
+    );
+
+}
+
+
+/* =========================================
+   VIEW
+========================================= */
+
+function viewMobile(index){
+
+    const mobile = mobiles[index];
+
+    const status =
+        getStatus(mobile.stock);
+
+
+    document.getElementById("viewImage").src =
+        mobile.image;
+
+    document.getElementById("viewModel").textContent =
+        mobile.model;
+
+    document.getElementById("viewBrand").textContent =
+        mobile.brand;
+
+    document.getElementById("viewColour").textContent =
+        mobile.colour;
+
+    document.getElementById("viewStorage").textContent =
+        mobile.storage;
+
+    document.getElementById("viewPrice").textContent =
+        formatPrice(mobile.price);
+
+    document.getElementById("viewStock").textContent =
+        mobile.stock;
+
+    document.getElementById("viewStatus").textContent =
+        status.text;
+
+
+    document.getElementById("viewModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================================
+   CLOSE MODALS
+========================================= */
+
+function closeFormModal(){
+
+    document.getElementById("formModal")
+        .classList.remove("show");
+
+}
+
+
+function closeViewModal(){
+
+    document.getElementById("viewModal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================
+   IMAGE PREVIEW
+========================================= */
+
+function updatePreview(){
+
+    const path =
+        document.getElementById("image").value.trim();
+
+    const image =
+        document.getElementById("previewImage");
+
+    const text =
+        document.getElementById("previewText");
+
+
+    if(!path){
+
+        image.style.display = "none";
+
+        text.style.display = "block";
+
+        return;
+
+    }
+
+
+    image.src = path;
+
+    image.style.display = "block";
+
+    text.style.display = "none";
+
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    const messageBox =
+        document.getElementById("toastMessage");
+
+
+    messageBox.textContent =
+        message;
+
+    toast.classList.add("show");
+
+
+    setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+    },2500);
+
+}
+
+
+/* =========================================
+   SEARCH / FILTER
+========================================= */
+
+document.getElementById("searchInput")
+.addEventListener("input",renderTable);
+
+document.getElementById("brandFilter")
+.addEventListener("change",renderTable);
+
+document.getElementById("stockFilter")
+.addEventListener("change",renderTable);
+
+
+/* TOP SEARCH */
+
+document.getElementById("topSearch")
+.addEventListener("input",function(){
+
+    document.getElementById("searchInput").value =
+        this.value;
+
+    renderTable();
+
+});
+
+
+/* =========================================
+   CLOSE MODAL OUTSIDE
+========================================= */
+
+document.getElementById("formModal")
+.addEventListener("click",function(event){
+
+    if(event.target === this){
+
+        closeFormModal();
+
+    }
+
+});
+
+
+document.getElementById("viewModal")
+.addEventListener("click",function(event){
+
+    if(event.target === this){
+
+        closeViewModal();
+
+    }
+
+});
+
+
+/* =========================================
+   ESC KEY
+========================================= */
+
+document.addEventListener("keydown",function(event){
+
+    if(event.key === "Escape"){
+
+        closeFormModal();
+
+        closeViewModal();
+
+    }
+
+});
+
+
+/* =========================================
+   INITIAL LOAD
+========================================= */
+
+renderTable();
+
+updateSummary();
+
+</script>
+
+</body>
+</html>

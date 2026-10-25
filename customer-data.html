@@ -1,0 +1,1571 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Data | Smart Mobile Care Hub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --navy: #071a38;
+            --blue: #123d78;
+            --primary: #2563eb;
+            --light-blue: #edf4ff;
+            --white: #ffffff;
+            --background: #f4f7fc;
+            --text: #172b4d;
+            --muted: #718096;
+            --border: #e2e8f0;
+            --success: #13834b;
+            --danger: #dc3545;
+            --shadow: 0 8px 28px rgba(7, 26, 56, 0.07);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text);
+        }
+
+        button, input, select, textarea {
+            font: inherit;
+        }
+
+        .layout {
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 255px;
+            height: 100vh;
+            background: var(--navy);
+            color: white;
+            padding: 25px 16px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 9px 28px;
+            border-bottom: 1px solid rgba(255,255,255,0.13);
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: #2563eb;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .brand h2 {
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 800;
+        }
+
+        .brand p {
+            font-size: 11px;
+            color: #b9c9e4;
+            margin-top: 3px;
+        }
+
+        .menu-title {
+            margin: 27px 10px 12px;
+            color: #93a8c8;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px 14px;
+            color: #d2def1;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 9px;
+            margin-bottom: 5px;
+            transition: 0.2s;
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #173e78;
+            color: white;
+        }
+
+        .nav-link.active {
+            box-shadow: inset 3px 0 #60a5fa;
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: 255px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 76px;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            gap: 15px;
+        }
+
+        .topbar h3 {
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .topbar p {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--light-blue);
+            color: var(--blue);
+            font-size: 17px;
+        }
+
+        .admin-profile strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .admin-profile small {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .content {
+            padding: 30px 32px 40px;
+            max-width: 1600px;
+            margin: auto;
+        }
+
+        .page-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .page-heading h1 {
+            font-size: 25px;
+            color: var(--navy);
+            font-weight: 800;
+        }
+
+        .page-heading p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .page-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e8f0ff;
+            color: #174a96;
+            border-radius: 30px;
+            padding: 10px 15px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* SUMMARY CARD */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .summary-card {
+            background: white;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            border-radius: 15px;
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .summary-icon {
+            width: 49px;
+            height: 49px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            background: #eaf1ff;
+            color: #2458b4;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .summary-card:nth-child(2) .summary-icon {
+            background: #e6f7ee;
+            color: #16834b;
+        }
+
+        .summary-card:nth-child(3) .summary-icon {
+            background: #e8f5ff;
+            color: #0875b9;
+        }
+
+        .summary-card p {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .summary-card h2 {
+            font-size: 25px;
+            color: var(--navy);
+        }
+
+        /* CARDS */
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 22px 25px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-title-icon {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: var(--light-blue);
+            color: var(--primary);
+            font-size: 17px;
+        }
+
+        .card-title h2 {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .card-title p {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        /* FORM */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 21px;
+        }
+
+        .form-group {
+            min-width: 0;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 9px;
+            color: #243955;
+        }
+
+        .required {
+            color: #dc3545;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap > i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8292aa;
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid #dce4ef;
+            border-radius: 9px;
+            padding: 13px 13px 13px 40px;
+            background: #fbfcff;
+            color: var(--text);
+            outline: none;
+            font-size: 12px;
+            transition: 0.2s;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group textarea {
+            min-height: 88px;
+            resize: vertical;
+            padding-top: 13px;
+        }
+
+        .form-group textarea + i {
+            display: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.09);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #a0aec0;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 11px;
+            margin-top: 25px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 18px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1b4f97;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #edf1f7;
+            color: #334766;
+        }
+
+        .btn-secondary:hover {
+            background: #e1e8f2;
+        }
+
+        .btn-edit {
+            background: #eaf1ff;
+            color: #2458b4;
+        }
+
+        .btn-delete {
+            background: #fff0f0;
+            color: #c53030;
+        }
+
+        .btn-edit,
+        .btn-delete {
+            padding: 8px 10px;
+            font-size: 11px;
+        }
+
+        /* TABLE */
+        .table-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            position: relative;
+            width: min(100%, 350px);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8292aa;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 14px 12px 40px;
+            border: 1px solid var(--border);
+            background: #fbfcff;
+            border-radius: 9px;
+            outline: none;
+            font-size: 12px;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .table-count {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .table-count strong {
+            color: var(--navy);
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            min-width: 1050px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        thead {
+            background: #f0f5fd;
+        }
+
+        th {
+            padding: 15px 16px;
+            font-size: 11px;
+            color: #3b506f;
+            font-weight: 800;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 15px 16px;
+            border-bottom: 1px solid #edf1f6;
+            font-size: 12px;
+            color: #40516b;
+            vertical-align: middle;
+        }
+
+        tbody tr:hover {
+            background: #f8faff;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .customer-name {
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .customer-id {
+            display: inline-block;
+            padding: 6px 9px;
+            border-radius: 6px;
+            background: #edf3ff;
+            color: #2458b4;
+            font-size: 11px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .status-active {
+            background: #e6f7ee;
+            color: #13834b;
+        }
+
+        .status-inactive {
+            background: #f0f2f5;
+            color: #667085;
+        }
+
+        .status-pending {
+            background: #fff4db;
+            color: #986900;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 7px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 45px 20px;
+            color: var(--muted);
+        }
+
+        .empty-state i {
+            display: block;
+            font-size: 35px;
+            color: #a9bad2;
+            margin-bottom: 14px;
+        }
+
+        .empty-state h3 {
+            font-size: 15px;
+            color: #30415c;
+            margin-bottom: 7px;
+        }
+
+        .empty-state p {
+            font-size: 12px;
+        }
+
+        /* SUCCESS NOTIFICATION */
+        .toast {
+            position: fixed;
+            top: 22px;
+            right: 22px;
+            z-index: 999;
+            width: min(390px, calc(100% - 32px));
+            background: white;
+            border: 1px solid #ccebd9;
+            border-left: 5px solid #13834b;
+            border-radius: 12px;
+            padding: 17px 19px;
+            box-shadow: 0 15px 45px rgba(7, 26, 56, 0.17);
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-12px);
+            transition: 0.25s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .toast-icon {
+            width: 35px;
+            height: 35px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            background: #e6f7ee;
+            color: #13834b;
+            border-radius: 50%;
+        }
+
+        .toast h3 {
+            font-size: 13px;
+            color: #11683d;
+            margin: 2px 0 5px;
+        }
+
+        .toast p {
+            font-size: 11px;
+            color: #63748b;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            color: #8795aa;
+            font-size: 11px;
+            padding: 8px 0 20px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1100px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                margin-left: 220px;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .summary-grid {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 17px 14px;
+            }
+
+            .brand {
+                padding-bottom: 15px;
+            }
+
+            .menu-title {
+                margin-top: 18px;
+            }
+
+            .sidebar nav {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 4px;
+            }
+
+            .nav-link {
+                margin: 0;
+                padding: 11px 9px;
+                font-size: 11px;
+                gap: 8px;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .topbar {
+                padding: 0 18px;
+                height: 68px;
+            }
+
+            .topbar h3 {
+                font-size: 14px;
+            }
+
+            .admin-profile strong {
+                font-size: 11px;
+            }
+
+            .content {
+                padding: 22px 14px;
+            }
+
+            .page-heading h1 {
+                font-size: 21px;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-card {
+                padding: 17px;
+            }
+
+            .card-header,
+            .card-body {
+                padding: 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 17px;
+            }
+
+            .form-group.full-width {
+                grid-column: auto;
+            }
+
+            .form-actions .btn {
+                flex: 1;
+            }
+
+            .table-toolbar {
+                align-items: stretch;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .table-count {
+                line-height: 1.7;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <div>
+                <h2>Smart Mobile<br>Care Hub</h2>
+                <p>Admin Management Panel</p>
+            </div>
+        </div>
+
+        <p class="menu-title">MAIN MENU</p>
+
+        <nav>
+            <a class="nav-link" href="admin-dashboard.html">
+                <i class="fa-solid fa-chart-line"></i> Dashboard
+            </a>
+
+            <a class="nav-link" href="mobile-stock.html">
+                <i class="fa-solid fa-mobile-screen"></i> Mobile Stock
+            </a>
+
+            <a class="nav-link" href="repair-status.html">
+                <i class="fa-solid fa-screwdriver-wrench"></i> Repair Status
+            </a>
+
+            <a class="nav-link" href="accessories-stock.html">
+                <i class="fa-solid fa-headphones"></i> Accessories Stock
+            </a>
+
+            <a class="nav-link" href="billing.html">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Billing
+            </a>
+
+            <a class="nav-link active" href="customer-data.html">
+                <i class="fa-solid fa-users"></i> Customer Data
+            </a>
+
+            <a class="nav-link" href="customer-support.html">
+                <i class="fa-solid fa-headset"></i> Customer Support
+            </a>
+
+            <a class="nav-link" href="viewfeedback.html">
+                <i class="fa-solid fa-comment-dots"></i> Feedback
+            </a>
+
+            <a class="nav-link" href="../login.html">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h3>Customer Management</h3>
+                <p>Admin / Customer Data</p>
+            </div>
+
+            <div class="admin-profile">
+                <div class="admin-avatar">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Admin Panel</small>
+                </div>
+            </div>
+        </header>
+
+        <section class="content">
+
+            <div class="page-heading">
+                <div>
+                    <h1>Customer Data</h1>
+                    <p>Manage, save and view your customer information in one place.</p>
+                </div>
+
+                <div class="page-label">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Customer Records
+                </div>
+            </div>
+
+            <!-- SUMMARY -->
+            <div class="summary-grid">
+
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <p>Total Customers</p>
+                        <h2 id="totalCustomers">0</h2>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <div>
+                        <p>Active Customers</p>
+                        <h2 id="activeCustomers">0</h2>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <div>
+                        <p>Mobile Records</p>
+                        <h2 id="mobileRecords">0</h2>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ADD CUSTOMER FORM -->
+            <section class="card" id="customerFormSection">
+
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <div>
+                            <h2 id="formHeading">Add Customer Details</h2>
+                            <p>Enter the customer information below</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+
+                    <form id="customerForm">
+                        <input type="hidden" id="editingId" value="">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="customerId">
+                                    Customer ID <span class="required">*</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-id-card"></i>
+                                    <input type="text" id="customerId"
+                                           placeholder="Example: CUS001" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerName">
+                                    Customer Name <span class="required">*</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input type="text" id="customerName"
+                                           placeholder="Enter full name" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mobileNumber">
+                                    Mobile Number <span class="required">*</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <input type="tel" id="mobileNumber"
+                                           placeholder="Enter mobile number"
+                                           inputmode="numeric"
+                                           pattern="[0-9+\-\s()]{7,20}"
+                                           title="Enter a valid mobile number"
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <input type="email" id="email"
+                                           placeholder="customer@example.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mobileBrand">Mobile Brand</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-mobile-screen-button"></i>
+                                    <select id="mobileBrand">
+                                        <option value="">Select brand</option>
+                                        <option>Apple</option>
+                                        <option>Samsung</option>
+                                        <option>OnePlus</option>
+                                        <option>Xiaomi</option>
+                                        <option>Redmi</option>
+                                        <option>Realme</option>
+                                        <option>Vivo</option>
+                                        <option>Oppo</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mobileModel">Mobile Model</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-mobile"></i>
+                                    <input type="text" id="mobileModel"
+                                           placeholder="Enter mobile model">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="serviceType">Service Type</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                                    <select id="serviceType">
+                                        <option value="">Select service</option>
+                                        <option>Mobile Repair</option>
+                                        <option>Screen Replacement</option>
+                                        <option>Battery Replacement</option>
+                                        <option>Software Service</option>
+                                        <option>Mobile Purchase</option>
+                                        <option>Accessories Purchase</option>
+                                        <option>General Enquiry</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerStatus">Customer Status</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <select id="customerStatus">
+                                        <option value="Active">Active</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="customerAddress">Customer Address</label>
+                                <textarea id="customerAddress"
+                                          placeholder="Enter customer address"></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary"
+                                    id="cancelEditBtn" hidden>
+                                <i class="fa-solid fa-xmark"></i> Cancel Edit
+                            </button>
+
+                            <button type="reset" class="btn btn-secondary" id="resetBtn">
+                                <i class="fa-solid fa-rotate-left"></i> Clear Form
+                            </button>
+
+                            <button type="submit" class="btn btn-primary" id="saveBtn">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save Customer Data
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </section>
+
+            <!-- SAVED CUSTOMER DETAILS -->
+            <section class="card" id="savedCustomersSection">
+
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <div>
+                            <h2>Saved Customer Details</h2>
+                            <p>Customer records saved successfully will appear below</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" id="searchInput"
+                                   placeholder="Search name, ID, mobile or brand...">
+                        </div>
+
+                        <div class="table-count">
+                            Showing <strong id="shownCount">0</strong>
+                            of <strong id="recordCount">0</strong> records
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CUSTOMER ID</th>
+                                    <th>CUSTOMER NAME</th>
+                                    <th>MOBILE NUMBER</th>
+                                    <th>EMAIL</th>
+                                    <th>BRAND / MODEL</th>
+                                    <th>SERVICE TYPE</th>
+                                    <th>STATUS</th>
+                                    <th>ADDRESS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="customerTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <div class="footer">
+                © 2026 Smart Mobile Care Hub. Customer Management System.
+            </div>
+
+        </section>
+    </main>
+</div>
+
+<!-- SUCCESS MESSAGE -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="toast-icon">
+        <i class="fa-solid fa-check"></i>
+    </div>
+    <div>
+        <h3 id="toastTitle">Data saved successfully!</h3>
+        <p id="toastMessage">Customer details have been saved successfully.</p>
+    </div>
+</div>
+
+<script>
+    const STORAGE_KEY = "smartMobileCareHubCustomers";
+
+    const customerForm = document.getElementById("customerForm");
+    const customerTableBody = document.getElementById("customerTableBody");
+    const searchInput = document.getElementById("searchInput");
+    const editingIdInput = document.getElementById("editingId");
+    const saveBtn = document.getElementById("saveBtn");
+    const cancelEditBtn = document.getElementById("cancelEditBtn");
+    const formHeading = document.getElementById("formHeading");
+
+    let customers = loadCustomers();
+
+    // Load saved records from browser storage
+    function loadCustomers() {
+        try {
+            const storedData = localStorage.getItem(STORAGE_KEY);
+            const parsedData = storedData ? JSON.parse(storedData) : [];
+
+            return Array.isArray(parsedData) ? parsedData : [];
+        } catch (error) {
+            console.error("Unable to load customer records:", error);
+            return [];
+        }
+    }
+
+    // Save all customer records to browser storage
+    function saveToStorage() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(customers));
+            return true;
+        } catch (error) {
+            alert("Unable to save customer data. Browser storage may be full or unavailable.");
+            console.error("Unable to save customer records:", error);
+            return false;
+        }
+    }
+
+    // Read form values
+    function getFormData() {
+        return {
+            customerId: document.getElementById("customerId").value.trim(),
+            customerName: document.getElementById("customerName").value.trim(),
+            mobileNumber: document.getElementById("mobileNumber").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            mobileBrand: document.getElementById("mobileBrand").value,
+            mobileModel: document.getElementById("mobileModel").value.trim(),
+            serviceType: document.getElementById("serviceType").value,
+            customerStatus: document.getElementById("customerStatus").value,
+            customerAddress: document.getElementById("customerAddress").value.trim()
+        };
+    }
+
+    // Form submit: add a new record or update an existing one
+    customerForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const customer = getFormData();
+        const currentEditingId = editingIdInput.value;
+
+        // Check duplicate Customer ID
+        const duplicate = customers.some(function(item) {
+            return item.customerId.toLowerCase() === customer.customerId.toLowerCase()
+                && item.recordKey !== currentEditingId;
+        });
+
+        if (duplicate) {
+            alert("This Customer ID already exists. Please enter a different Customer ID.");
+            document.getElementById("customerId").focus();
+            return;
+        }
+
+        if (currentEditingId) {
+            const index = customers.findIndex(function(item) {
+                return item.recordKey === currentEditingId;
+            });
+
+            if (index === -1) {
+                alert("Customer record not found. Please refresh the page and try again.");
+                return;
+            }
+
+            const oldCustomer = customers[index];
+            customers[index] = {
+                ...customer,
+                recordKey: oldCustomer.recordKey
+            };
+
+            if (!saveToStorage()) {
+                customers[index] = oldCustomer;
+                return;
+            }
+
+            resetForm();
+            renderCustomers();
+            showNotification(
+                "Data saved successfully!",
+                "Customer details have been updated and saved successfully."
+            );
+        } else {
+            customer.recordKey = createRecordKey();
+            customers.push(customer);
+
+            if (!saveToStorage()) {
+                customers.pop();
+                return;
+            }
+
+            customerForm.reset();
+            editingIdInput.value = "";
+            setDefaultStatus();
+            updateFormMode();
+            renderCustomers();
+
+            showNotification(
+                "Data saved successfully!",
+                "Customer details have been saved and displayed in the table below."
+            );
+
+            // Scroll to saved records so the user can see the new row
+            document.getElementById("savedCustomersSection").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    });
+
+    function createRecordKey() {
+        return "record_" + Date.now().toString(36) +
+            "_" + Math.random().toString(36).slice(2, 10);
+    }
+
+    // Safely display text in HTML
+    function escapeHTML(value) {
+        return String(value ?? "").replace(/[&<>"']/g, function(character) {
+            const entities = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            };
+
+            return entities[character];
+        });
+    }
+
+    // Display all saved records
+    function renderCustomers() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+
+        const filteredCustomers = customers.filter(function(customer) {
+            const searchableText = [
+                customer.customerId,
+                customer.customerName,
+                customer.mobileNumber,
+                customer.email,
+                customer.mobileBrand,
+                customer.mobileModel,
+                customer.serviceType,
+                customer.customerStatus,
+                customer.customerAddress
+            ].join(" ").toLowerCase();
+
+            return searchableText.includes(searchTerm);
+        });
+
+        document.getElementById("totalCustomers").textContent = customers.length;
+
+        document.getElementById("activeCustomers").textContent =
+            customers.filter(function(customer) {
+                return customer.customerStatus === "Active";
+            }).length;
+
+        document.getElementById("mobileRecords").textContent =
+            customers.filter(function(customer) {
+                return customer.mobileBrand || customer.mobileModel;
+            }).length;
+
+        document.getElementById("shownCount").textContent = filteredCustomers.length;
+        document.getElementById("recordCount").textContent = customers.length;
+
+        if (filteredCustomers.length === 0) {
+            const isSearching = searchTerm.length > 0;
+
+            customerTableBody.innerHTML = `
+                <tr>
+                    <td colspan="9">
+                        <div class="empty-state">
+                            <i class="fa-solid ${isSearching ? "fa-magnifying-glass" : "fa-users"}"></i>
+                            <h3>${isSearching ? "No matching customers found" : "No customer records yet"}</h3>
+                            <p>${isSearching
+                                ? "Try another search term."
+                                : "Enter customer details above and click Save Customer Data."}</p>
+                        </div>
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        customerTableBody.innerHTML = filteredCustomers.map(function(customer) {
+            const status = customer.customerStatus || "Active";
+            let statusClass = "status-active";
+
+            if (status === "Inactive") {
+                statusClass = "status-inactive";
+            } else if (status === "Pending") {
+                statusClass = "status-pending";
+            }
+
+            return `
+                <tr>
+                    <td>
+                        <span class="customer-id">${escapeHTML(customer.customerId)}</span>
+                    </td>
+
+                    <td>
+                        <span class="customer-name">${escapeHTML(customer.customerName)}</span>
+                    </td>
+
+                    <td>${escapeHTML(customer.mobileNumber)}</td>
+
+                    <td>${escapeHTML(customer.email || "—")}</td>
+
+                    <td>
+                        ${escapeHTML(customer.mobileBrand || "—")}
+                        ${customer.mobileModel
+                            ? "<br><span style='color:#718096;font-size:11px'>" +
+                              escapeHTML(customer.mobileModel) + "</span>"
+                            : ""}
+                    </td>
+
+                    <td>${escapeHTML(customer.serviceType || "—")}</td>
+
+                    <td>
+                        <span class="status ${statusClass}">${escapeHTML(status)}</span>
+                    </td>
+
+                    <td>${escapeHTML(customer.customerAddress || "—")}</td>
+
+                    <td>
+                        <div class="action-buttons">
+                            <button type="button"
+                                    class="btn btn-edit"
+                                    data-action="edit"
+                                    data-key="${escapeHTML(customer.recordKey)}"
+                                    title="Edit customer">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+
+                            <button type="button"
+                                    class="btn btn-delete"
+                                    data-action="delete"
+                                    data-key="${escapeHTML(customer.recordKey)}"
+                                    title="Delete customer">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }).join("");
+    }
+
+    // Handle Edit and Delete buttons
+    customerTableBody.addEventListener("click", function(event) {
+        const button = event.target.closest("button[data-action]");
+
+        if (!button) return;
+
+        const recordKey = button.dataset.key;
+        const action = button.dataset.action;
+
+        if (action === "edit") {
+            editCustomer(recordKey);
+        } else if (action === "delete") {
+            deleteCustomer(recordKey);
+        }
+    });
+
+    function editCustomer(recordKey) {
+        const customer = customers.find(function(item) {
+            return item.recordKey === recordKey;
+        });
+
+        if (!customer) {
+            alert("Customer record not found.");
+            return;
+        }
+
+        document.getElementById("customerId").value = customer.customerId || "";
+        document.getElementById("customerName").value = customer.customerName || "";
+        document.getElementById("mobileNumber").value = customer.mobileNumber || "";
+        document.getElementById("email").value = customer.email || "";
+        document.getElementById("mobileBrand").value = customer.mobileBrand || "";
+        document.getElementById("mobileModel").value = customer.mobileModel || "";
+        document.getElementById("serviceType").value = customer.serviceType || "";
+        document.getElementById("customerStatus").value = customer.customerStatus || "Active";
+        document.getElementById("customerAddress").value = customer.customerAddress || "";
+
+        editingIdInput.value = recordKey;
+        updateFormMode();
+
+        document.getElementById("customerFormSection").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        document.getElementById("customerName").focus();
+    }
+
+    function deleteCustomer(recordKey) {
+        const customer = customers.find(function(item) {
+            return item.recordKey === recordKey;
+        });
+
+        if (!customer) return;
+
+        const confirmed = confirm(
+            "Are you sure you want to delete the record for " +
+            customer.customerName + "?"
+        );
+
+        if (!confirmed) return;
+
+        const previousCustomers = [...customers];
+
+        customers = customers.filter(function(item) {
+            return item.recordKey !== recordKey;
+        });
+
+        if (!saveToStorage()) {
+            customers = previousCustomers;
+            return;
+        }
+
+        if (editingIdInput.value === recordKey) {
+            resetForm();
+        }
+
+        renderCustomers();
+
+        showNotification(
+            "Customer data deleted!",
+            "The selected customer record has been deleted successfully."
+        );
+    }
+
+    function resetForm() {
+        customerForm.reset();
+        editingIdInput.value = "";
+        setDefaultStatus();
+        updateFormMode();
+    }
+
+    function setDefaultStatus() {
+        document.getElementById("customerStatus").value = "Active";
+    }
+
+    function updateFormMode() {
+        const isEditing = Boolean(editingIdInput.value);
+
+        formHeading.textContent = isEditing
+            ? "Edit Customer Details"
+            : "Add Customer Details";
+
+        saveBtn.innerHTML = isEditing
+            ? '<i class="fa-solid fa-floppy-disk"></i> Update Customer Data'
+            : '<i class="fa-solid fa-floppy-disk"></i> Save Customer Data';
+
+        cancelEditBtn.hidden = !isEditing;
+    }
+
+    cancelEditBtn.addEventListener("click", function() {
+        resetForm();
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", function() {
+        setTimeout(function() {
+            editingIdInput.value = "";
+            setDefaultStatus();
+            updateFormMode();
+        }, 0);
+    });
+
+    searchInput.addEventListener("input", renderCustomers);
+
+    // Success notification
+    let toastTimer;
+
+    function showNotification(title, message) {
+        const toast = document.getElementById("toast");
+
+        document.getElementById("toastTitle").textContent = title;
+        document.getElementById("toastMessage").textContent = message;
+
+        toast.classList.add("show");
+
+        clearTimeout(toastTimer);
+
+        toastTimer = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3500);
+    }
+
+    // Load previously saved records when the page opens
+    setDefaultStatus();
+    updateFormMode();
+    renderCustomers();
+</script>
+
+</body>
+</html>
